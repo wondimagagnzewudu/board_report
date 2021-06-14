@@ -5,13 +5,14 @@ import { CSVReader,readString} from 'react-papaparse'
 import 'react-responsive-modal/styles.css';
  import { Modal } from 'react-responsive-modal';
 import Papa from 'papaparse';
-import {  Button,Badge,CardBody, Card,  Input, CardHeader, Col, PaginationItem, PaginationLink, Row,  Alert } from 'reactstrap';
+import {Badge,CardBody, Card,  Input, CardHeader, Col, PaginationItem, PaginationLink, Row,  Alert } from 'reactstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import {parse,Parser} from "json2csv";
 import axios from 'axios';
+
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import { Form, Table, Tag, Space,notification } from 'antd';
+import { Button,Form, Table, Tag, Space,notification } from 'antd';
 import XLSX from "xlsx";
 
 const { Column, ColumnGroup } = Table;
@@ -184,7 +185,7 @@ const { Header, Content, Sider } = Layout;
     return (
 
     <div>
-             {/* <Button onClick={() => { opentables() }}>Download  csv</Button> */}
+             {/* <Button type="primary"onClick={() => { opentables() }}>Download  csv</Button> */}
          
              <Content
           className="site-layout-background"
@@ -193,8 +194,8 @@ const { Header, Content, Sider } = Layout;
             margin: 0,
             minHeight: 280,
           }}
-        >    <Button onClick={() => { opentables_import() }} >import csv</Button>
-     <Button onClick={() => {  opentables_openvisal_image_xlsx() }} >import xlsx</Button>
+        >    <Button type="primary"onClick={() => { opentables_import() }} >import csv</Button>
+     <Button type="primary"onClick={() => {  opentables_openvisal_image_xlsx() }} >import xlsx</Button>
       
         
  </Content>
@@ -257,7 +258,7 @@ const { Header, Content, Sider } = Layout;
     
             <Modal style={{ backgroundColor: '#edf0eea1',  }} open={openvisal_data} >
             <div style ={{ width: '150%'}}>
-            <Button style={{        borderWidth: 1,
+            <Button type="primary"style={{        borderWidth: 1,
                                     borderStyle: 'solid',
                                     borderColor: '#ccc',
                                     height: 45,
@@ -286,8 +287,8 @@ const { Header, Content, Sider } = Layout;
             <Space size="middle">
                 
                
-                {/* <Button outline color="primary" onClick={() => { handle_see_image(text) }} >See image </Button> */}
-                <Button outline color="primary"  >Edit </Button>
+                {/* <Button type="primary"outline color="primary" onClick={() => { handle_see_image(text) }} >See image </Button> */}
+                <Button type="primary"outline color="primary"  >See report </Button>
 
             </Space>
         )} />
