@@ -132,11 +132,43 @@ const { Header, Content, Sider } = Layout;
           const ws = wb.Sheets[wsname];
          
           const datas = XLSX.utils.sheet_to_json(ws, { header: 1 });
-         console.log(datas);
+         console.log('1',datas);
          setrealdata(datas)
-         console.log(datas)
-          setxlsx_data(datas);
-          make_cols(ws["!ref"]);
+  
+
+         const token = localStorage.getItem('access_token')
+         var config = {
+              url: `${process.env.REACT_APP_IP}/data_ps_route`,
+              method: 'POST',
+              data:{datas},
+              headers: {
+                "Content-Type":"application/json",
+              // "Authorization": "Bearer  "+token
+        
+              },
+             
+            };
+        console.log(config)
+            axios(config)
+              .then(function (response) {
+                notification.open({
+                  message: 'Added',
+                 
+                });
+                setTimeout(() => {
+              window.location.reload(false);
+             
+              }, 100);
+              })
+              .catch(function (error) {
+                notification.open({
+                  message: 'Not added',
+                 
+                });
+                window.location.reload(false);
+              });
+         
+          //make_cols(ws["!ref"]);
         };
         if (rABS) reader.readAsBinaryString(files[0]);
         else reader.readAsArrayBuffer(files[0]);

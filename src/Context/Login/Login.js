@@ -4,7 +4,7 @@ import image from './z_oxTrxq_400x400.jpg';
 import jwt_decode from "jwt-decode";
 
 export default function Login () {
-    const [email, setEmail] = useState('');
+    const [user_name, setuser_name] = useState('');
     const [password, setPassword] = useState('');
     const layout = {
       labelCol: { span: 7 },
@@ -16,7 +16,7 @@ export default function Login () {
     const handleOTCLogin = () =>{
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({"email":email,"password":password});
+      var raw = JSON.stringify({"user_name":user_name,"user_password":password});
       var requestOptions = {
           method: 'POST',
           headers: myHeaders,
@@ -26,11 +26,12 @@ export default function Login () {
       fetch(`${process.env.REACT_APP_IP}/login`, requestOptions)
           .then(response => response.json())
           .then(result => {
-              var datadecode = jwt_decode(result.token)
+              var datadecode =  jwt_decode(result.token)
               localStorage.setItem('token', (result.token));
               localStorage.setItem('user_name',JSON.stringify(datadecode.user_name));
               localStorage.setItem('user_type', JSON.stringify(datadecode.user_type))
               window.location.reload()
+            
           })
           .catch(error => console.log(error))
   }
@@ -62,10 +63,10 @@ export default function Login () {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Email"
-        name="email"
+        label="user name"
+        name="user_name"
         rules={[{ required: true, message: 'Please input your username!' }]}
-        onChange={e => setEmail(e.target.value)}
+        onChange={e => setuser_name(e.target.value)}
       >
         <Input />
       </Form.Item>

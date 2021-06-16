@@ -50,7 +50,7 @@ function Transcriber_follow(props) {
 
         const GetData = async () => {
 
-            const result = await axios.get('http://localhost:5000/all_audio_api_details');
+            const result = await axios.get(`${process.env.REACT_APP_IP}`);
 var  x =["one"]
             setData(x);
 
@@ -75,7 +75,7 @@ var  x =["one"]
 
     }
     const search_data = async () => {
-        const apiUrl = "http://localhost:5000/getapi_data_get_audio";
+        const apiUrl = `${process.env.REACT_APP_IP}`;
         const data = { searched_data, real_serched_data, valuetu,starting_date,ending_date }
 var y =["No","ዞንZONE ","R_CODE", "Constituency የምርጫ ክልል","Cons_Code","ልዩ የምርጫ ክልልConstituency","RC constituency", "ወረዳ WOREDA","W_CODE","ከተማ TOWN","T_CODE","ቀበሌ\nKEBELE","K_CODE","ቀበሌ\nKEBELE","K_CODE","Polling_Station Name","PS_Code","GEO_CODE FOR PS","PS TYPE"]
         await datacolomn.map((e, key) => {
