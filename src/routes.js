@@ -33,6 +33,10 @@ const Api_csv = Loadable({
   loader: () => import('./view/Api_csv'),
   loading: Loading,
 });
+const InsidenceReport = Loadable({
+  loader: () => import('./view/Dashboard/InsidenceReport'),
+  loading: Loading,
+})
 
 const routes = [
   { path: '/', exact: true, name: 'Home', component: Dashboard },
@@ -42,6 +46,7 @@ const routes = [
   { path: '/Transcriber_follow', name: 'Transcriber_follow', component: Transcriber_follow },
   { path: '/Api_csv', name: 'Api_csv', component: Api_csv },
   { path: '/Addreport', name: 'Addreport', component: Addreport },
+  { path: '/Form', name: 'InsidenceReport', component: InsidenceReport},
 
 
 ];

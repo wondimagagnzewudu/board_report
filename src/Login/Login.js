@@ -55,7 +55,7 @@ export default function Login () {
       <p style={{textAlign: 'center', backgroundColor: '#5e338a', color: 'white', padding: '1%'}}>NEBE Report Management</p>
         <Form
       {...layout}
-      style={{paddingTop: '10%', paddingBottom: '10%'}}
+      style={{paddingTop: '10%', paddingBottom: '10%', backgroundColor: '#00b6ba'}}
       name="basic"
       initialValues={{ remember: true }}
       onFinish={handleOTCLogin}

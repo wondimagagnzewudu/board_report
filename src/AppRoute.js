@@ -6,19 +6,10 @@ import jwt_decode from "jwt-decode";
 import { Login } from './Context/';
 import { Container } from 'reactstrap';
 import { Layout, Menu, Breadcrumb } from 'antd';
+import image from './Context/Login/z_oxTrxq_400x400.jpg';
+
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import {
-  AppAside,
-  AppBreadcrumb,
-  AppFooter,
-  AppHeader,
-  AppSidebar,
-  AppSidebarFooter,
-  AppSidebarForm,
-  AppSidebarHeader,
-  AppSidebarMinimizer,
-  AppSidebarNav,
-} from '@coreui/react';
+
 // sidebar nav config
 
 import routes from './routes';
@@ -47,35 +38,24 @@ Component={Component}
       name={name}
 			render={props =>
 				
-					!(logedin) ? (
+					(logedin) ? (
             (<Login  />)
 				) :
-        <div className="animated fadeIn">
+    <div className="animated fadeIn">
                
-               <div className="App">
-    <Header className="header">
-      <div className="logo" >
-    
-      </div>
-      <Menu  theme="dark" mode="horizontal" defaultSelectedKeys={['0']}>
-        <Menu.Item key="1">Home</Menu.Item>
-        <Menu.Item key="2">Notification</Menu.Item>
-        <Menu.Item key="3">About</Menu.Item>
-      </Menu>
+    <div className="App">
+    <Header className="header" style={{backgroundColor: 'white', height: 100, }}>
+      <a href="/"><img src={image} style={{width: 100, height: 100}}/></a>
     </Header>
    
     <Content style={{ padding: '0 0px', }}>
-    <Layout className="site-layout-background" style={{ padding: '0px 0',flex:1, height: '100vh'}}>
-       <NavbarMenu/>
+    <Layout className="site-layout-background" style={{ padding: '0px 0',flex:1, height: '100vh',}}>
+      <NavbarMenu/>
       <Content style={{ padding: '0 24px', minHeight: 280 }}>
-    
-      <Component {...props} />
+        <Component {...props} />
       </Content>
-      
-      </Layout>
-
-
-</Content >
+    </Layout>
+    </Content >
     </div>
          
         </div>

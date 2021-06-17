@@ -1,25 +1,19 @@
 import React,{ Component } from 'react'
 import { useState, usePrimary, useEffect } from 'react'
-import Pagination from "react-js-pagination";
 import { CSVReader,readString} from 'react-papaparse'
-import 'react-responsive-modal/styles.css';
- import { Modal } from 'react-responsive-modal';
-import Papa from 'papaparse';
-import {Badge,CardBody, Card,  Input, CardHeader, Col, PaginationItem, PaginationLink, Row,  Alert } from 'reactstrap';
-import InputGroup from 'react-bootstrap/InputGroup';
+
 import {parse,Parser} from "json2csv";
 import axios from 'axios';
 
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Layout, Menu, Modal } from 'antd';
 import { Button,Form, Table, Tag, Space,notification } from 'antd';
 import XLSX from "xlsx";
 
 const { Column, ColumnGroup } = Table;
- const buttonRef = React.createRef()
+const buttonRef = React.createRef()
 function Api_csv(props) {
     const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+    const { Header, Content, Sider } = Layout;
     const [openvisal_image, setopenvisal_image] = useState(false);
     const [openvisal_image_xlsx, setopenvisal_image_xlsx] = useState(false);
     const [first_node,setfirst_node] = useState()
@@ -40,13 +34,6 @@ const { Header, Content, Sider } = Layout;
     const [activePage, setCurrentPage] = useState(1);
     const [xlsx_data, setxlsx_data] = useState(1);
 
-    // if (props.location.state){
-    //     setvaluetu(props.location.state);
-    // }
-    // else{
-    //     setvaluetu('0');
-    // }
-  
 
     useEffect(() => {
        
@@ -54,7 +41,6 @@ const { Header, Content, Sider } = Layout;
 
     }, []);
     const handleOpenDialog = (e) => {
-        // Note that the ref is set async, so it might be null at some point
         if (buttonRef.current) {
             buttonRef.current.open(e)
         }
@@ -216,22 +202,21 @@ const { Header, Content, Sider } = Layout;
 
     return (
 
-    <div>
-             {/* <Button type="primary"onClick={() => { opentables() }}>Download  csv</Button> */}
-         
-             <Content
+    <div>         
+    <Content
           className="site-layout-background"
           style={{
             padding: 24,
             margin: 0,
             minHeight: 280,
+            justifyContent: 'center'
           }}
         >    <Button type="primary"onClick={() => { opentables_import() }} >import csv</Button>
      <Button type="primary"onClick={() => {  opentables_openvisal_image_xlsx() }} >import xlsx</Button>
       
         
  </Content>
-    <Modal style={{ backgroundColor: '#edf0eea1', width: '100%' }} open={openvisal_image} onClose={onClosedeletModal_image} center>
+    <Modal style={{ backgroundColor: '#edf0eea1', width: '100%' }} visible={openvisal_image} onCancel={onClosedeletModal_image} center footer={null}>
            
                     <CSVReader
                     ref={buttonRef}
@@ -250,45 +235,21 @@ const { Header, Content, Sider } = Layout;
                             }}
                         >
 
-                            <Button
-                                type='button'
-                            
-                               
-                             
-                                   onClick={ handleOpenDialog }
-                            >
-                                Browes file
-              </Button>
+                            <Button type='button' onClick={ handleOpenDialog }>Browes file</Button>
                             <div
                                 style={{
-                                    borderWidth: 1,
-                                    borderStyle: 'solid',
-                                    borderColor: '#ccc',
-                                    height: 45,
-                                    lineHeight: 2.5,
-                                    marginTop: 5,
-                                    marginBottom: 5,
-                                    paddingLeft: 13,
-                                    paddingTop: 3,
-                                    width: '60%'
-                                }}
-                            >
+                                   
+                                }}>
                                 {file && file.name}
                             </div>
-                            <Button
-                                 type='button'
-                                onClick={ handleRemoveFile }
-                            >
-                                Remove
-              </Button>
+                            <Button type='button' onClick={ handleRemoveFile } >Remove</Button>
                         </aside>
-
                     )}
                 </CSVReader>
      
             </Modal>
     
-            <Modal style={{ backgroundColor: '#edf0eea1',  }} open={openvisal_data} >
+            <Modal style={{ backgroundColor: '#edf0eea1',  }} visible={openvisal_data} >
             <div style ={{ width: '150%'}}>
             <Button type="primary"style={{        borderWidth: 1,
                                     borderStyle: 'solid',

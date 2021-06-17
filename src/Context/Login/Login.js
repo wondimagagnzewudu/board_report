@@ -49,21 +49,21 @@ export default function Login () {
    
 
     return (
-     <div style={{backgroundColor: 'white', alignItems: 'center', paddingLeft: '20%', paddingRight: '20%', paddingTop: '4%'}}>
+     <div style={{backgroundColor: 'white', alignItems: 'center', paddingLeft: '20%', paddingRight: '20%', paddingTop: '2%'}}>
       <p style={{fontSize: 34, color: 'black', fontWeight: 'bolder', textAlign: 'center'}}> <img  style={{textAlign: 'center'}} src={image} width='200px' height='150px' /></p>
-      <p style={{fontSize: 34, color: 'black', fontWeight: 'bolder', textAlign: 'center'}}>Login</p>
+      <p style={{fontSize: 26, color: 'black', fontWeight: 'bolder', textAlign: 'center'}}>Login</p>
      
       <p style={{textAlign: 'center', backgroundColor: '#5e338a', color: 'white', padding: '1%'}}>NEBE Report Management</p>
         <Form
       {...layout}
-      style={{paddingTop: '10%', paddingBottom: '10%'}}
+      style={{paddingTop: '8%',marginBottom: '10%',paddingBottom: '2%', backgroundColor: '#00b6ba'}}
       name="basic"
       initialValues={{ remember: true }}
       onFinish={handleOTCLogin}
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="user name"
+        label="Username"
         name="user_name"
         rules={[{ required: true, message: 'Please input your username!' }]}
         onChange={e => setuser_name(e.target.value)}
@@ -85,7 +85,7 @@ export default function Login () {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="secondary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
