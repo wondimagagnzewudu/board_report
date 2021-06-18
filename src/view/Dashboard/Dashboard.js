@@ -14,16 +14,20 @@ export default function Dashboard() {
   const [searchText, setSearchText] = useState('')
   const [searchedColumn, setSearchedColumn] = useState('')
   var [searchInput, setSearchInput] = useState('')
-  const [apiData, setAPIData] = useState([])
+  const [allData, setAllData] = useState([])
+  const [noProblem, setNoProblem] = useState([])
+  const [missing, setMissing] = useState([])
+  const [nothing, setNothing] = useState([])
+  const [failedMessage, setFailed] = useState([])
 
   const apiGetter = async() =>{
-    const url = 'http'
+    const url = 'http://172.17.36.13:8081/all_message_in_use_route'
     try{
       const response = await fetch(url)
       console.log(response)
 
     } catch(e){
-
+      console.log(e.message)
     }
   }
 
@@ -31,7 +35,7 @@ export default function Dashboard() {
     labels: ["All Delivered", "Some Remaining", "None Delivered", ],
     datasets: [
       {
-        data: [300, 50, 100],
+        data: [noProblem.length, missing.length, nothing.length],
         backgroundColor: [
           "#00b6ba",
           "#6d55a4",
@@ -52,14 +56,11 @@ export default function Dashboard() {
     datasets: [
       {
         label: "% of Polling station",
-        data: [12, 19, 3,],
+        data: [noProblem.length, missing.length, nothing.length,],
         backgroundColor: [
           "#00b6ba",
           "#6d55a4",
           "red",
-          "rgba(113, 205, 205,0.4)",
-          "rgba(170, 128, 252,0.4)",
-          "rgba(255, 177, 101,0.4)"
         ],
 
       }
@@ -249,27 +250,13 @@ export default function Dashboard() {
 
   return (
     <Card hoverable style={{backgroundColor: '#00b6ba', height: 'auto'}}>
-      <div className="site-statistic-demo-card" style={{marginBottom: '2%', width: '100%'}}>
-      <Row gutter={16}>
-      <Col span={12}>
-        <MDBContainer style={{backgroundColor: 'white', height: 300,width: '100%'}}>
-            <Bar data={dataBar} options={barChartOptions} />
-        </MDBContainer>
-        </Col>
-        <Col span={12}>
-        <MDBContainer style={{backgroundColor: 'white', height: 300,width: '100%'}}>
-          <Pie data={dataPie} options={{ responsive: true }} />
-        </MDBContainer>
-      </Col>
-        </Row>
-      </div>
       <div className="site-statistic-demo-card" style={{marginBottom: '2%'}}>
         <Row gutter={16}>
           <Col span={6}>
             <Card>
               <Statistic
                 title="No Problem"
-                value={11.28}
+                value={noProblem}
                 precision={2}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<ArrowUpOutlined />}
@@ -278,6 +265,7 @@ export default function Dashboard() {
                <Result
                   status="success"
                   title="Successfully Delivered!"
+                  subtitle={`${noProblem.length*100/allData}`}
                 />
             </Card>
           </Col>
@@ -285,13 +273,14 @@ export default function Dashboard() {
             <Card>
               <Statistic
                 title="Important Equipments Missing"
-                value={9.3}
+                value={missing}
                 precision={2}
                 valueStyle={{ color: 'blue' }}
                 prefix={<ArrowDownOutlined />}
               />
               <Result
                  title="Missing  Equipments"
+                 subtitle={`${missing.length*100/allData}`}
   />
             </Card>
           </Col>
@@ -299,7 +288,7 @@ export default function Dashboard() {
             <Card>
               <Statistic
                 title="No Equipment recived"
-                value={11.28}
+                value={nothing}
                 precision={2}
                 valueStyle={{ color: '#3f8600' }}
                 prefix={<ArrowUpOutlined />}
@@ -308,6 +297,7 @@ export default function Dashboard() {
               <Result
               status="warning"
               title="Nothing Recived."
+              subtitle={`${nothing.length*100/allData}`}
 
             />
             </Card>
@@ -316,7 +306,7 @@ export default function Dashboard() {
             <Card>
               <Statistic
                 title="Failed Messages"
-                value={9.3}
+                value={failedMessage}
                 precision={2}
                 valueStyle={{ color: '#cf1322' }}
                 prefix={<ArrowDownOutlined />}
@@ -324,9 +314,24 @@ export default function Dashboard() {
               <Result
             status="error"
             title="Failed Messages"
+            subtitle={`${failedMessage.length*100/allData}`}
           ></Result>
             </Card>
           </Col>
+        </Row>
+      </div>
+      <div className="site-statistic-demo-card" style={{marginBottom: '2%', width: '100%'}}>
+      <Row gutter={16}>
+      <Col span={12}>
+        <MDBContainer style={{backgroundColor: 'white', height: 400,width: '100%'}}>
+            <Bar data={dataBar} options={barChartOptions} />
+        </MDBContainer>
+        </Col>
+        <Col span={12}>
+        <MDBContainer style={{backgroundColor: 'white', height: 400,width: '100%'}}>
+          <Pie data={dataPie} options={{ responsive: true }} />
+        </MDBContainer>
+      </Col>
         </Row>
       </div>
 
