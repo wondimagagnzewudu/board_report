@@ -6,11 +6,11 @@ function Loading() {
   return <div>Loading...</div>;
 }
 const Login = Loadable({
-  loader: () => import('./Login'),
+  loader: () => import('./Context/Login'),
   loading: Loading,
 });
 const Addreport = Loadable({
-  loader: () => import('./view/Addreport'),
+  loader: () => import('./view/Result'),
   loading: Loading,
 });
 const Listofreport = Loadable({
@@ -18,11 +18,11 @@ const Listofreport = Loadable({
   loading: Loading,
 });
 const Serchreport = Loadable({
-  loader: () => import('./view/Serchreport'),
+  loader: () => import('./view/DocumentTracking'),
   loading: Loading,
 });
 const Transcriber_follow = Loadable({
-  loader: () => import('./view/Transcriber_follow'),
+  loader: () => import('./view/ArivalAproval'),
   loading: Loading,
 });
 const Dashboard = Loadable({

@@ -23,11 +23,13 @@ export default function Login () {
           body: raw,
           redirect: 'follow'
         };
-      fetch(`${process.env.REACT_APP_IP}/login`, requestOptions)
+        console.log(process.env.REACT_APP_IP);
+      fetch(`${process.env.REACT_APP_IP}/api/token`, requestOptions)
           .then(response => response.json())
           .then(result => {
+            console.log(process.env.REACT_APP_IP);
               var datadecode =  jwt_decode(result.token)
-              localStorage.setItem('token', (result.token));
+              localStorage.setItem('access_token', (result.access_token));
               localStorage.setItem('user_name',JSON.stringify(datadecode.user_name));
               localStorage.setItem('user_type', JSON.stringify(datadecode.user_type))
               window.location.reload()

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Statistic, Card, Row, Col , Table, Tag, Space, Input, Button, Result} from 'antd'
-import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
+import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined , CaretDownOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import BarChart from 'react-bar-chart';
 import { Bar, Pie } from "react-chartjs-2";
@@ -11,6 +11,8 @@ import { MDBContainer } from "mdbreact";
 
 
 export default function Dashboard() {
+  const [activeBar, setActiveBar] = useState(true)
+  const [activeGra, setActiveGra] = useState(true)
   const [searchText, setSearchText] = useState('')
   const [searchedColumn, setSearchedColumn] = useState('')
   var [searchInput, setSearchInput] = useState('')
@@ -30,6 +32,24 @@ export default function Dashboard() {
       console.log(e.message)
     }
   }
+  const barActive = () =>{
+    setActiveBar(false)
+  }
+  const graActive = () =>{
+    setActiveGra(false)
+  }
+
+  // const TypeOfSMS = async() =>{
+  //   const url = ''
+  //   try {
+
+  //     const 
+      
+  //   }
+  //   catch (e){
+  //     console.log(e)
+  //   }
+  // }
 
   const dataPie= {
     labels: ["All Delivered", "Some Remaining", "None Delivered", ],
@@ -136,7 +156,7 @@ export default function Dashboard() {
         </Space>
       </div>
     ),
-    filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+    filterIcon: filtered => <><a style={{color: 'red'}}>Search</a><SearchOutlined style={{ color: filtered ? '#1890ff' : undefined, padding: '2%', fontSize: 20, color: 'red' }} /></>,
     onFilter: (value, record) =>
       record[dataIndex]
         ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase())
@@ -173,21 +193,14 @@ export default function Dashboard() {
       title: 'Phone Number',
       dataIndex: 'phone_number',
       key: 'phone_number',
-      width: '20%',
+      width: '35%',
       ...getColumnSearchProps('phone_number'),
     },
-      {
-        title: 'Polling Station Code',
-        dataIndex: 'psCode',
-        key: 'psCode',
-        width: '30%',
-        ...getColumnSearchProps('psCode'),
-      },
       {
         title: 'Constituency',
         dataIndex: 'constituencycode',
         key: 'constituencycode',
-        width: '20%',
+        width: '35%',
         ...getColumnSearchProps('constituencycode'),
       },
       
@@ -250,7 +263,10 @@ export default function Dashboard() {
 
   return (
     <Card hoverable style={{backgroundColor: '#00b6ba', height: 'auto'}}>
-      <div className="site-statistic-demo-card" style={{marginBottom: '2%'}}>
+      {activeGra ? <a  onClick={() =>graActive()}><CaretUpOutlined  style={{fontSize: 30}}/>Close</a>: <a  onClick={() =>setActiveGra(true)}><CaretDownOutlined  style={{fontSize: 30}}/>Expand</a> }
+      
+      <br />
+     {activeGra ?  <div className="site-statistic-demo-card" style={{marginBottom: '2%'}}>
         <Row gutter={16}>
           <Col span={6}>
             <Card>
@@ -319,7 +335,11 @@ export default function Dashboard() {
             </Card>
           </Col>
         </Row>
-      </div>
+      </div> : <></>}
+
+      {activeBar ? <a  onClick={() =>barActive()}><CaretUpOutlined  style={{fontSize: 30}}/>Close</a>: <a  onClick={() =>setActiveBar(true)}><CaretDownOutlined  style={{fontSize: 30}}/>Expand</a> }
+      <br/>
+      {activeBar ? 
       <div className="site-statistic-demo-card" style={{marginBottom: '2%', width: '100%'}}>
       <Row gutter={16}>
       <Col span={12}>
@@ -333,10 +353,14 @@ export default function Dashboard() {
         </MDBContainer>
       </Col>
         </Row>
-      </div>
-
+      </div> : <></>}
+      
+      <p style={{fontSize: 20, color: 'white', marginLeft: 10}}>Press On The Search Icon To Search Via Each Table Row</p>
+      <Button style={{margin: 10, borderRadius: 10}}>Result Sent </Button>
+      <Button style={{margin: 10, borderRadius: 10}}>Result Not Sent</Button>
+      <Button style={{margin: 10, borderRadius: 10}}>No Response</Button>
      
-      <Table columns={columns} dataSource={data} />
+      <Table style={{marginTop: 10}} columns={columns} dataSource={data} />
     </Card>
   );
 }

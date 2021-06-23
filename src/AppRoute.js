@@ -16,7 +16,7 @@ import routes from './routes';
 import NavbarMenu from './NavbarMenu';
 
 const AppRoutes = ({ component: Component, path,exact,name, ...rest }) => {
-	const token = localStorage.getItem('token')
+	const token = localStorage.getItem('user_type')
 	const [logedin, setLogedIn] = useState(false)
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;
@@ -38,7 +38,7 @@ Component={Component}
       name={name}
 			render={props =>
 				
-					(logedin) ? (
+					!(logedin) ? (
             (<Login  />)
 				) :
     <div className="animated fadeIn">

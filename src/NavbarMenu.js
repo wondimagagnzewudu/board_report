@@ -25,11 +25,11 @@ export default function NavbarMenu(props) {
 
         >
             <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-            <Menu.Item  key="7"><a href="/#/Form" >Incident report</a></Menu.Item>
-            <Menu.Item  key="6"><a href="/#/Api_csv" >Import Report</a></Menu.Item>
-            <Menu.Item  key="2"><a href="/#/Transcriber_follow" >Dynamic Search</a></Menu.Item>
-            <Menu.Item  key="3"><a href="/#/Serchreport" >Report Lookup</a></Menu.Item>
-            <Menu.Item  key="4"><a href="/#/Addreport" >Add Report</a></Menu.Item>
+            {/* <Menu.Item  key="7"><a href="/#/Form" >Incident report</a></Menu.Item> */}
+            {/* <Menu.Item  key="6"><a href="/#/Api_csv" >Import Report</a></Menu.Item> */}
+            <Menu.Item  key="2"><a href="/#/Transcriber_follow" >Arrival Approval</a></Menu.Item>
+            <Menu.Item  key="3"><a href="/#/Serchreport" >Document Tracking</a></Menu.Item>
+            <Menu.Item  key="4"><a href="/#/Addreport" >Result Entery</a></Menu.Item>
             <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
           </SubMenu>
            </Menu>
