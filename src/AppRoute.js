@@ -16,7 +16,7 @@ import routes from './routes';
 import NavbarMenu from './NavbarMenu';
 
 const AppRoutes = ({ component: Component, path,exact,name, ...rest }) => {
-	const token = localStorage.getItem('user_type')
+	const token = localStorage.getItem('access_token')
 	const [logedin, setLogedIn] = useState(false)
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;

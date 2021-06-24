@@ -16,23 +16,34 @@ export default function Login () {
     const handleOTCLogin = () =>{
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({"user_name":user_name,"user_password":password});
+      var raw = JSON.stringify({"username":user_name,"password":password});
       var requestOptions = {
           method: 'POST',
           headers: myHeaders,
           body: raw,
           redirect: 'follow'
         };
-        console.log(process.env.REACT_APP_IP);
-      fetch(`${process.env.REACT_APP_IP}/api/token`, requestOptions)
+        
+      fetch(`${process.env.REACT_APP_IP}/api/token/`, requestOptions)
           .then(response => response.json())
           .then(result => {
-            console.log(process.env.REACT_APP_IP);
-              var datadecode =  jwt_decode(result.token)
-              localStorage.setItem('access_token', (result.access_token));
-              localStorage.setItem('user_name',JSON.stringify(datadecode.user_name));
-              localStorage.setItem('user_type', JSON.stringify(datadecode.user_type))
-              window.location.reload()
+           
+              var datadecode =  jwt_decode(result.access);
+              localStorage.setItem('access_token', result.access);
+               localStorage.setItem('user_id', (datadecode.user_id));
+               if(datadecode.admin){
+                localStorage.setItem('user_type','admin');
+               }else if(datadecode.analysis){
+                localStorage.setItem('user_type','analyst');
+               }
+               else if(datadecode.encoder){
+                localStorage.setItem('user_type','access');
+               }
+               else{
+
+               }
+             
+               window.location.reload()
             
           })
           .catch(error => console.log(error))

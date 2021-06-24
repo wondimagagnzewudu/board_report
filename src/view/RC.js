@@ -121,7 +121,7 @@ const formItemLayout = {
 
 export default function RC() {
     const [form] = Form.useForm();
-
+    const [general_data, setgeneral_data] = useState([{}]);
     const [languageName, setLanguageName] = useState(language)
     const [resultlang, setResulLang] = useState(resultsAmharic)
     const [active, setActive] = useState(false)
@@ -140,7 +140,10 @@ export default function RC() {
         setResulLang(resultsAmharic)
     }
 
-  const onFinish = (values: any) => {
+  const onFinish = (values) => {
+    console.log('Received values of form: ', values);
+  };
+  const select_region = (values) => {
     console.log('Received values of form: ', values);
   };
 
@@ -170,7 +173,7 @@ export default function RC() {
 
     const children = [];
         for (let i = 10; i < 36; i++) {
-            children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
+            children.push(<Option onChange={select_region} key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
         }
 
       const listt = []
