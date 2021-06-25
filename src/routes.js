@@ -38,7 +38,7 @@ const Transcriber_follow = Loadable({
   loading: Loading,
 });
 const Dashboard = Loadable({
-  loader: () => import('./view/Dashboard'),
+  loader: () => import('./view/Dashboard/Dashboard'),
   loading: Loading,
 });
 const Api_csv = Loadable({
@@ -51,7 +51,7 @@ const InsidenceReport = Loadable({
 })
 
 const routes = [
-  { path: '/', exact: true, name: 'Home', component: Dashboard },
+  { path: '/',  name: 'Dashboard', component: Dashboard },
   { path: '/Need_check', name: 'Need_check', component: Need_check },
   { path: '/Need_update', name: 'Need_update', component: Need_update },
   { path: '/Aproved_list', name: 'Aproved_list', component: Aproved_list },

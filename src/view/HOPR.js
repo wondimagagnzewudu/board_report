@@ -218,7 +218,7 @@ data:send_data
  
     var data =candidate_data[e.target.name]
     data.partyid=data.politicalpartyid
-    data.votes=e.target.value;
+    data.votes=JSON.parse(e.target.value);
  
    setresult_data(result_data => [...result_data,data])
    console.log(result_data)
