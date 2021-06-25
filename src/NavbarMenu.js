@@ -79,7 +79,7 @@ export default function NavbarMenu(props) {
                
                        >
                            <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-                           <Menu.Item  key="2"><a href="/#/Transcriber_follow" >Need update</a></Menu.Item>
+                           <Menu.Item  key="2"><a href="/#/Need_update" >Need update</a></Menu.Item>
                            <Menu.Item  key="3"><a href="/#/Addreport" >Create Reporting</a></Menu.Item>
                            <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
                          </SubMenu>
@@ -98,8 +98,8 @@ export default function NavbarMenu(props) {
                
                        >
                            <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-                           <Menu.Item  key="2"><a href="/#/Transcriber_follow" >Need check</a></Menu.Item>
-                           <Menu.Item  key="3"><a href="/#/Addreport" >List of approved</a></Menu.Item>
+                           <Menu.Item  key="2"><a href="/#/Need_check" >Need check</a></Menu.Item>
+                           <Menu.Item  key="3"><a href="/#/Aproved_list" >List of approved</a></Menu.Item>
                            <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
                          </SubMenu>
                           </Menu>
@@ -117,10 +117,10 @@ export default function NavbarMenu(props) {
                
                        >
                            <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-                           <Menu.Item  key="2"><a href="/#/Transcriber_follow" >Need update</a></Menu.Item>
-                           <Menu.Item  key="2"><a href="/#/Transcriber_follow" >Need check</a></Menu.Item>
+                           <Menu.Item  key="2"><a href="/#/Need_check" >Need check</a></Menu.Item>
+                           <Menu.Item  key="2"><a href="/#/Need_update" >Need update</a></Menu.Item>
                            <Menu.Item  key="3"><a href="/#/Addreport" >Create Reporting</a></Menu.Item>
-                           <Menu.Item  key="3"><a href="/#/Addreport" >List of approved</a></Menu.Item>
+                           <Menu.Item  key="3"><a href="/#/Aproved_list" >List of approved</a></Menu.Item>
                            <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
                          </SubMenu>
                           </Menu>

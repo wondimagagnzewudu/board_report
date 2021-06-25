@@ -18,14 +18,41 @@ import NavbarMenu from './NavbarMenu';
 const AppRoutes = ({ component: Component, path,exact,name, ...rest }) => {
 	const token = localStorage.getItem('access_token')
 	const [logedin, setLogedIn] = useState(false)
+ 
     const { SubMenu } = Menu;
     const { Header, Content, Sider } = Layout;
+    const check_login = (token) =>{
+	
+  
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer  "+token);
+    
+      var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+      };
+      fetch(process.env.REACT_APP_IP+'/login', requestOptions)
+      .then(user =>{
+        console.log(user)
+        if(user.status == 200){
+        
+        } else {
+        setLogedIn(false)
+        }
+      })
+      .catch(error => {
+        setLogedIn(false)
+        console.log(error)
+      })
+      }
 	const checkUserType = (token) =>{
 	if(token){
  setLogedIn(true)
     }
 	  }
 	 useEffect(() =>{
+   // check_login(token)
 		checkUserType(token)
 	  
 	  }, [])
