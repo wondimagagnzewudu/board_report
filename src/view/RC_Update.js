@@ -122,7 +122,7 @@ const languageEnglish = [
   { id: 16, value: 'Total number of provisional ballot papers in the constituency',type:'number'  }
 ]
 
-export default function RC() {
+export default function RC_update() {
   const [form] = Form.useForm();
   const [constituencies_data, setconstituencies_data] = useState([]);
   const [rc_constituencies_data, setrc_constituencies_data] = useState([]);
@@ -589,67 +589,67 @@ candidate_data.map((id, ITEM) => (
           </select>
           <select onChange={e => settwo(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => settree(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setfour(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setfive(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setsix(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setseven(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => seteigth(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setnine(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setteen(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => seteleven(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => settwelve(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setteen(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
           <select onChange={e => setfourteen(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <option key={ITEM} values={id} value={id}>{id.fullname },{'/'},{ id.name}</option>
           ))}
           </select>
         </Form.Item>

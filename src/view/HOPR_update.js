@@ -83,51 +83,48 @@ const maximamEnglish = [
   { id: 3, value: 'Name of candidate' },
   { id: 4, value: 'Name of political party/independent' }
 ]
-	
 
 const language = [
-  { id: 1, value: 'በምርጫ ክልሉ ውስጥ የክልል ምክር ቤት መቀመጫዎች ብዛት',type:'number' },
-  { id: 2, value: 'በምርጫ ክልሉ ውስጥ የክልል ምክር ቤት መቀመጫዎች ብዛት',type:'number' },
-  { id: 3, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት',type:'number' },
-  { id: 4, value: 'ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር' ,type:'number'},
-  { id: 5, value: 'ምክንያት' ,type:'text'},
-  { id: 6, value: 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር',type:'number'},
-  { id: 7, value: 'የመራጭ ፆታ ሴት',type:'number'},
-  { id: 8, value: 'የመራጭ ፆታ ወንድ',type:'number' },
-  { id: 9, value: ' በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት', type:'number'},
-  { id: 10, value: 'በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት',type:'number' },
-  { id: 11, value: 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 12, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር',type:'number' },
-  { id: 13, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 14, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 15, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 16, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' }
+				
+  { id: 1, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት',type:'number' },
+  { id: 2, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት',type:'number' },
+  { id: 3, value: 'ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር' ,type:'number'},
+  { id: 4, value: 'ምክንያት' ,type:'text'},
+  { id: 5, value: 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር',type:'number'},
+  { id: 6, value: 'የመራጭ ፆታ ሴት',type:'number'},
+  { id: 7, value: 'የመራጭ ፆታ ወንድ',type:'number' },
+  { id: 8, value: ' በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት', type:'number'},
+  { id: 9, value: 'በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት',type:'number' },
+  { id: 10, value: 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
+  { id: 11, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር',type:'number' },
+  { id: 12, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
+  { id: 13, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
+  { id: 14, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
+  { id: 15, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' }
 ]
 const languageEnglish = [
-  { id: 1, value: 'Number of Regional Council seats in the constituency	',type:'number'  },
-  { id: 2, value: 'Number of Regional Council seats in the constituency',type:'number'  },
-  { id: 3, value: 'Number of polling stations in the constituency' ,type:'number' },
-  { id: 4, value: 'Number of polling stations exclused from the results',type:'number'  },
-  { id: 5, value: 'Reason',type:'text'  },
-  { id: 6, value: 'Total number of registered voters in the constituency',type:'number'  },
-  { id: 7, value: 'Voter gender FeMale' ,type:'number' },
-  { id: 8, value: 'Voter gender Male' ,type:'number' },
-  { id: 9, value: 'Total number of ballot papers received in the constituency' ,type:'number' },
-  { id: 10, value: 'Total number of signatures on the Electoral Roll in the constituency',type:'number'  },
-  { id: 11, value: 'Total number of unused ballot papers in the constituency',type:'number'  },
-  { id: 12, value: 'Total number of spoiled ballot papers in the constituency',type:'number'  },
-  { id: 13, value: 'Total number of stray ballot papers in the constituency',type:'number'  },
-  { id: 14, value: 'Total number of valid ballot papers in the constituency',type:'number'  },
-  { id: 15, value: 'Total number of invalid ballot papers in the constituency',type:'number'  },
-  { id: 16, value: 'Total number of provisional ballot papers in the constituency',type:'number'  }
+ 
+  { id: 1, value: 'Number of polling stations in the constituency',type:'number'  },
+  { id: 2, value: 'Number of polling stations in the constituency' ,type:'number' },
+  { id: 3, value: 'Number of polling stations exclused from the results',type:'number'  },
+  { id: 4, value: 'Reason',type:'text'  },
+  { id: 5, value: 'Total number of registered voters in the constituency',type:'number'  },
+  { id: 6, value: 'Voter gender FeMale' ,type:'number' },
+  { id: 7, value: 'Voter gender Male' ,type:'number' },
+  { id: 8, value: 'Total number of ballot papers received in the constituency' ,type:'number' },
+  { id: 9, value: 'Total number of signatures on the Electoral Roll in the constituency',type:'number'  },
+  { id: 10, value: 'Total number of unused ballot papers in the constituency',type:'number'  },
+  { id: 11, value: 'Total number of spoiled ballot papers in the constituency',type:'number'  },
+  { id: 12, value: 'Total number of stray ballot papers in the constituency',type:'number'  },
+  { id: 13, value: 'Total number of valid ballot papers in the constituency',type:'number'  },
+  { id: 14, value: 'Total number of invalid ballot papers in the constituency',type:'number'  },
+  { id: 15, value: 'Total number of provisional ballot papers in the constituency',type:'number'  }
 ]
 
-export default function RC() {
+export default function HOPR_update() {
   const [form] = Form.useForm();
   const [constituencies_data, setconstituencies_data] = useState([]);
-  const [rc_constituencies_data, setrc_constituencies_data] = useState([]);
   const [region_data, setregion_data] = useState([]);
-  const [candidate_data_rc, setcandidate_data_rc] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]);
   const [candidate_data, setcandidate_data] = useState([]);
   const [general_data, setgeneral_data] = useState([{}]);
   const [result_data, setresult_data] = useState([{}]);
@@ -140,25 +137,9 @@ export default function RC() {
   const [values, setValues] = useState({})
   const [loaded, setLoaded] = useState(false)
   const [hoprrsult, sethoprrsult] = useState([])
-  const [winner_balot, setwinner_balot] = useState([])
-  const [rc_constituencies_data_id, setrc_constituencies_data_id] = useState()
-  const [regionid, setregionid] = useState()
-  const [oprconstituencyid, setoprconstituencyid] = useState()
-  const [no_of_seat, setno_of_seat] = useState()
-  const [one, setone] = useState({})
-  const [two, settwo] = useState({})
-  const [three, settree] = useState({})
-  const [four, setfour] = useState({})
-  const [five, setfive] = useState({})
-  const [six, setsix] = useState({})
-  const [seven, setseven] = useState({})  
-  const [eigth, seteigth] = useState({})
-  const [nine, setnine] = useState({})
-  const [ten, setten] = useState({})
-  const [eleven, seteleven] = useState({})
-  const [twelve, settwelve] = useState({})
-  const [thirteen, setteen] = useState({})
-  const [fourteen, setfourteen] = useState({})
+  const [winner_balot, setwinner_balot] = useState()
+  const [regionid, setregionid] = useState(language)
+  const [oprconstituencyid, setoprconstituencyid] = useState(language)
 
 
   const onChange = (e) => {
@@ -183,23 +164,22 @@ export default function RC() {
       "regionid": JSON.parse(regionid),
       "hoprconstituencyid": JSON.parse(oprconstituencyid),
       "no_of_pollingstation": JSON.parse(general_data[0]),
-      "rcconstituencyid": JSON.parse(rc_constituencies_data_id),
-      "no_of_seat":JSON.parse(general_data[0]),
       "exclude_no_of_pollingstation": JSON.parse(general_data[1]),
-      "q1": JSON.parse(general_data[4]),
-      "q2": JSON.parse(general_data[7]),
-      "q3": JSON.parse(general_data[8]),
-      "q4": JSON.parse(general_data[9]),
-      "q5": JSON.parse(general_data[10]),
-      "q6": JSON.parse(general_data[11]),
-      "q7": JSON.parse(general_data[12]),
-      "q8": JSON.parse(general_data[13]),
-      "q9": JSON.parse(general_data[14]),
+      "q1": JSON.parse(general_data[3]),
+      "q2": JSON.parse(general_data[6]),
+      "q3": JSON.parse(general_data[7]),
+      "q4": JSON.parse(general_data[8]),
+      "q5": JSON.parse(general_data[9]),
+      "q6": JSON.parse(general_data[10]),
+      "q7": JSON.parse(general_data[11]),
+      "q8": JSON.parse(general_data[12]),
+      "q9": JSON.parse(general_data[13]),
       "hoprResults": result_data.slice(1,),
-    "hoprax": [one,two,three,four,five,six,seven,eigth,nine,ten,eleven,twelve,thirteen,fourteen]
+    "hoprax": winner_balot
+
     }
     var config = {
-      url: `${process.env.REACT_APP_IP}/rc_general/`,
+      url: `${process.env.REACT_APP_IP}/hopr_general/`,
       method: 'POST',
       headers: {
         "Authorization": "Bearer  " + token
@@ -238,7 +218,7 @@ data:send_data
  
     var data =candidate_data[e.target.name]
     data.partyid=data.politicalpartyid
-    data.votes= parseInt(e.target.value);
+    data.votes=JSON.parse(e.target.value);
  
    setresult_data(result_data => [...result_data,data])
    console.log(result_data)
@@ -273,16 +253,12 @@ data:send_data
       });
 
   }, [])
-  const onFinish_winner = (value, key) => {
-   
+  const onFinish_winner = (value) => {
     for (var i = 1; i < candidate_data.length; i++) {
-      if(candidate_data[i].fullname ===value)
-      var catch_winner = candidate_data[i];
-      console.log(catch_winner);
-      setwinner_balot(winner_balot => [...winner_balot,catch_winner])
-      
+      if(candidate_data[i].fullname ==value)
+      setwinner_balot(candidate_data[i])
      }
-     console.log('winner',winner_balot);
+   
   }
   const onFinish = (value) => {
     console.log(value)
@@ -317,9 +293,6 @@ var x ={}
   });
 
   };
-  const on_select_regionalconstituency = (value) => {
-    setrc_constituencies_data_id(value);
-  }
   const on_select_constituency = (value) => {
   
     setLoaded(true)
@@ -332,12 +305,11 @@ var x ={}
     setoprconstituencyid(value);
 const token = localStorage.getItem('access_token')
 var config = {
-  url: `${process.env.REACT_APP_IP}/regional_candidate/${value}`,
+  url: `${process.env.REACT_APP_IP}/candidate/${value}`,
   method: 'GET',
   headers: {
-  "content-type":"application/json",
     "Authorization": "Bearer  " + token
-  
+
   },
   
 };
@@ -346,35 +318,19 @@ axios(config)
   .then(function (response) {
 var taken_data =  response.data;
 console.log('1',taken_data);
-
-
+// for (var i = 1; i < taken_data.length; i++) {
+ 
+//   // taken_data[i].push({result_number:''})
+//   // console.log(taken_data[i].ballotorder);
+ 
+//  }
+ 
     setcandidate_data(response.data);
     
   })
   .catch(function (error) {
 
   });
-  var config = {
-    url: `${process.env.REACT_APP_IP}/regional_constituency/${value}`,
-    method: 'GET',
-    headers: {
-      "Authorization": "Bearer  " + token
-  
-    },
-    
-  };
-  console.log(config);
-  axios(config)
-    .then(function (response) {
- console.log('rc',response.data)
-  
-  
-  setrc_constituencies_data(response.data);
-      
-    })
-    .catch(function (error) {
-  
-    });
   };
 
   const prefixSelector = (
@@ -418,7 +374,7 @@ console.log('1',taken_data);
     console.log(`selected ${value}`);
   }
   return (
-    <Card hoverable style={{ backgroundColor: '#559fa4' }}>
+    <Card hoverable style={{ backgroundColor: '#6d55a4' }}>
       <Button onClick={() => setEnglish()}>English</Button>
       <Button onClick={() => setAmharic()}>አማርኛ</Button>
       <Form
@@ -461,25 +417,6 @@ console.log('1',taken_data);
         {constituencies_data.length ?<>{
         constituencies_data.map((id, ITEM) => (
             <Option key={ITEM} value={id.constituencyid}>{id.constituencyname}</Option>
-        ))}</>:<></>}
-        </Select>
-      </Form.Item>: <></>}
-      {loaded ? 
-        <Form.Item
-        name="የክልል ምክር ቤት ምርጫ/Regional Council Election "
-        label={"የክልል ምክር ቤት ምርጫ/Regional Council Election"}
-        rules={[
-          {
-            required: true,
-            message: 'ምርጫ ክልል/Please input your Constituency!',
-          },
-        ]}
-        hasFeedback
-      >
-        <Select onChange={on_select_regionalconstituency} type="text" mode="inline" style={{ width: '100%',  }} placeholder={constituencies_data.constituencyname} >
-        {rc_constituencies_data.length ?<>{
-        rc_constituencies_data.map((id, ITEM) => (
-            <Option key={ITEM} value={id.regionalconstituencyid}>{id.regionalconstituencyname}</Option>
         ))}</>:<></>}
         </Select>
       </Form.Item>: <></>}
@@ -531,16 +468,15 @@ console.log('1',taken_data);
             ውጤቶች/RESULTS
           </Button></Card>
       </Form>
-      <Modal title={<p style={{ fontSize: 0, color: '#559fa4' }}>{resultlang[1].value}</p>} visible={active} onCancel={() => setActive(false)} onOk={() => setActive(false)} footer={null} width={1000}>
+      <Modal title={<p style={{ fontSize: 0, color: '#6d55a4' }}>{resultlang[1].value}</p>} visible={active} onCancel={() => setActive(false)} onOk={() => setActive(false)} footer={null} width={1000}>
         <Form
           {...formItemLayout}
           name="register"
           scrollToFirstError
-          
         >
           <Grid container spacing={2} style={{ marginBottom: '2%' }}>
-            <Grid style={{ backgroundColor: '##559fa4', color: 'white' }} item xs={6}>Party and Candidate name</Grid>
-            <Grid style={{ backgroundColor: '##559fa4', color: 'white' }} item xs={6}> Result </Grid>
+            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}>Party and Candidate name</Grid>
+            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}> Result </Grid>
           </Grid>
           
           {candidate_data.length ?
@@ -568,7 +504,6 @@ candidate_data.map((id, ITEM) => (
         ))}</>:<></>}
         <strong> ከፍተኛ ድምፅ ያገኘ እጩ/Candidate with highest number of votes 	</strong>
         {candidate_data.length ?<>{
-          
         <Card hoverable >
 
 <Form.Item
@@ -582,86 +517,20 @@ candidate_data.map((id, ITEM) => (
           ]}
           hasFeedback
         >
-           <select onChange={e => setone(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
+          <Select onChange={onFinish_winner}  type="text" mode="inline" style={{ width: '100%',}} placeholder={region_selected_data.regionname} >
           {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
+              <Option key={ITEM} value={id.fullname}>{id.fullname },{'/'},{ id.name}</Option>
           ))}
-          </select>
-          <select onChange={e => settwo(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => settree(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setfour(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setfive(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setsix(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setseven(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => seteigth(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setnine(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setteen(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => seteleven(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => settwelve(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setteen(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
-          <select onChange={e => setfourteen(candidate_data[(e.target.value)])}  type="text" mode="inline" style={{ width: '100%',}}  >
-          {candidate_data.map((id, ITEM) => (
-              <option key={ITEM} values={id} value={ITEM}>{id.fullname },{'/'},{ id.name}</option>
-          ))}
-          </select>
+          </Select>
         </Form.Item>
-      
+   
         </Card>
         }</>:
         <> </>}
-                <Button style={{ backgroundColor: '#6d55a4', color: 'white' }} onClick={ send_hopr_data}>
+        </Form>
+        <Button style={{ backgroundColor: '#6d55a4', color: 'white' }} onClick={ send_hopr_data}>
           Confirm and Save
         </Button>
-        </Form>
-
 
       </Modal>
 

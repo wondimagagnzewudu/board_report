@@ -45,23 +45,23 @@ const Api_csv = Loadable({
   loader: () => import('./view/Api_csv'),
   loading: Loading,
 });
-const InsidenceReport = Loadable({
-  loader: () => import('./view/Dashboard/InsidenceReport'),
-  loading: Loading,
-})
+// const InsidenceReport = Loadable({
+//   loader: () => import('./view/Dashboard/InsidenceReport'),
+//   loading: Loading,
+// })
 
 const routes = [
-  { path: '/',  name: 'Dashboard', component: Dashboard },
-  { path: '/Need_check', name: 'Need_check', component: Need_check },
-  { path: '/Need_update', name: 'Need_update', component: Need_update },
-  { path: '/Aproved_list', name: 'Aproved_list', component: Aproved_list },
-  { path: '/home', name: 'Dashboard', component: Dashboard },
-  { path: '/Listofreport', name: 'Listofreport', component: Listofreport },
-  { path: '/Serchreport', name: 'Serchreport', component: Serchreport },
-  { path: '/Transcriber_follow', name: 'Transcriber_follow', component: Transcriber_follow },
-  { path: '/Api_csv', name: 'Api_csv', component: Api_csv },
-  { path: '/Addreport', name: 'Addreport', component: Addreport },
-  { path: '/Form', name: 'InsidenceReport', component: InsidenceReport},
+  { path: '/', exact: true, name: 'Home', component: Dashboard },
+  { path: '/Need_check', exact: true,name: 'Need_check', component: Need_check },
+  { path: '/Need_update', exact: true,name: 'Need_update', component: Need_update },
+  { path: '/Aproved_list', exact: true,name: 'Aproved_list', component: Aproved_list },
+  { path: '/home', exact: true,name: 'Dashboard', component: Dashboard },
+  { path: '/Listofreport',exact: true, name: 'Listofreport', component: Listofreport },
+  { path: '/Serchreport', exact: true,name: 'Serchreport', component: Serchreport },
+  { path: '/Transcriber_follow', exact: true,name: 'Transcriber_follow', component: Transcriber_follow },
+  { path: '/Api_csv', exact: true,name: 'Api_csv', component: Api_csv },
+  { path: '/Addreport', exact: true,name: 'Addreport', component: Addreport },
+//  { path: '/Form', name: 'InsidenceReport', component: InsidenceReport},
 
 
 ];

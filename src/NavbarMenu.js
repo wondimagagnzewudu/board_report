@@ -127,6 +127,11 @@ export default function NavbarMenu(props) {
                      </Sider>) : (
 													<div></div>
 												)}
+                          {
+												((dashboard)) ? (
+                      <></>) : (
+													<div></div>
+												)}
     </>
 
     );
