@@ -237,7 +237,7 @@ export default function Dashboard() {
           <p style={{ fontSize: 20, color: 'black', marginLeft: 10, fontSize: 50, textAlign: 'center' }}>የኢትዮጵያ ብሔራዊ ምርጫ ቦርድ          <p style={{ fontSize: 20, color: 'black', marginLeft: 10, fontSize: 30, textAlign: 'center' }}>NATIONAL ELECTION BOARD OF ETHIOPIA</p></p>
           <p  style={{ fontSize: 20, color: 'black', marginLeft: 10,  textAlign: 'center' }}><p>የ6ኛዉ ሃገራዊ ምርጫ ውጤት ማጠናከሪያ </p><p>The 6th National Election Result Tabulation </p></p>
         </div>
-        <p style={{ fontSize: 20, color: 'black', marginLeft: 10,  textAlign: 'center' }}>House of Peoples' Representatives</p>
+        <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '25%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3'}}>House of Peoples' Representatives</p>
         <Carousel autoplay>
           {hoprmax.map((item, id) => (
             <div>
@@ -267,7 +267,7 @@ export default function Dashboard() {
           }
           
         </Carousel>
-        <p style={{ fontSize: 20, color: 'black', marginLeft: 10,  textAlign: 'center' }}>Regional council </p>
+        <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '25%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3' }}>Regional council </p>
         <Carousel autoplay>
           {max.map((item, id) => (
             <div>

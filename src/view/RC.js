@@ -542,7 +542,7 @@ console.log('1',taken_data);
             <Grid style={{ backgroundColor: '##559fa4', color: 'white' }} item xs={6}>Party and Candidate name</Grid>
             <Grid style={{ backgroundColor: '##559fa4', color: 'white' }} item xs={6}> Result </Grid>
           </Grid>
-          
+          <strong> Candidate Number:  {candidate_data.length}</strong>   
           {candidate_data.length ?
           <>{
            											
@@ -567,6 +567,7 @@ candidate_data.map((id, ITEM) => (
         </>
         ))}</>:<></>}
         <strong> ከፍተኛ ድምፅ ያገኘ እጩ/Candidate with highest number of votes 	</strong>
+        
         {candidate_data.length ?<>{
           
         <Card hoverable >

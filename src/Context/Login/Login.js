@@ -31,17 +31,19 @@ export default function Login () {
               var datadecode =  jwt_decode(result.access);
               localStorage.setItem('access_token', result.access);
                localStorage.setItem('user_id', (datadecode.user_id));
-               if(datadecode.admin){
-                localStorage.setItem('user_type','admin');
-               }else if(datadecode.analysis){
-                localStorage.setItem('user_type','analyst');
-               }
-               else if(datadecode.encoder){
-                localStorage.setItem('user_type','access');
-               }
-               else{
+               localStorage.setItem('user_type', (datadecode.user_type));
+              
+              //  if(datadecode.admin){
+              //   localStorage.setItem('user_type','admin');
+              //  }else if(datadecode.analysis){
+              //   localStorage.setItem('user_type','analyst');
+              //  }
+              //  else if(datadecode.encoder){
+              //   localStorage.setItem('user_type','access');
+              //  }
+              //  else{
 
-               }
+              //  }
              
                window.location.reload()
             

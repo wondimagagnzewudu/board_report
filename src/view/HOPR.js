@@ -191,7 +191,7 @@ data:send_data
     axios(config)
       .then(function (response) {
         notification.open({
-          message: 'saved',
+          message: 'Suceffully saved',
          
         });
         setTimeout(() => {
