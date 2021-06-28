@@ -133,6 +133,7 @@ export default function HOPR() {
   const [constituencies_selected_data, setconstituencies_selected_data] = useState()
   const [region_selected_data, setregion_selected_data] = useState(false)
   const [region_selected_id, setregion_selected_id] = useState(false)
+  const [ballot_number, setballot_number] = useState(0);
   const [active, setActive] = useState(false)
   const [values, setValues] = useState({})
   const [loaded, setLoaded] = useState(false)
@@ -140,6 +141,8 @@ export default function HOPR() {
   const [winner_balot, setwinner_balot] = useState()
   const [regionid, setregionid] = useState(language)
   const [oprconstituencyid, setoprconstituencyid] = useState(language)
+  const [ids, setCandidateId] = useState(null)
+  const [constid, setConstituency] = useState(null)
 
 
   const onChange = (e) => {
@@ -175,7 +178,7 @@ export default function HOPR() {
       "q8": JSON.parse(general_data[12]),
       "q9": JSON.parse(general_data[13]),
       "hoprResults": result_data.slice(1,),
-    "hoprax": winner_balot
+      "hoprax": ids
 
     }
     var config = {
@@ -214,6 +217,12 @@ data:send_data
     console.log(general_data)
   }
 
+  const onChange_result_data_ballot = (e) => {
+ 
+ 
+   setballot_number(e.target.value)
+
+  }
   const onChange_result_data = (e) => {
  
     var data =candidate_data[e.target.name]
@@ -254,10 +263,13 @@ data:send_data
 
   }, [])
   const onFinish_winner = (value) => {
-    for (var i = 1; i < candidate_data.length; i++) {
-      if(candidate_data[i].fullname ==value)
-      setwinner_balot(candidate_data[i])
-     }
+    console.log('candidate id set', value)
+    setCandidateId(value)
+    // for (var i = 1; i < candidate_data.length; i++) {
+    //   if(candidate_data[i].fullname ==value)
+    //   candidate_data[i].ballotorder=ballot_number;
+    //   setwinner_balot(candidate_data[i])
+    //  }
    
   }
   const onFinish = (value) => {
@@ -294,6 +306,7 @@ var x ={}
 
   };
   const on_select_constituency = (value) => {
+    setConstituency(value)
   
     setLoaded(true)
     
@@ -317,7 +330,7 @@ console.log(config);
 axios(config)
   .then(function (response) {
 var taken_data =  response.data;
-console.log('1',taken_data);
+console.log('response of candidate',response);
 // for (var i = 1; i < taken_data.length; i++) {
  
 //   // taken_data[i].push({result_number:''})
@@ -344,13 +357,7 @@ console.log('1',taken_data);
 
   const [autoCompleteResult, setAutoCompleteResult] = useState([]);
 
-  const onWebsiteChange = (value: string) => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(['.com', '.org', '.net'].map(domain => `${value}${domain}`));
-    }
-  };
+
 
   const websiteOptions = autoCompleteResult.map(website => ({
     label: website,
@@ -505,7 +512,13 @@ candidate_data.map((id, ITEM) => (
         <strong> ከፍተኛ ድምፅ ያገኘ እጩ/Candidate with highest number of votes 	</strong>
         {candidate_data.length ?<>{
         <Card hoverable >
-
+ <Form.Item
+          name={'የእጩ ተራ ቁጥር/ Ballot Order Number '}
+          label={'የእጩ ተራ ቁጥር/Ballot Order Number '}
+        >  
+          {/* <Input type='number' name={item.value} placeholder={resultlang[2].value} onChange={onChange} /> */}
+           <Input type='number' value={ballot_number} onChange={ onChange_result_data_ballot} />
+        </Form.Item>
 <Form.Item
           name="ክከፍተኛ ድምፅ ያገኘ እጩ"
           label={"ከፍተኛ ድምፅ ያገኘ እጩ"}
@@ -519,7 +532,7 @@ candidate_data.map((id, ITEM) => (
         >
           <Select onChange={onFinish_winner}  type="text" mode="inline" style={{ width: '100%',}} placeholder={region_selected_data.regionname} >
           {candidate_data.map((id, ITEM) => (
-              <Option key={ITEM} value={id.fullname}>{id.fullname },{'/'},{ id.name}</Option>
+              <Option key={ITEM} value={id.id}>{id.fullname },{'/'},{ id.name}</Option>
           ))}
           </Select>
         </Form.Item>

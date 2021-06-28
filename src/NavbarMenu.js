@@ -1,10 +1,5 @@
 import React, { useState, useEffect,Component } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import { loginUser, useAuthState, useAuthDispatch } from './Context';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import jwt_decode from "jwt-decode";
-import { Login } from './Context';
-import { Container } from 'reactstrap';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined ,BranchesOutlined} from '@ant-design/icons';
 
@@ -79,7 +74,7 @@ export default function NavbarMenu(props) {
                
                        >
                            <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-                           <Menu.Item  key="2"><a href="/#/Need_update" >Need update</a></Menu.Item>
+                           {/* <Menu.Item  key="2"><a href="/#/Need_update" >Need update</a></Menu.Item> */}
                            <Menu.Item  key="3"><a href="/#/Addreport" >Create Reporting</a></Menu.Item>
                            <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
                          </SubMenu>

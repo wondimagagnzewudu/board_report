@@ -4,6 +4,7 @@ import axios from 'axios';
 import image from './logo.jpg';
 import {StepForwardOutlined} from '@ant-design/icons'
 import {Grid} from '@material-ui/core'
+import { userSetter } from 'core-js/fn/symbol';
 
 
 
@@ -21,6 +22,8 @@ export default function Dashboard() {
 
   const [max, setmax] = useState([])
   const [hoprmax, setHoprmax] = useState([])
+  const [tablehoprmax, settablehoprmax] = useState([])
+  const [tablercmax, settablercmax] = useState([])
 
 
 
@@ -67,29 +70,29 @@ export default function Dashboard() {
   const columns = [
     {
       title: 'Region',
-      dataIndex: 'region name',
-      key: 'region name',
+      dataIndex: 'region',
+      key: 'region',
       width: '25%',
 
     },
     {
-      title: 'Total number of valid vote',
-      dataIndex: 'valid votes for HOPR',
-      key: 'valid votes for HOPR',
+      title: 'Winner',
+      dataIndex: 'winer',
+      key: 'winer',
       width: '25%',
 
     },
     {
-      title: 'Total number of registered voters',
-      dataIndex: 'total vote for HOPR',
-      key: 'total vote for HOPR',
+      title: 'Party',
+      dataIndex: 'party',
+      key: 'party',
       width: '25%',
 
     },
     {
-      title: 'Registered seats for this Region',
-      dataIndex: 'number of seats for this Region',
-      key: 'number of seats for this Region',
+      title: 'Vote',
+      dataIndex: 'vote',
+      key: 'vote',
       width: '55%',
 
     },
@@ -98,8 +101,8 @@ export default function Dashboard() {
   const columns2 = [
     {
       title: 'Region',
-      dataIndex: 'region name',
-      key: 'region name',
+      dataIndex: 'region',
+      key: 'region',
       width: '25%',
 
     },
@@ -202,7 +205,20 @@ export default function Dashboard() {
       axios(config)
         .then(function (response) {
           setmax(response.data)
-          console.log('response1',response.data)
+          var list_of_data = []
+          for (var i = 0; i< response.data.length; i++){
+            console.log(response.data)
+            var obj = {
+              region: response.data[i]['region name'],
+              winer: response.data[i]['win'][i]['fullname'],
+              party: response.data[i]['win'][i]['party'],
+              vote: response.data[i]['win'][i]['vote'],
+            
+            }
+            list_of_data.push(obj)
+          }
+          settablercmax(list_of_data)
+          console.log('response2', list_of_data)
         })
         .catch(function (error) {
           
@@ -214,8 +230,21 @@ export default function Dashboard() {
 
       axios(config2)
         .then(function (response) {
-          setHoprmax(response.data)
-          console.log('response2', response.data)
+         setHoprmax(response.data)
+          var list_of_data = []
+          for (var i = 0; i< response.data.length; i++){
+            console.log(response.data)
+            var obj = {
+              region: response.data[i]['region name'],
+              winer: response.data[i]['win'][i]['fullname'],
+              party: response.data[i]['win'][i]['party'],
+              vote: response.data[i]['win'][i]['vote'],
+            
+            }
+            list_of_data.push(obj)
+          }
+          settablehoprmax(list_of_data)
+          console.log('response2', list_of_data)
         })
         .catch(function (error) {
           console.log('response1', error)
@@ -237,7 +266,7 @@ export default function Dashboard() {
           <p style={{ fontSize: 20, color: 'black', marginLeft: 10, fontSize: 50, textAlign: 'center' }}>የኢትዮጵያ ብሔራዊ ምርጫ ቦርድ          <p style={{ fontSize: 20, color: 'black', marginLeft: 10, fontSize: 30, textAlign: 'center' }}>NATIONAL ELECTION BOARD OF ETHIOPIA</p></p>
           <p  style={{ fontSize: 20, color: 'black', marginLeft: 10,  textAlign: 'center' }}><p>የ6ኛዉ ሃገራዊ ምርጫ ውጤት ማጠናከሪያ </p><p>The 6th National Election Result Tabulation </p></p>
         </div>
-        <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '25%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3'}}>House of Peoples' Representatives</p>
+        <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '35%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3'}}>House of Peoples' Representatives</p>
         <Carousel autoplay>
           {hoprmax.map((item, id) => (
             <div>
@@ -267,7 +296,8 @@ export default function Dashboard() {
           }
           
         </Carousel>
-        <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '25%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3' }}>Regional council </p>
+        {max.length ?         <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '25%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3' }}>Regional council </p>
+: <></>}
         <Carousel autoplay>
           {max.map((item, id) => (
             <div>
@@ -296,11 +326,13 @@ export default function Dashboard() {
 
           }
         </Carousel>
-        <Table style={{ marginTop: 10 }} columns={columns}  dataSource={hoprmax} pagination={{ defaultPageSize: 5 }} />
+        <p style={{fontSize: 30, fontWeight: 'bolder'}}>House of Peoples' Representatives winner List</p>
+        <Table style={{ marginTop: 10 }} columns={columns}  dataSource={tablehoprmax} pagination={{ defaultPageSize: 5 }} />
     
 
+        {tablercmax.length ? <p  style={{fontSize: 30, fontWeight: 'bolder'}}>Regional council winner List</p> : <></>}
 
-        <Table style={{ marginTop: 10 }} columns={columns2} dataSource={max} defaultExpandAllRows={true} pagination={{ defaultPageSize: 5 }} />
+        <Table style={{ marginTop: 10 }} columns={tablercmax} dataSource={max} defaultExpandAllRows={true} pagination={{ defaultPageSize: 5 }} />
       </div>
     </>
 
