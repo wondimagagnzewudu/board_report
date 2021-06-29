@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { Statistic, Card, Row, Col, Modal,Table, Tag, Space, Input, Button, Result } from 'antd'
+import {Tabs, Statistic, Card, Row, Col, Modal,Table, Tag, Space, Input, Button, Result } from 'antd'
 import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { Grid } from '@material-ui/core'
 import axios from 'axios';
 import Highlighter from 'react-highlight-words';
+import RC_Update from './RC_Update';
 import HOPR_update from './HOPR_update';
-
+const { TabPane } = Tabs;
 export default function Need_check() {
   const [selectedKeys, setSelectedKeys] = useState()
   const [activeGra, setActiveGra] = useState(true)
+  const [active_HoRC, setactive_Rc] = useState(false)
   const [active_Hopr, setactive_Hopr] = useState(false)
   const [searchText, setSearchText] = useState()
   const [searchedColumn, setSearchedColumn] = useState('')
@@ -19,8 +21,10 @@ export default function Need_check() {
   const [nothing, setNothing] = useState([])
   const [failedMessage, setFailed] = useState([])
   const [data_to_be_edited, setdata_to_be_edited] = useState([])
+  const [data_to_be_edited_rc, setdata_to_be_edited_rc] = useState([])
   const [constituencies_data, setconstituencies_data] = useState([]);
   const [region_data, setregion_data] = useState([]);
+  const [regionrc_data, setregionrc_data] = useState([]);
   const [candidate_data, setcandidate_data] = useState([]);
   const [general_data, setgeneral_data] = useState([{}]);
 
@@ -43,6 +47,14 @@ export default function Need_check() {
     setdata_to_be_edited(value);
     setTimeout(() => {
       setactive_Hopr(true);
+    }, 30);
+    
+  }
+  const onChange_edit_rc = (value) => {
+  console.log('value',value)
+    setdata_to_be_edited_rc(value);
+    setTimeout(() => {
+      setactive_Rc(true);
     }, 30);
     
   }
@@ -126,7 +138,41 @@ const  handleReset = clearFilters => {
     clearFilters();
     setSearchText('');
   };
+  const columns2 = [
+    {
+      title: 'Region',
+      dataIndex: 'regionname',
+      key: 'regionname',
+      width: '35%',
+      ...getColumnSearchProps('regionname'),
+    },
+    {
+      title: 'Approved status',
+      dataIndex: 'approved',
+      ...getColumnSearchProps('approved'),
+      render: val => (val ? 'Approved' : 'Not approved'),
 
+    },
+    {
+      title: 'HOPR Name',
+      key: 'hopr',
+      dataIndex: 'hopr',
+      ...getColumnSearchProps('hopr'),
+    },
+    {
+      title: 'RC',
+      key: 'rc',
+      dataIndex: 'rc',
+      ...getColumnSearchProps('rc'),
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <Button outline color="primary" onClick={() => { onChange_edit_rc(text) }}   >Edit </Button>
+      ),
+    }
+    ];
  
   const columns = [
     {
@@ -162,32 +208,7 @@ const  handleReset = clearFilters => {
         <Button outline color="primary" onClick={() => { onChange_edit(text) }}   >Edit </Button>
       ),
     }
-    // {
-    //   title: 'Response',
-    //   dataIndex: 'response',
-    //   key: 'response',
-    //   render: address => (
-    //     <>
-    //       {address.map(tag => {
-    //         let color = tag.length > 5 ? 'geekblue' : 'green';
-    //         if (tag === 'All Good') {
-    //           color = 'green';
-    //         } else if (tag === "Problem"){
-    //           color = 'volcano'
-    //         }
-    //         return (
-    //           <Tag color={color} key={tag}>
-    //             {tag.toUpperCase()}
-    //           </Tag>
-    //         );
-    //       })}
-    //     </>
-    //   ),
-    // },
-
-
-
-  ];
+    ];
 
   useEffect(() => {
     const token = localStorage.getItem('access_token')
@@ -209,15 +230,49 @@ const  handleReset = clearFilters => {
       .catch(function (error) {
 
       });
-
+      var config2 = {
+        url: `${process.env.REACT_APP_IP}/rc_general_view`,
+        method: 'GET',
+        headers: {
+          "Authorization": "Bearer  " + token
+  
+        },
+  
+      };
+    
+      axios(config2)
+        .then(function (response) {
+          setregionrc_data(response.data)
+          console.log(response.data)
+        })
+        .catch(function (error) {
+  
+        });
   }, [])
   return (
     <div>
-    <Card hoverable style={{ backgroundColor: '#00b6ba', height: 'auto' }}>
-      <Table style={{ marginTop: 10 }} columns={columns} dataSource={region_data} />
+    <Card hoverable style={{ backgroundColor: '#f4f2ff', height: 'auto' }}>
+    <p style={{textAlign: 'center', paddingTop: '2%', fontSize: 18}}>የምርጫ ክልል የውጤት ቅፅ/CONSTITUENCY RESULTS FORM</p>
+            <Tabs defaultActiveKey="1" centered>
+                
+            <TabPane  tab="የተወካዮች ምክር ቤት ምርጫ/House of People's Representative" key="1">
+            <Table style={{ marginTop: 10 }} columns={columns} dataSource={region_data} />
+                   
+                </TabPane>
+                <TabPane tab="የክልል ምክር ቤት ምርጫ/Regional Council Election" key="2">
+                <Table style={{ marginTop: 10 }} columns={columns2} dataSource={regionrc_data} />
+                </TabPane>
+               
+            </Tabs>
+            
+      
     </Card>
- <Modal visible={active_Hopr} onCancel={() => setactive_Hopr(false)} onOk={() => setactive_Hopr(false)} footer={null} width={1000}>
-   <HOPR_update data_passed={data_to_be_edited}/>
+    
+ <Modal visible={active_HoRC} onCancel={() => setactive_Rc(false)} onOk={() => setactive_Rc(false)} footer={null} width={1000}>
+   <RC_Update data_passed={data_to_be_edited_rc}/>
    </Modal>   
+   <Modal visible={active_Hopr} onCancel={() => setactive_Hopr(false)} onOk={() => setactive_Hopr(false)} footer={null} width={1000}>
+   <HOPR_update data_passed={data_to_be_edited}/>
+   </Modal> 
     </div>)
 }

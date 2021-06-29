@@ -98,6 +98,7 @@ export default function Dashboard() {
     },
 
   ];
+
   const columns2 = [
     {
       title: 'Region',
@@ -107,74 +108,33 @@ export default function Dashboard() {
 
     },
     {
-      title: 'Total number of valid vote',
-      dataIndex: 'valid votes for Rc',
-      key: 'valid votes for HOPR',
+      title: 'Winner',
+      dataIndex: 'winer',
+      key: 'winer',
       width: '25%',
 
     },
     {
-      title: 'Total number of registered voters',
-      dataIndex: 'total vote for Rc',
-      key: 'total vote for HOPR',
+      title: 'Party',
+      dataIndex: 'party',
+      key: 'party',
       width: '25%',
 
     },
     {
-      title: 'Registered seats for this Region',
-      dataIndex: 'number of seats for this Region',
-      key: 'number of seats for this Region',
+      title: 'Vote',
+      dataIndex: 'vote',
+      key: 'vote',
       width: '55%',
 
     },
 
   ];
 
-  const HOPR = [
-    {
-      title: 'Ballot Ordor',
-      dataIndex: 'balloteorder',
-      key: 'balloteorder',
-      width: '35%',
-
-    },
-    {
-      title: 'Constituency',
-      dataIndex: 'constituencycode',
-      key: 'constituencycode',
-      width: '35%',
-
-    },
-
-  ];
 
 
-  const data = [
-    {
-      key: '1',
-      phone_number: '1234',
-      psCode: 'John Brown',
-      constituencycode: 32,
-      address: 'New York No. 1 Lake Park',
-      response: ['All Good',],
-    },
-    {
-      key: '2',
-      phone_number: '1234',
-      psCode: 'Jim Green',
-      constituencycode: 42,
-      address: 'London No. 1 Lake Park',
-      response: ['Problem'],
-    },
-    {
-      key: '3',
-      phone_number: '1234',
-      psCode: 'Joe Black',
-      constituencycode: 32,
-      address: 'Sidney No. 1 Lake Park',
-      response: ['Problem'],
-    },
-  ];
+
+
 
   const expandedRowRender = () => {
     const columns = [
@@ -197,10 +157,62 @@ export default function Dashboard() {
   };
     const apiGetters = () => {
       var uris = `${process.env.REACT_APP_IP}/max_valid_vote_hopr/`
+      var winer = `${process.env.REACT_APP_IP}/list_of_winers_hopr/`
+      var winerc = `${process.env.REACT_APP_IP}/list_of_winers_rc/`
       var config = {
         url: `${process.env.REACT_APP_IP}/max_valid_vote_rc`,
         method: 'GET',
       };
+      var confwiner = {
+        url: winer,
+        method: 'GET'
+      }
+      var confrcmax = {
+        url: winerc,
+        method: 'GET'
+      }
+
+      axios(confrcmax)
+      .then(function (response) {
+        var list_of_data = []
+        for (var i = 0; i< response.data.length; i++){
+          console.log(response.data)
+          var obj = {
+            region: response.data[i]['region'],
+            winer: response.data[i]['fullname'],
+            party: response.data[i]['party'],
+            vote: response.data[i]['vote'],
+          
+          }
+          list_of_data.push(obj)
+        }
+        settablercmax(list_of_data)
+        console.log('response2', list_of_data)  
+      })
+      .catch(function (error) {
+        
+      });
+
+      axios(confwiner)
+      .then(function (response) {
+        var list_of_data = []
+        for (var i = 0; i< response.data.length; i++){
+          console.log(response.data)
+          var obj = {
+            region: response.data[i]['region'],
+            winer: response.data[i]['fullname'],
+            party: response.data[i]['party'],
+            vote: response.data[i]['vote'],
+          
+          }
+          list_of_data.push(obj)
+        }
+        settablehoprmax(list_of_data)
+        console.log('response2', list_of_data)  
+      })
+      .catch(function (error) {
+        
+      });
       console.log(config);
       axios(config)
         .then(function (response) {
@@ -231,20 +243,6 @@ export default function Dashboard() {
       axios(config2)
         .then(function (response) {
          setHoprmax(response.data)
-          var list_of_data = []
-          for (var i = 0; i< response.data.length; i++){
-            console.log(response.data)
-            var obj = {
-              region: response.data[i]['region name'],
-              winer: response.data[i]['win'][i]['fullname'],
-              party: response.data[i]['win'][i]['party'],
-              vote: response.data[i]['win'][i]['vote'],
-            
-            }
-            list_of_data.push(obj)
-          }
-          settablehoprmax(list_of_data)
-          console.log('response2', list_of_data)
         })
         .catch(function (error) {
           console.log('response1', error)
@@ -332,7 +330,7 @@ export default function Dashboard() {
 
         {tablercmax.length ? <p  style={{fontSize: 30, fontWeight: 'bolder'}}>Regional council winner List</p> : <></>}
 
-        <Table style={{ marginTop: 10 }} columns={tablercmax} dataSource={max} defaultExpandAllRows={true} pagination={{ defaultPageSize: 5 }} />
+        <Table style={{ marginTop: 10 }} columns={columns2} dataSource={tablercmax}  pagination={{ defaultPageSize: 5 }} />
       </div>
     </>
 
