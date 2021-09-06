@@ -1,14 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import { Carousel, notification, Statistic, Card, Row, Col, Table, Tag, Space, Input, Button, Result } from 'antd'
+import { notification, Statistic, Card, Progress, Typography, Table, Tag, Space, InputNumber, Result, Form, Spin  } from 'antd'
 import axios from 'axios';
-import image from './logo.jpg';
-import {StepForwardOutlined} from '@ant-design/icons'
-import {Grid} from '@material-ui/core'
-import { userSetter } from 'core-js/fn/symbol';
+import {Grid, Divider} from '@material-ui/core'
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import log from './NEBE Logo.jpg'
+import { Bar } from 'react-chartjs-2';
+import NumberFormat from 'react-number-format';
+import { Document, Page, PDFDownloadLink, View, StyleSheet } from '@react-pdf/renderer';
 
 
+const styles = StyleSheet.create({
+  page: {
+    flexDirection: 'row',
+    backgroundColor: '#E4E4E4'
+  },
+  section: {
+    margin: 10,
+    padding: 10,
+    flexGrow: 1
+  }
+});
+
+
+
+const {Title} = Typography
 
 export default function Dashboard() {
+  const responsivecandidate = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 4
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 2
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 2
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
   const contentStyle = {
     height: '160px',
     color: '#fff',
@@ -24,8 +80,37 @@ export default function Dashboard() {
   const [hoprmax, setHoprmax] = useState([])
   const [tablehoprmax, settablehoprmax] = useState([])
   const [tablercmax, settablercmax] = useState([])
+  const [store_data_comp, setstore_data_comp] = useState([])
+  const [store_data_comp_sample, setstore_data_comp_sample] = useState(['1','2'])
+  const [ethiopia, setEthiopia] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+  const [maximus, setMaximums] = useState([])
+  const [hoprVote, setHOPRvote] = useState([])
+  const [rcVote, setRCVote] = useState([])
 
+  const hoprvote = async() =>{
+    const response = await fetch(`${process.env.REACT_APP_IP}/hopr_party_votes`)
+    const res = await response.json()
+    setHOPRvote(res)
+  }
 
+  const rcvote = async() =>{
+    const response = await fetch(`${process.env.REACT_APP_IP}/rc_party_vote`)
+    const res = await response.json()
+    setRCVote(res)
+  }
+
+  const maximums = async() =>{
+    const response = await fetch(`${process.env.REACT_APP_IP}/maximums`)
+    const res = await response.json()
+    setMaximums(res)
+  }
+
+  const ethiopiaGet = async() =>{
+    const response = await fetch( `${process.env.REACT_APP_IP}/ethiopia/`)
+    const resp = await response.json()
+    setEthiopia(resp)
+  }
 
   const barChartOptions = {
     responsive: true,
@@ -54,6 +139,17 @@ export default function Dashboard() {
     }
   }
 
+  const HOPRTABLE = () =>{
+    return(
+      
+      <Document>
+         <Page size="A4" style={styles.page}>
+            <Table  style={{ marginTop: 10,}} columns={columns}  dataSource={tablehoprmax} pagination={{ defaultPageSize: 5 }} />
+          </Page>
+        </Document>
+    )
+  }
+
 
 
 
@@ -72,25 +168,32 @@ export default function Dashboard() {
       title: 'Region',
       dataIndex: 'region',
       key: 'region',
-      width: '25%',
+      width: '15%',
 
     },
     {
-      title: 'Winner',
+      title: 'Candidate Name',
       dataIndex: 'winer',
       key: 'winer',
       width: '25%',
 
     },
     {
-      title: 'Party',
+      title: 'Party Name',
       dataIndex: 'party',
       key: 'party',
       width: '25%',
 
     },
     {
-      title: 'Vote',
+      title: 'Constituency Name',
+      dataIndex: 'cname',
+      key: 'cname',
+      width: '25%',
+
+    },
+    {
+      title: 'Number of Votes',
       dataIndex: 'vote',
       key: 'vote',
       width: '55%',
@@ -130,11 +233,294 @@ export default function Dashboard() {
     },
 
   ];
+  const data_rank_rc = async(tablehoprmax) =>{
+    var sortdata_rc = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+    var region_rc ='region name';
+    console.log(tablehoprmax)
+     for(var i=0; i< tablehoprmax.length; i++) {
+       if(tablehoprmax[i][`region`] =="HQ"){
+   
+       }
+    else if(tablehoprmax[i][`region`] =="Addis Ababa"){
+     sortdata_rc[1].push(tablehoprmax[i].party);
+    }
+    else if(tablehoprmax[i][`region`] =="Afar"){
+     sortdata_rc[2].push(tablehoprmax[i].party);
+    }
+    else if(tablehoprmax[i][`region`] =="Amhara"){
+     sortdata_rc[3].push(tablehoprmax[i].party);
+    }  
+    else if(tablehoprmax[i][`region`] =="Benishangul Gumuz"){
+     sortdata_rc[4].push(tablehoprmax[i].party);
+    }
+    else if(tablehoprmax[i][`region`] =="Dire Dawa Astedadar"){
+     sortdata_rc[5].push(tablehoprmax[i].party);
+    }
+    else if(tablehoprmax[i][`region`] =="Gambela"){
+     sortdata_rc[6].push(tablehoprmax[i].party);
+    }
+    else if(tablehoprmax[i][`region`] =="Hareri"){
+     sortdata_rc[7].push(tablehoprmax[i].party);
+    }
+    else if(tablehoprmax[i][`region`] =="Oromiya"){
+     sortdata_rc[8].push(tablehoprmax[i].party);
+    }
+   
+    else if(tablehoprmax[i][`region`] =="Sidama"){
+     sortdata_rc[9].push(tablehoprmax[i].party);
+    }
+    else if(tablehoprmax[i][`region`] =="SNNP"){
+     sortdata_rc[10].push(tablehoprmax[i].party);
+    }
+    
+    else if(tablehoprmax[i][`region`] ="Somali"){
+     sortdata_rc[11].push(tablehoprmax[i].party);
+    }
+    
+    else{
+     
+    }
+    
+   }
+   console.log('data',sortdata_rc[3]);
+   var counts = {};
+   var zero_data = {'':''};
+   for(var j=0; j< 12; j++) {
+    
+    
+       sortdata_rc[j].forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+       
+       sortdata_rc[j]= counts;
+       counts = {};
+       console.log('store',sortdata_rc[j]);
+   }
+   
+   setstore_data_comp(sortdata_rc)
+   var config2 = {
+     url: `${process.env.REACT_APP_IP}/max_valid_vote_rc/`,
+     method: 'GET',
+   };
+   
+   axios(config2)
+     .then(function async (response) {
+   // 
+   console.log('data rc',sortdata_rc) 
+
+   for(var i=0; i< response.data.length; i++) {
+   
+   //console.log('oromoia',response.data[i])
+   //console.log(response.data[i]['region name'] =="Oromiya")
+   
+     if(response.data[i]['region name'] =="HQ"){
+   
+        response.data[i].win=  (sortdata_rc[0])
+   
+   
+   }
+   else if(response.data[i]['region name'] =="Addis Ababa"){
+   
+      response.data[i].win=sortdata_rc[1]
+   
+   }
+   else if(response.data[i]['region name'] =="Afar"){
+      response.data[i].win=sortdata_rc[2]
+   }
+   else if(response.data[i]['region name'] =="Amhara"){
+    response.data[i].win=sortdata_rc[3]
+   }  
+   else if(response.data[i]['region name'] =="Benishangul Gumuz"){
+    response.data[i].win=sortdata_rc[4]
+   }
+   else if(response.data[i]['region name'] =="Dire Dawa Astedadar"){
+    response.data[i].win=sortdata_rc[5]
+   }
+   else if(response.data[i]['region name'] =="Gambela"){
+    response.data[i].win=sortdata_rc[6]
+   }
+   else if(response.data[i]['region name'] =="Hareri"){
+    response.data[i].win=sortdata_rc[7]
+   }
+   else if(response.data[i]['region name'] =="Oromiya"){
+    response.data[i].win=sortdata_rc[8]
+   }
+   
+   else if(response.data[i]['region name'] =="Sidama"){
+    response.data[i].win=sortdata_rc[9]
+   }
+   else if(response.data[i]['region name'] =="SNNP"){
+    response.data[i].win=sortdata_rc[10]
+   }
+   
+   else if(response.data[i]['region name'] ="Somali")
+   { response.data[i].win=sortdata_rc[12]
+   }
+   else
+   {
+     
+   }
+
+   } 
+   
+
+   
+    setTimeout(() => {
+         console.log('data for percent', response.data)
+
+        setmax(response.data)
+        setLoaded(true)
+
+         
+       }, 1000);
+      
+     })
+     .catch(function (error) {
+       console.log('response1', error)
+     });
+   }
+const data_rank = async(tablehoprmax) =>{
+ var sortdata = [[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+  for(var i=0; i< tablehoprmax.length; i++) {
+    if(tablehoprmax[i].region =="HQ"){
+
+    }
+ else if(tablehoprmax[i].region =="Addis Ababa"){
+  sortdata[1].push(tablehoprmax[i].party);
+ }
+ else if(tablehoprmax[i].region =="Afar"){
+  sortdata[2].push(tablehoprmax[i].party);
+ }
+ else if(tablehoprmax[i].region =="Amhara"){
+  sortdata[3].push(tablehoprmax[i].party);
+ }  
+ else if(tablehoprmax[i].region =="Benishangul Gumuz"){
+  sortdata[4].push(tablehoprmax[i].party);
+ }
+ else if(tablehoprmax[i].region =="Dire Dawa Astedadar"){
+  sortdata[5].push(tablehoprmax[i].party);
+ }
+ else if(tablehoprmax[i].region =="Gambela"){
+  sortdata[6].push(tablehoprmax[i].party);
+ }
+ else if(tablehoprmax[i].region ==";;"){
+  sortdata[7].push(tablehoprmax[i].party);
+ }
+ else if(tablehoprmax[i].region =="Oromiya"){
+  sortdata[8].push(tablehoprmax[i].party);
+ }
+
+ else if(tablehoprmax[i].region =="Sidama"){
+  sortdata[9].push(tablehoprmax[i].party);
+ }
+ else if(tablehoprmax[i].region =="SNNP"){
+  sortdata[10].push(tablehoprmax[i].party);
+ }
+ 
+ else if(tablehoprmax[i].region ="Somali"){
+  sortdata[11].push(tablehoprmax[i].party);
+ }
+ 
+ else{
+  
+ }
+ 
+}
+console.log('data',sortdata[3]);
+var counts = {};
+var zero_data = {'':''};
+for(var j=0; j< 12; j++) {
+ 
+ 
+    sortdata[j].forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+    
+    sortdata[j]= counts;
+    counts = {};
+    console.log('store',sortdata[j]);
+}
+
+setstore_data_comp(sortdata)
+var config2 = {
+  url: `${process.env.REACT_APP_IP}/max_valid_vote_hopr/`,
+  method: 'GET',
+};
+
+axios(config2)
+  .then(function async (response) {
+// 
+
+const json1=JSON.stringify(response.data);
+
+var checker =0 
+for(var i=0; i< response.data.length; i++) {
+  
+
+console.log(response.data[i])
+
+  if(response.data[i]['region name'] =="HQ"){
+
+     response.data[i].win=  (sortdata[0])
 
 
+}
+else if(response.data[i]['region name'] =="Addis Ababa"){
+
+   response.data[i].win=sortdata[1]
+
+}
+else if(response.data[i]['region name'] =="Afar"){
+   response.data[i].win=sortdata[2]
+}
+else if(response.data[i]['region name'] =="Amhara"){
+ response.data[i].win=sortdata[3]
+}  
+else if(response.data[i]['region name'] =="Benishangul Gumuz"){
+ response.data[i].win=sortdata[4]
+}
+else if(response.data[i]['region name'] =="Dire Dawa Astedadar"){
+ response.data[i].win=sortdata[5]
+}
+else if(response.data[i]['region name'] =="Gambela"){
+ response.data[i].win=sortdata[6]
+}
+else if(response.data[i]['region name'] ==";;"){
+ response.data[i].win=sortdata[7]
+}
+else if(response.data[i]['region name'] =="Oromiya"){
+ response.data[i].win=sortdata[8]
+}
+
+else if(response.data[i]['region name'] =="Sidama"){
+ response.data[i].win=sortdata[9]
+}
+else if(response.data[i]['region name'] =="SNNP"){
+ response.data[i].win=sortdata[10]
+}
+
+else if(response.data[i]['region name'] ="Somali")
+{ response.data[i].win=sortdata[12]
+}
+else
+{
+  
+}
+
+ 
 
 
+} 
 
+ setTimeout(() => {
+      console.log('start')
+      console.log('maximum value need to be found', response.data)
+      
+      setHoprmax(response.data)
+      
+    }, 1000);
+   
+  })
+  .catch(function (error) {
+    console.log('response1', error)
+  });
+}
 
   const expandedRowRender = () => {
     const columns = [
@@ -175,8 +561,17 @@ export default function Dashboard() {
       axios(confrcmax)
       .then(function (response) {
         var list_of_data = []
+  //       var json1 =JSON.stringify(response.data)
+  //       const blob=new Blob([json1],{type:'application/json'}) // blob just as yours
+  // const href = URL.createObjectURL(blob);
+  // const link = document.createElement('a');
+  // link.href = href;
+  // link.download = "confrcmax.json";
+  // document.body.appendChild(link);
+  // link.click();
+  // document.body.removeChild(link);
         for (var i = 0; i< response.data.length; i++){
-          console.log(response.data)
+          
           var obj = {
             region: response.data[i]['region'],
             winer: response.data[i]['fullname'],
@@ -187,7 +582,8 @@ export default function Dashboard() {
           list_of_data.push(obj)
         }
         settablercmax(list_of_data)
-        console.log('response2', list_of_data)  
+        console.log('rc results', response.data)
+        data_rank_rc(response.data)
       })
       .catch(function (error) {
         
@@ -196,30 +592,38 @@ export default function Dashboard() {
       axios(confwiner)
       .then(function (response) {
         var list_of_data = []
+        console.log('response2',response.data)
         for (var i = 0; i< response.data.length; i++){
-          console.log(response.data)
+
           var obj = {
             region: response.data[i]['region'],
             winer: response.data[i]['fullname'],
             party: response.data[i]['party'],
             vote: response.data[i]['vote'],
-          
+            regionid: response.data[i]['regionid'],
+            partyid: response.data[i]['partyid'],
+            cname: response.data[i]['cname']
+            
           }
           list_of_data.push(obj)
         }
         settablehoprmax(list_of_data)
-        console.log('response2', list_of_data)  
+   
+            data_rank(response.data) ;
+
+         
       })
       .catch(function (error) {
         
       });
-      console.log(config);
+      
+      
       axios(config)
         .then(function (response) {
-          setmax(response.data)
+          //setmax(response.data)
           var list_of_data = []
           for (var i = 0; i< response.data.length; i++){
-            console.log(response.data)
+          
             var obj = {
               region: response.data[i]['region name'],
               winer: response.data[i]['win'][i]['fullname'],
@@ -230,108 +634,99 @@ export default function Dashboard() {
             list_of_data.push(obj)
           }
           settablercmax(list_of_data)
-          console.log('response2', list_of_data)
+         
+          
         })
         .catch(function (error) {
           
-        });
-      var config2 = {
-        url: uris,
-        method: 'GET',
-      };
-
-      axios(config2)
-        .then(function (response) {
-         setHoprmax(response.data)
-        })
-        .catch(function (error) {
-          console.log('response1', error)
-        });
+        });   
     }
 
   
 
   useEffect(() => {
     apiGetters()
+    ethiopiaGet()
+    maximums()
+    hoprvote()
+    rcvote()
 
   }, [])
 
 
   return (
+    <>{loaded ?
     <>
-      <div>
-        <div>
-          <p style={{ fontSize: 20, color: 'black', marginLeft: 10, fontSize: 50, textAlign: 'center' }}>የኢትዮጵያ ብሔራዊ ምርጫ ቦርድ          <p style={{ fontSize: 20, color: 'black', marginLeft: 10, fontSize: 30, textAlign: 'center' }}>NATIONAL ELECTION BOARD OF ETHIOPIA</p></p>
-          <p  style={{ fontSize: 20, color: 'black', marginLeft: 10,  textAlign: 'center' }}><p>የ6ኛዉ ሃገራዊ ምርጫ ውጤት ማጠናከሪያ </p><p>The 6th National Election Result Tabulation </p></p>
-        </div>
-        <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '35%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3'}}>House of Peoples' Representatives</p>
-        <Carousel autoplay>
-          {hoprmax.map((item, id) => (
-            <div>
-              <div style={{ backgroundColor: '#ffffff', color: 'white', height: 600, borderRadius: 20,  }}>
-                <h3 style={{backgroundColor: '#6d54a3',color: 'white', width: '100%', fontSize: 60, paddingLeft: '5%', paddingTop: '1%', paddingBottom: '1%',borderTopRightRadius: 20,borderTopLeftRadius: 20, textAlign: 'center' }}>{item['region name']}</h3>
-                <Grid container>
-                  <Grid item xs={6}>
-                  <p style={{fontSize: 30, color: 'black', fontWeight: 'bolder', paddingLeft: '9%'}}>ጠቅላላ የድምፅ መስጫ ካርድ ቁጥር <p style={{fontSize: 16}}>Total Number of Registered Voters</p><p style={{backgroundColor: '#00b6ba', paddingLeft: '5%', width: 150, borderTopRightRadius: 20, borderBottomRightRadius: 20, color: 'white', fontWeight: 'bolder'}}>{item['total vote for HOPR']}</p></p>
-                  <p style={{fontSize: 30, color: 'black',  fontWeight: 'bolder', paddingLeft: '9%'}}>ጠቅላላ ዋጋ ያለው የድምፅ መስጫ ካርድ <p style={{fontSize: 16}}>Total Number of Valid Ballots</p> <p style={{backgroundColor: '#00b6ba',paddingLeft: '5%', width: 150, borderTopRightRadius: 20, borderBottomRightRadius: 20, color: 'white', fontWeight: 'bolder'}}>{item['valid votes for HOPR']}</p></p>
-                  </Grid>
-                  <Grid item xs={6} style={{backgroundColor: '#00b6ba', borderRadius: 20, padding: 10}}>
-                  <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>Top Parties By Result</p>
-                    <p ></p>
-                    {item['one'].name ? 
-                    <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>{item['one'].name} {item['one'].amount} መቀመጫ</p> : <></>}
-                    {item['two'].name ? 
-                    <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>{item['two'].name} {item['two'].amount} መቀመጫ</p> : <></>}
-                    {item['three'].name ?
-                    <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>{item['three'].name} {item['three'].amount} መቀመጫ</p> : <></>}
-                  </Grid>
+        <div style={{backgroundColor: '#00b6ba', paddingLeft: '2%', paddingRight: '2%', paddingTop: '2%'}}> 
+          <Grid container>
+            <Grid item xs={4}>
+              <p style={{color: 'white', fontSize: 25}}>Recorded Turnout:- <NumberFormat style={{color: 'white', fontSize: 30, fontWeight: 'bolder'}} value={ethiopia['ethiopia']} displayType={'text'} thousandSeparator={true} /></p>
+              <p style={{color: 'white', fontSize: 25}}>Registered Votes:- <NumberFormat style={{color: 'white', fontSize: 30, fontWeight: 'bolder'}} value={maximus['counted']} displayType={'text'} thousandSeparator={true} /></p>
+            </Grid>
+            <Grid item xs={4}>
+                <p style={{ color: 'white', marginLeft: 10, fontSize: 30, textAlign: 'center' }}>
+                    <img src={log} style={{width: 400, height: 100, borderTopRightRadius: 300, borderTopLeftRadius: 300}}/>
+                </p>
+            </Grid>
+            <Grid item xs={4}>
+                <p style={{fontSize: 30, padding: '2%', color: 'white', fontWeight: 'bolder'}}>21 Complaints</p>
+            </Grid>
+            <Grid item xs={12}>
+              {ethiopia ? <><Progress style={{fontSize: 30, padding: '2%', color: 'white' }}  strokeLinecap="square" percent={((ethiopia['ethiopia']*100)/maximus['counted']).toFixed(1)}/></> : <></>}
+            </Grid>
+          </Grid>       
+        </div>    
+        <Title style={{color: '#6d54a3', textAlign: 'center'}} level={4}>House of Peoples' Representatives Winner List</Title>  
+        <Carousel responsive={responsive}  autoPlaySpeed={1} arrows={true} style={{padding: '2%',}}>
+           {hoprmax.map((item, id) => (
+            <Card hoverable style={{height: 600, padding: '2%', margin: '1%', backgroundColor: '#76a2990d', paddingRight: '2%'}}>
+                <Title style={{color: '#6d54a3'}} level={1}>{item['region name']} ({item['seat']} seats)</Title>
+                  <Progress style={{fontSize: 40, color: 'white' }} percent={item['percent'].toFixed(1)}/>
+                    <br/>
+                    <div style={{marginTop: '2%', height: 150, width: '100%'}}>
+                      {(item['win']) ? <>{Object.keys(item['win']).map(function(key, index){
+                        return(<Title style={{color: '#6d54a3'}} level={3} key={key}>{index+1}&nbsp;{key}:&nbsp;{(item['win'])[key] }&nbsp;መቀመጫ</Title>)
+                      })}</> : <></>}
+                    </div>
+                 <div style={{justifyContent: 'flex-end'}}>
+                 <Title style={{color: '#00b6ba'}} level={1}>Recorded Turnout: <NumberFormat style={{color: '#6d54a3', fontSize: 40, fontWeight: 'bolder', padding: 20}} value={item['total vote for HOPR']} displayType={'text'} thousandSeparator={true} /></Title>
+                 <Title style={{color: '#00b6ba'}} level={1}>Registered Votes: <NumberFormat style={{color: '#6d54a3', fontSize: 40, fontWeight: 'bolder', padding: 20 }} value={item['maximum']} displayType={'text'} thousandSeparator={true} /></Title>
+                 <Title style={{color: '#00b6ba'}} level={2}>System Registered Votes: <NumberFormat style={{color: '#6d54a3', fontSize: 40, fontWeight: 'bolder', padding: 20 }} value={item['maximum_vote']} displayType={'text'} thousandSeparator={true} /></Title>
+                </div>
+            </Card>
 
-                </Grid>
-               </div>
-            </div>
-          ))
-
-          }
-          
-        </Carousel>
-        {max.length ?         <p style={{ fontSize: 20, color: 'white', padding: '2%', width: '25%', fontWeight: 'bolder', fontSize: 25, borderRadius: 20, backgroundColor: '#6d54a3' }}>Regional council </p>
-: <></>}
-        <Carousel autoplay>
+          ))}
+          </Carousel>
+          <Title style={{color: '#6d54a3', textAlign: 'center'}} level={4}>Regional Council Winner List</Title>  
+          <Carousel responsive={responsive} arrows={true}>
           {max.map((item, id) => (
-            <div>
-              <div style={{ backgroundColor: '#ffffff', color: 'white', height: 600, borderRadius: 20,  }}>
-                <h3 style={{backgroundColor: '#6d54a3',color: 'white', width: '100%', fontSize: 60, paddingLeft: '5%', paddingTop: '1%', paddingBottom: '1%',borderTopRightRadius: 20,borderTopLeftRadius: 20, textAlign: 'center' }}>{item['region name']}</h3>
-                <Grid container>
-                  <Grid item xs={6}>
-                  <p style={{fontSize: 30, color: 'black', fontWeight: 'bolder', paddingLeft: '9%'}}>ጠቅላላ የድምፅ መስጫ ካርድ ቁጥር <p style={{fontSize: 16}}>Total Number of Registered Voters</p><p style={{backgroundColor: '#00b6ba', paddingLeft: '5%', width: 150, borderTopRightRadius: 20, borderBottomRightRadius: 20, color: 'white', fontWeight: 'bolder'}}>{item['total vote for Rc']}</p></p>
-                  <p style={{fontSize: 30, color: 'black',  fontWeight: 'bolder', paddingLeft: '9%'}}>ጠቅላላ ዋጋ ያለው የድምፅ መስጫ ካርድ <p style={{fontSize: 16}}>Total Number of Valid Ballots</p> <p style={{backgroundColor: '#00b6ba',paddingLeft: '5%', width: 150, borderTopRightRadius: 20, borderBottomRightRadius: 20, color: 'white', fontWeight: 'bolder'}}>{item['valid votes for Rc']}</p></p>
-                  </Grid>
-                  <Grid item xs={6} style={{backgroundColor: '#00b6ba', borderRadius: 20, padding: 10}}>
-                  <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>Top Parties By Result</p>
-                    <p ></p>
-                    {item['one'].name ? 
-                    <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>{item['one'].name} {item['one'].amount} መቀመጫ</p> : <></>}
-                    {item['two'].name ? 
-                    <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>{item['two'].name} {item['two'].amount} መቀመጫ</p> : <></>}
-                    {item['three'].name ?
-                    <p style={{fontSize: 30, color: 'black', color: 'white', padding: 4, }}>{item['three'].name} {item['three'].amount} መቀመጫ</p> : <></>}
-                  </Grid>
+            <Card hoverable style={{height: 600, padding: '2%', margin: '1%', backgroundColor: '#76a2990d', paddingRight: '2%'}}>
+            <Title style={{color: '#6d54a3'}} level={1}>{item['region name']} ({item['seat']} seats)</Title>
+              <Progress style={{fontSize: 40, }} percent={((item['total vote for Rc']/item['maximum_in_a_region'])*100).toFixed(2)}/>
+                <br/>
+                <div style={{marginTop: '2%', height: 150, width: '100%'}}>
+                  {(item['win']) ? <>{Object.keys(item['win']).map(function(key, index){
+                    return(<Title style={{color: '#6d54a3'}} level={3} key={key}>{index+1}&nbsp;{key}:&nbsp;{(item['win'])[key] }&nbsp;መቀመጫ</Title>)
+                  })}</> : <></>}
+                </div>
+             <div style={{justifyContent: 'flex-end'}}>
+             <Title style={{color: '#00b6ba'}} level={1}>Recorded Turnout: <NumberFormat style={{color: '#6d54a3', fontSize: 40, fontWeight: 'bolder', padding: 20}} value={item['total vote for Rc']} displayType={'text'} thousandSeparator={true} /></Title>
+             <Title style={{color: '#00b6ba'}} level={1}>Registered Votes: <NumberFormat style={{color: '#6d54a3', fontSize: 40, fontWeight: 'bolder', padding: 20 }} value={item['maximum']} displayType={'text'} thousandSeparator={true} /></Title>
+             <Title style={{color: '#00b6ba'}} level={2}>System Registered Votes: <NumberFormat style={{color: '#6d54a3', fontSize: 40, fontWeight: 'bolder', padding: 20 }} value={item['maximum_in_a_region']} displayType={'text'} thousandSeparator={true} /></Title>
 
-                </Grid>
-               </div>
             </div>
-          ))
+        </Card>
+          ))}
+        </Carousel> 
+        <p style={{fontSize: 20, fontWeight: 'bolder', textAlign: 'center', marginTop: '2%', marginBottom: '2%', color: '#00b6ba'}}>House of Peoples' Representatives Winner List</p>
+        <HOPRTABLE />
+        {tablercmax.length ? <p  style={{fontSize: 20, fontWeight: 'bolder', textAlign: 'center', marginTop: '2%', marginBottom: '2%', color: '#00b6ba'}}>Regional Council Winner List</p> : <></>}
 
-          }
-        </Carousel>
-        <p style={{fontSize: 30, fontWeight: 'bolder'}}>House of Peoples' Representatives winner List</p>
-        <Table style={{ marginTop: 10 }} columns={columns}  dataSource={tablehoprmax} pagination={{ defaultPageSize: 5 }} />
+        <Table id="ifmcontentstoprint" style={{ marginTop: 10 }} columns={columns2} dataSource={tablercmax}  pagination={{ defaultPageSize: 5 }} />
+        <button style={{alignContent: 'center'}} onClick={() => window.print()}>print</button>
     
-
-        {tablercmax.length ? <p  style={{fontSize: 30, fontWeight: 'bolder'}}>Regional council winner List</p> : <></>}
-
-        <Table style={{ marginTop: 10 }} columns={columns2} dataSource={tablercmax}  pagination={{ defaultPageSize: 5 }} />
-      </div>
+    </> : <Spin style={{width: '100%', padding: '20%'}} size="large" />}
+    
     </>
 
   );

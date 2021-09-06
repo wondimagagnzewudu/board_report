@@ -95,6 +95,7 @@ export default function NavbarMenu(props) {
                            <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
                            <Menu.Item  key="2"><a href="/#/Need_check" >Need check</a></Menu.Item>
                            <Menu.Item  key="3"><a href="/#/Aproved_list" >List of approved</a></Menu.Item>
+                           <Menu.Item key="4"><a href="/#/File">File Upload</a></Menu.Item>
                            <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
                          </SubMenu>
                           </Menu>

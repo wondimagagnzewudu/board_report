@@ -215,11 +215,11 @@ export default function HOPR_update(props) {
   }
 
   const onChange_result_data = (e) => {
-
+var value_holder=result_data;
     var data = candidate_data[e.target.name]
-
-
-    setresult_data(result_data => [...result_data, data])
+    data=data.votes=e.target.value;
+value_holder[e.target.name]=data
+    setresult_data(result_data => [...value_holder])
     console.log(result_data)
   }
   const setEnglish = () => {

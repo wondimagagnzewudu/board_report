@@ -5,7 +5,7 @@ import { HashRouter,BrowserRouter as Router, Route, Switch } from 'react-router-
 import 'antd/dist/antd.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { AuthProvider } from './Context';
-
+import Dashboard from './view/Dashboard/Dashboard'
 
 require('dotenv').config();
 function App() {
@@ -28,7 +28,11 @@ const { Header, Content, Sider } = Layout;
 
       />
     ))}
+    <Route path='/dashboard'><Dashboard /></Route>
+    
   </Switch>
+
+
   
   </HashRouter>
 </AuthProvider>

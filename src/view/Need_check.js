@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Tabs, Statistic, Card, Row, Col, Modal,Table, Tag, Space, Input, Button, Result } from 'antd'
+import {Tabs, Statistic, Card, Row, Col, Modal,Table, Tag, Space, Input, Button, Result, Spin, Alert } from 'antd'
 import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { Grid } from '@material-ui/core'
 import axios from 'axios';
@@ -28,8 +28,8 @@ export default function Need_check() {
   const [candidate_data, setcandidate_data] = useState([]);
   const [general_data, setgeneral_data] = useState([{}]);
 
-  const [constituencies_selected_data, setconstituencies_selected_data] = useState()
-  const [region_selected_data, setregion_selected_data] = useState(false)
+  const [rcLoading, setRcLoading] = useState(true)
+  const [hoprLoading, setHoprLoading] = useState(true)
   const [region_selected_id, setregion_selected_id] = useState(false)
   const [active, setActive] = useState(false)
   const [values, setValues] = useState({})
@@ -147,20 +147,20 @@ const  handleReset = clearFilters => {
       ...getColumnSearchProps('regionname'),
     },
     {
-      title: 'Approved status',
-      dataIndex: 'approved',
-      ...getColumnSearchProps('approved'),
+      title: 'Approval Status',
+      dataIndex: 'approve',
+      ...getColumnSearchProps('approve'),
       render: val => (val ? 'Approved' : 'Not approved'),
 
     },
+    // {
+    //   title: 'HOPR Name',
+    //   key: 'hopr',
+    //   dataIndex: 'hopr',
+    //   ...getColumnSearchProps('hopr'),
+    // },
     {
-      title: 'HOPR Name',
-      key: 'hopr',
-      dataIndex: 'hopr',
-      ...getColumnSearchProps('hopr'),
-    },
-    {
-      title: 'RC',
+      title: 'Regional Constituency Name',
       key: 'rc',
       dataIndex: 'rc',
       ...getColumnSearchProps('rc'),
@@ -225,6 +225,7 @@ const  handleReset = clearFilters => {
     axios(config)
       .then(function (response) {
         setregion_data(response.data)
+        setHoprLoading(false)
         console.log(response.data)
       })
       .catch(function (error) {
@@ -243,7 +244,7 @@ const  handleReset = clearFilters => {
       axios(config2)
         .then(function (response) {
           setregionrc_data(response.data)
-          console.log(response.data)
+          setRcLoading(false)
         })
         .catch(function (error) {
   
@@ -256,11 +257,25 @@ const  handleReset = clearFilters => {
             <Tabs defaultActiveKey="1" centered>
                 
             <TabPane  tab="የተወካዮች ምክር ቤት ምርጫ/House of People's Representative" key="1">
-            <Table style={{ marginTop: 10 }} columns={columns} dataSource={region_data} />
+              {hoprLoading ? <Spin tip="Loading...">
+                <Alert
+                  message="Might take a minuit"
+                  description="House of People's Representative data is loading"
+                  type="info"
+                />
+              </Spin> :  <Table style={{ marginTop: 10 }} columns={columns} dataSource={region_data} /> }
+               
                    
                 </TabPane>
                 <TabPane tab="የክልል ምክር ቤት ምርጫ/Regional Council Election" key="2">
-                <Table style={{ marginTop: 10 }} columns={columns2} dataSource={regionrc_data} />
+                  {rcLoading ? <Spin tip="Loading...">
+                <Alert
+                  message="Might take a minuit"
+                  description="Regional Council Election data is loading"
+                  type="info"
+                />
+              </Spin> :                 <Table style={{ marginTop: 10 }} columns={columns2} dataSource={regionrc_data} />
+}
                 </TabPane>
                
             </Tabs>
