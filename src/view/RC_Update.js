@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Checkbox, notification, Form, Input, Cascader, Select, Modal, Button, AutoComplete, Card } from 'antd';
 import { Grid } from '@material-ui/core'
 import axios from 'axios';
+import { useLocation, useHistory } from "react-router-dom";
+
 
 const { Option } = Select;
 
@@ -57,132 +59,126 @@ const languageEnglish = [
 ]
 
 export default function RC_update(props) {
-  var data_passed = props.data_passed;
-  var numbers = data_passed.no_of_seat
-  console.log(data_passed)
   const [form] = Form.useForm();
-  const [max, setmax] = useState(data_passed.rc_max)
-  const [regions, setRegions] = useState([])
-  const [result, setresult] = useState(data_passed.rc_result)
-  const [candidateList, setCandidateList] = useState([])
+  const [region_data, setregion_data] = useState([]);
+  const [loaded, setLoaded] = useState(false)
   const [languageName, setLanguageName] = useState(language)
-  const [loading, setLoading] = useState(false)
   const [resultlang, setResulLang] = useState(resultsAmharic)
-  const [active, setActive] = useState(false)
-  const [general, setGeneral] = useState(data_passed)
-  const [rcdata, setrcData] = useState([])
-  const [numberofseat, setNumber] = useState(0)
-  const [rcValue, setRCValue] = useState(data_passed.rcconstituencyid)
-  const [regionValue, setRegionValue] = useState(null)
-  const [approve, setApprove] = useState(data_passed.approve)
-  const [generalsender, setGeneralSender] = useState([])
-  const [maxSender, setmaxSender] = useState([])
-  const [rcIdChange, setRCConstituency] = useState('')
-  const [resultleng, setResultLength] = useState(0)
 
-  const SubmitFinal = () => {
-    const token = localStorage.getItem('access_token')
-    var data = {
-      "approve": approve,
-      "regionid": regionValue,
-      "id": rcIdChange,
-      "rcconstituencyid": parseInt(rcIdChange),
-      "no_of_seat": parseInt(general.no_of_seat),
-      "no_of_pollingstation": parseInt(general.no_of_pollingstation),
-      "exclude_no_of_pollingstation": parseInt(general.exclude_no_of_pollingstation),
-      "q1": parseInt(general.q1),
-      "q2": parseInt(general.q2),
-      "q3": parseInt(general.q3),
-      "q4": parseInt(general.q4),
-      "q5": parseInt(general.q5),
-      "q6": parseInt(general.q6),
-      "q7": parseInt(general.q7),
-      "q8": parseInt(general.q8),
-      "q9": parseInt(general.q9),
+  var location = useLocation();
+
+  var history = useHistory()
+  const [approve, setApproved] = useState(location.value.approved)
+
+
+  const [data, setData] = useState(location.value);
+  const [result, setResult] = useState([])
+  const [general, setGeneral] = useState({
+    'approved': location.value.approved,
+    'exclude_no_of_pollingstation': (location.value.exclude_no_of_pollingstation),
+    'hoprconstituencyid': location.value.hoprconstituencyid,
+    'no_of_pollingstation': (location.value.no_of_pollingstation),
+    'q1': (location.value.q1),
+    'q2': (location.value.q2),
+    'q3': (location.value.q3),
+    'q4': (location.value.q4),
+    'q5': (location.value.q5),
+    'q6': (location.value.q6),
+    'q7': (location.value.q7),
+    'q8': (location.value.q8),
+    'q9': (location.value.q9),
+
+  })
+
+  const onGeneralChange = (e) => {
+    console.log(e.target.name, e.target.value)
+    setGeneral({ ...general, [e.target.name]: parseInt(e.target.value) })
+    console.log(general)
+  }
+  const onResultChange = (e) => {
+    var data = result.find(i => i.candidate.candidateid == e.target.name)
+
+    if (data) {
+      var indexs = result.findIndex(e => e.candidate.candidateid === data.candidate.candidateid)
+      var holder = result
+      holder[indexs]['vote'] = e.target.value
+      setResult(holder)
+    }
+    else {
+      var resultData = location.value.result.find(function (item) {
+        return item.candidate.candidateid == e.target.name
+      })
+      var obj = {
+        'candidate': resultData.candidate.candidateid,
+        'party': resultData.candidate.politicalpartyid,
+        'vote': e.target.value
+      }
+      setResult([...result, obj])
+      console.log('doesnt exist', e.target.name, e.target.value)
+      console.log(result)
+    }
+
+    // console.log(resultData)
+    // setResult(result => [...result, resultData])
+  }
+
+
+
+  const send_hopr_data = (e) => {
+    const token = localStorage.getItem('access_token');
+
+    var send_data = {
+      "approved": approve,
+      // "regionid": data_passed.regionid,
+      "hoprconstituencyid": general.hoprconstituencyid,
+      "no_of_pollingstation": general.no_of_pollingstation,
+      "exclude_no_of_pollingstation": general.exclude_no_of_pollingstation,
+      "q1": general.q1,
+      "q2": general.q2,
+      "q3": general.q3,
+      "q4": general.q4,
+      "q5": general.q5,
+      "q6": general.q6,
+      "q7": general.q7,
+      "q8": general.q8,
+      "q9": general.q9,
       "result": result,
-      "maximum": maxSender,
-    };
+      // "hoprMax": ids
 
-
+    }
     var config = {
-      url: `${process.env.REACT_APP_IP}/rc_general_update/${data_passed.id}`,
+      url: `${process.env.REACT_APP_IP}/hopr_update/${location.value.id}`,
       method: 'PUT',
       headers: {
         "Authorization": "Bearer  " + token
 
       },
-      data: data
-
+      data: send_data
     };
     console.log(config);
     axios(config)
       .then(function (response) {
         notification.open({
-          message: 'Saved',
-          description: 'You Have Successfully Created Region Constituency Record.',
+          message: 'Suceffully saved',
+
         });
-        window.location.reload()
+        setTimeout(() => {
+          history.push({
+            pathname: "/Need_check",
+          });
+        }, 50);
+
       })
       .catch(function (error) {
         notification.open({
-          message: 'Failed To Save',
-          description: 'Please Check Your Form.',
+          message: 'got eroor',
+
         });
       });
 
 
-  }
-
-  const onChangeGeneral = (e) => {
-    console.log(e.target.name, e.target.value)
-    if (e.target.name === 'no_of_seat') {
-      setNumber(e.target.value)
-    }
-    setGeneral({ ...general, [e.target.name]: [e.target.value] })
-    setGeneralSender({ ...generalsender, [e.target.name]: [e.target.value] })
-  }
-
-
-  const getRegion = async () => {
-    const token = localStorage.getItem('access_token')
-    var config = {
-      url: `${process.env.REACT_APP_IP}/region`,
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer  " + token
-
-      },
-
-    };
-    console.log(config);
-    axios(config)
-      .then(function (response) {
-        setRegions(response.data)
-        setLoading(true)
-        console.log('region', response.data)
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
 
   }
-
-  const onChange = (e) => {
-    var data = null
-
-    for (var i = 0; i < result.length; i++) {
-      if (result[i].id === parseInt(e.target.name)) {
-        var value_passed = result
-        data = result[i]
-
-        data.maximumvotes = e.target.value
-        value_passed[i] = data
-        setresult(result => [...value_passed,])
-        console.log(data)
-      }
-    }
-  }
-
 
 
   const setEnglish = () => {
@@ -194,177 +190,46 @@ export default function RC_update(props) {
     setResulLang(resultsAmharic)
   }
 
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
-  };
-  const onApprove = (e) => {
+
+  const aprovalChange = (e) => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    })
     console.log(e.target.checked)
-    setApprove(e.target.checked)
+    setApproved(e.target.checked)
   }
 
-
-
-  const winerSelection = (value) => {
-    console.log(value)
-    setmax([...max, value])
-    setmaxSender([...maxSender, value])
+  const children = [];
+  for (var i = 1; i < region_data.length; i++) {
+    children.push(<Option value={region_data[i].regionname}>{region_data[i].regionname}</Option>);
   }
-
 
   const listt = []
-  for (let j = 0; j < numberofseat; j++) {
-    listt.push(<Form.Item
-      label="Select one winner"
-      hasFeedback
-      rules={[
-        {
-          required: true,
-          message: 'This field is required',
-        }
-      ]}
-    >
-      <Select
-        showSearch
-        style={{ width: '100%' }}
-        placeholder={languageName[3].value}
-        optionFilterProp="children"
-        onChange={winerSelection}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onSearch={onSearch}
-        filterOption={(input, option) =>
-          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-        }
-      >
-        {loading ? <>
-          {candidateList.map((item, index) => (
-            <Option key={index} value={item.id}>{item.fullname}</Option>
-          ))}</> : <></>}
-      </Select>
-    </Form.Item>)
+  for (let j = 0; j < 13; j++) {
+    listt.push(j)
   }
-  const handleopen = () => {
-    setActive(true)
-  }
-  const handleClose = () => {
-    setActive(false)
-  }
-  function handleChangeRegion() {
-    const token = localStorage.getItem('access_token')
-    var config = {
-      url: `${process.env.REACT_APP_IP}/regional_list/${data_passed.regionid}`,
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer  " + token
-
-      },
-
-    };
-    console.log(config);
-    axios(config)
-      .then(function (response) {
-        setrcData(response.data)
-      })
-      .catch(function (error) {
-
-      });
-  }
-
-
-  function onBlur() {
-    console.log('blur');
-  }
-
-  function onFocus() {
-    console.log('focus');
-  }
-
-  function onSearch(val) {
-    console.log('search:', val);
-  }
-
-
-
-  function handlechangeRegionalConstituency(value) {
-    setRCConstituency(value)
-    console.log('rc id', value)
-    const token = localStorage.getItem('access_token')
-    var config = {
-      url: `${process.env.REACT_APP_IP}/rc_candidate/${data_passed.rcconstituencyid.id}`,
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer  " + token
-
-      },
-
-    };
-    console.log(config);
-    axios(config)
-      .then(function (response) {
-        setCandidateList(response.data)
-        console.log(response.data)
-      })
-      .catch(function (error) {
-
-      });
-  }
-
-
-  useEffect(() => {
-    handlechangeRegionalConstituency()
-    handleChangeRegion()
-    getRegion()
-  }, [])
-
   return (
-    <div>
+    <Card hoverable className="hopr-card">
+      <div className="aprove">
+        <Checkbox checked={approve} style={{ fontSize: 18, color: 'black', color: 'white', padding: 4, }} onChange={aprovalChange}>Approve</Checkbox>
+
+      </div>
       <Button onClick={() => setEnglish()}>English</Button>
       <Button onClick={() => setAmharic()}>አማርኛ</Button>
+      <br />
       <Form
         {...formItemLayout}
         form={form}
         name="register"
-        onFinish={onFinish}
         scrollToFirstError
       >
-        <div style={{ paddingBottom: '2%', paddingTop: '2%' }}>
-          <strong style={{ fontSize: 15, color: '#00b6ba', padding: 4, textAlign: 'center' }} >ክልል/Region :&nbsp;&nbsp;&nbsp;{data_passed.regionname}</strong>
-          <br />
-          {/* <strong style={{ fontSize: 15, color: '#00b6ba', padding: 4, textAlign: 'center' }}>የምርጫ ክልል/Constituency Name :&nbsp;&nbsp;&nbsp;{data_passed.rcconstituencyid.regionalconstituencyname}</strong> */}
+        <div className="language-1">
+          <strong  >ክልል/Region :&nbsp;&nbsp;&nbsp;{data.region}</strong>
+          <strong >የምርጫ ክልል/Constituency Name :&nbsp;&nbsp;&nbsp;{data.hoprconstituency}</strong>
         </div>
-        <Form.Item
-          name="ምርጫ ክልል/Regiona Constituency"
-          label={languageName[3].value}
-          rules={[
-            {
-              required: true,
-              message: 'ምርጫ ክልል/Please input your Constituency!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Select
-            showSearch
-            style={{ width: '100%' }}
-            placeholder={languageName[3].value}
-            optionFilterProp="children"
-            onChange={handlechangeRegionalConstituency}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            onSearch={onSearch}
-            filterOption={(input, option) =>
-              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-            }
-          >
-
-            {rcdata.map((item, index) => (
-
-              <Option key={index} value={item.id}>{item.regionalconstituencyname}</Option>
-            ))}
-          </Select>
-        </Form.Item>
-        <Card hoverable style={{ margin: '2%s' }} >
-          {languageName.slice(4,).map((item, index) => (
+        <Card hoverable >
+          {languageName.map((item, index) => (
             <Form.Item
               name={item.names}
               label={item.value}
@@ -376,87 +241,51 @@ export default function RC_update(props) {
                 }
               ]}
             >
-              <Input type='number' defaultValue={general[item.names]} name={item.names} onChange={onChangeGeneral} />
+              <Input type="number" defaultValue={data[item.names]} name={item.names} onChange={onGeneralChange} />
             </Form.Item>
 
           ))}
         </Card>
       </Form>
-
       <Form
         {...formItemLayout}
         name="register"
         scrollToFirstError
-
       >
-        <Grid container spacing={2} style={{ marginBottom: '2%' }}>
-          <Grid style={{ backgroundColor: '#559fa4', color: 'white', textAlign: 'center' }} item xs={12}>Candidates</Grid>
-        </Grid>
-        <>{result.map((item, index) => (
+        <Card>
+          <Grid container spacing={2} style={{ marginBottom: '2%' }}>
+            <Grid style={{ display: 'flex', justifyContent: 'center', fontSize: 15, backgroundColor: '#6d55a4', color: 'white', padding: 4, }} item xs={12}> ውጤቶች/Results </Grid>
+          </Grid>
 
-          <>
-            <Form.Item
-              name={item.id}
-              label={item.candidate_name}
+          {data.result.length ?
+            <>{
+              data.result.map((id, ITEM) => (
+                <>
 
-              rules={[
-                {
-                  required: true,
-                  message: 'This field is required',
-                }
-              ]}
-            >
-              <Input type='number' defaultValue={item.maximumvotes} name={item.id} onChange={onChange} />
-            </Form.Item>
-          </>
-        ))}</>
-        <Grid container spacing={2} style={{ marginBottom: '2%' }}>
-          <Grid style={{ backgroundColor: '#559fa4', color: 'white', textAlign: 'center' }} item xs={12}>Candidate with highest number of votes</Grid>
-        </Grid>
-        <Card hoverable >
-          <Form.Item
-            name="ክከፍተኛ ድምፅ ያገኘ እጩ"
-            label={"ከፍተኛ ድምፅ ያገኘ እጩ"}
-            rules={[
-              {
-                required: true,
-                message: 'ከፍተኛ ድምፅ ያገኘ እጩ!',
-              },
-            ]}
-            hasFeedback
-          >
-            {max.slice(0, numbers).map((item, index) => (
-              <Select
-                disabled
-                defaultValue={item.candidateid ? item.candidateid.fullname : ''}
-                showSearch
-                style={{ width: '100%' }}
-                placeholder={languageName[3].value}
-                optionFilterProp="children"
-                onChange={winerSelection}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onSearch={onSearch}
-                filterOption={(input, option) =>
-                  option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                }
-              >
-
-                {candidateList.map((item, index) => (
-
-                  <Option key={index} value={item.id} >{item.fullname}</Option>
-                ))}
-              </Select>
-            ))}
-          </Form.Item>
-
+                  <Form.Item
+                    label={id.candidate.fullname}
+                    name={id.candidate.candidateid}
+                    rules={[
+                      {
+                        required: true,
+                        message: 'This field is required',
+                      }
+                    ]}
+                  >
+                    <Input type='number' key={ITEM} name={id.candidate.candidateid} defaultValue={id.vote} onChange={onResultChange} />
+                  </Form.Item>
+                </>
+              ))}</> : <></>}
+          <br />
         </Card>
-        <Checkbox checked={approve} style={{ fontSize: 15, color: 'black', paddingTop: '4%', paddingBottom: '4%' }} onChange={onApprove}>Approve</Checkbox>
-        <br />
-        <Button style={{ backgroundColor: '#6d55a4', color: 'white' }} onClick={SubmitFinal}>
-          Confirm and Save
-        </Button>
-      </Form>
-    </div>
+        <p className="winner-look">The Winner is {data.winners.name} from {data.winners.party} with {data.winners.vote} Votes
+          :&nbsp;&nbsp;&nbsp;
+          {approve ? <Button type="danger" onClick={send_hopr_data}>
+            Confirm and Save
+          </Button> : <Button type="dashed">Cancle</Button>}
+        </p>
+        <p className="desclamer">The winner is automatically calculated from the Provided results</p>
+      </Form >
+    </Card >
   )
 }

@@ -87,6 +87,13 @@
   display: flex;
   justify-content: flex-start
 }
+.language-1{
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  color: white;
+  font-size: 16px
+}
 .main-1{
   
 
@@ -138,4 +145,12 @@
 .desclamer:hover{
   color: #00b6ba;
   font-size: 18px
+}
+.aprove{
+  position: fixed;
+  background-color: rgb(154, 76, 190);
+  z-index: 1;
+  color: white;
+  border-radius: 20px;
+  padding: 0.5%
 }
