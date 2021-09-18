@@ -4,6 +4,7 @@ import { Grid } from '@material-ui/core'
 import axios from 'axios';
 
 const { Option } = Select;
+
 const formItemLayout = {
   labelCol: {
     xs: { span: 32 },
@@ -14,53 +15,7 @@ const formItemLayout = {
     sm: { span: 8 },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 2,
-    },
-    sm: {
-      span: 16,
-      offset: 2,
-    },
-  },
-};
 
-const residences = [
-  {
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [
-      {
-        value: 'hangzhou',
-        label: 'Hangzhou',
-        children: [
-          {
-            value: 'xihu',
-            label: 'West Lake',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [
-      {
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [
-          {
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          },
-        ],
-      },
-    ],
-  },
-];
 const resultsAmharic = [
   { id: 1, value: 'የፖለቲካ ፓርቲ እና እጩ /የግል ተወዳዳሪ ስም' },
   { id: 2, value: 'ውጤቶች', },
@@ -71,62 +26,40 @@ const resultsEnglish = [
   { id: 2, value: 'RESULTS' },
   { id: 3, value: 'Votes' }
 ]
-const maximam = [
-  { id: 1, value: 'ከፍተኛ ድምፅ ያገኘ እጩ ', },
-  { id: 2, value: 'በድምፅ መስጫ ወረቀት ላይ ያለ የእጩ ተራ ቁጥር', },
-  { id: 3, value: 'የእጩ ስም', },
-  { id: 4, value: 'የፖለቲካ ፓርቲ እና እጩ /የግል ተወዳዳሪ ስም' }
-]
-const maximamEnglish = [
-  { id: 1, value: 'Candidates with highest number of votes ' },
-  { id: 2, value: 'Number on the ballot paper' },
-  { id: 3, value: 'Name of candidate' },
-  { id: 4, value: 'Name of political party/independent' }
-]
 
-
+const language = [
+  { id: 1, value: 'በምርጫ ክልሉ ውስጥ የክልል ምክር ቤት መቀመጫዎች ብዛት', names: 'no_of_seat' },
+  { id: 2, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት', names: 'no_of_pollingstation' },
+  { id: 3, value: 'ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር', names: 'exclude_no_of_pollingstation' },
+  { id: 4, value: 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር', names: 'q1' },
+  { id: 5, value: ' በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q2' },
+  { id: 6, value: 'በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት', names: 'q3' },
+  { id: 7, value: 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q4' },
+  { id: 8, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር', names: 'q5' },
+  { id: 9, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q6' },
+  { id: 10, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q7' },
+  { id: 11, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q8' },
+  { id: 12, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q9' }
+]
+const languageEnglish = [
+  { id: 1, value: 'Number of Regional Council seats in the constituency', names: 'no_of_seat' },
+  { id: 2, value: 'Number of polling stations in the constituency', names: 'no_of_pollingstation' },
+  { id: 3, value: 'Number of polling stations exclused from the results', names: 'exclude_no_of_pollingstation' },
+  { id: 4, value: 'Total number of registered voters in the constituency', names: 'q1' },
+  { id: 5, value: 'Total number of ballot papers received in the constituency', names: 'q2' },
+  { id: 6, value: 'Total number of signatures on the Electoral Roll in the constituency', names: 'q3' },
+  { id: 7, value: 'Total number of unused ballot papers in the constituency', names: 'q4' },
+  { id: 8, value: 'Total number of spoiled ballot papers in the constituency', names: 'q5' },
+  { id: 9, value: 'Total number of stray ballot papers in the constituency', names: 'q6' },
+  { id: 10, value: 'Total number of valid ballot papers in the constituency', names: 'q7' },
+  { id: 11, value: 'Total number of invalid ballot papers in the constituency', names: 'q8' },
+  { id: 12, value: 'Total number of provisional ballot papers in the constituency', names: 'q9' }
+]
 
 export default function RC_update(props) {
   var data_passed = props.data_passed;
   var numbers = data_passed.no_of_seat
   console.log(data_passed)
-
-  const language = [
-    { id: 1, value: "የምርጫ ክልል የውጤት ቅፅ", },
-    { id: 2, value: "የክልል ምክር ቤት ምርጫ", },
-    { id: 3, value: 'ክልል', },
-    { id: 4, value: 'የከልሉ ምርጫ ክልል' },
-    { id: 5, value: 'በምርጫ ክልሉ ውስጥ የክልል ምክር ቤት መቀመጫዎች ብዛት', names: 'no_of_seat' },
-    { id: 6, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት', names: 'no_of_pollingstation' },
-    { id: 7, value: 'ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር', names: 'exclude_no_of_pollingstation' },
-    { id: 8, value: 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር', names: 'q1' },
-    { id: 9, value: ' በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q2' },
-    { id: 10, value: 'በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት', names: 'q3' },
-    { id: 11, value: 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q4' },
-    { id: 12, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር', names: 'q5' },
-    { id: 13, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q6' },
-    { id: 14, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q7' },
-    { id: 15, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q8' },
-    { id: 16, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት', names: 'q9' }
-  ]
-  const languageEnglish = [
-    { id: 1, value: 'CONSTITUENCY RESULTS FORM' },
-    { id: 2, value: 'Regional Council Election' },
-    { id: 3, value: 'Region' },
-    { id: 4, value: 'Regional Constituency' },
-    { id: 5, value: 'Number of Regional Council seats in the constituency', names: 'no_of_seat' },
-    { id: 6, value: 'Number of polling stations in the constituency', names: 'no_of_pollingstation' },
-    { id: 7, value: 'Number of polling stations exclused from the results', names: 'exclude_no_of_pollingstation' },
-    { id: 8, value: 'Total number of registered voters in the constituency', names: 'q1' },
-    { id: 9, value: 'Total number of ballot papers received in the constituency', names: 'q2' },
-    { id: 10, value: 'Total number of signatures on the Electoral Roll in the constituency', names: 'q3' },
-    { id: 11, value: 'Total number of unused ballot papers in the constituency', names: 'q4' },
-    { id: 12, value: 'Total number of spoiled ballot papers in the constituency', names: 'q5' },
-    { id: 13, value: 'Total number of stray ballot papers in the constituency', names: 'q6' },
-    { id: 14, value: 'Total number of valid ballot papers in the constituency', names: 'q7' },
-    { id: 15, value: 'Total number of invalid ballot papers in the constituency', names: 'q8' },
-    { id: 16, value: 'Total number of provisional ballot papers in the constituency', names: 'q9' }
-  ]
   const [form] = Form.useForm();
   const [max, setmax] = useState(data_passed.rc_max)
   const [regions, setRegions] = useState([])
@@ -136,14 +69,12 @@ export default function RC_update(props) {
   const [loading, setLoading] = useState(false)
   const [resultlang, setResulLang] = useState(resultsAmharic)
   const [active, setActive] = useState(false)
-  const [values, setValues] = useState({})
   const [general, setGeneral] = useState(data_passed)
   const [rcdata, setrcData] = useState([])
   const [numberofseat, setNumber] = useState(0)
   const [rcValue, setRCValue] = useState(data_passed.rcconstituencyid)
   const [regionValue, setRegionValue] = useState(null)
   const [approve, setApprove] = useState(data_passed.approve)
-  const [resultsender, setResultsender] = useState([])
   const [generalsender, setGeneralSender] = useState([])
   const [maxSender, setmaxSender] = useState([])
   const [rcIdChange, setRCConstituency] = useState('')
@@ -208,7 +139,7 @@ export default function RC_update(props) {
       setNumber(e.target.value)
     }
     setGeneral({ ...general, [e.target.name]: [e.target.value] })
-    setGeneralSender({...generalsender, [e.target.name]: [e.target.value]})
+    setGeneralSender({ ...generalsender, [e.target.name]: [e.target.value] })
   }
 
 
@@ -239,13 +170,13 @@ export default function RC_update(props) {
   const onChange = (e) => {
     var data = null
 
-    for (var i = 0; i < result.length; i++){
-      if (result[i].id === parseInt(e.target.name)){
-        var value_passed =result
+    for (var i = 0; i < result.length; i++) {
+      if (result[i].id === parseInt(e.target.name)) {
+        var value_passed = result
         data = result[i]
-        
+
         data.maximumvotes = e.target.value
-        value_passed[i]=data
+        value_passed[i] = data
         setresult(result => [...value_passed,])
         console.log(data)
       }
@@ -266,7 +197,7 @@ export default function RC_update(props) {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
-  const onApprove = (e) =>{
+  const onApprove = (e) => {
     console.log(e.target.checked)
     setApprove(e.target.checked)
   }
@@ -274,7 +205,7 @@ export default function RC_update(props) {
 
 
   const winerSelection = (value) => {
-    console.log(value)   
+    console.log(value)
     setmax([...max, value])
     setmaxSender([...maxSender, value])
   }
@@ -402,36 +333,36 @@ export default function RC_update(props) {
           {/* <strong style={{ fontSize: 15, color: '#00b6ba', padding: 4, textAlign: 'center' }}>የምርጫ ክልል/Constituency Name :&nbsp;&nbsp;&nbsp;{data_passed.rcconstituencyid.regionalconstituencyname}</strong> */}
         </div>
         <Form.Item
-                name="ምርጫ ክልል/Regiona Constituency"
-                label={languageName[3].value}
-                rules={[
-                {
-                    required: true,
-                    message: 'ምርጫ ክልል/Please input your Constituency!',
-                },
-                ]}
-                hasFeedback
-            >
-                 <Select
-                    showSearch
-                    style={{ width: '100%' }}
-                    placeholder={languageName[3].value}
-                    optionFilterProp="children"
-                    onChange={handlechangeRegionalConstituency}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                  >
-                  
-                  {rcdata.map((item, index) =>(
-                    
-                      <Option key={index} value={item.id}>{item.regionalconstituencyname}</Option>
-                  ))}
-                  </Select>
-            </Form.Item>
+          name="ምርጫ ክልል/Regiona Constituency"
+          label={languageName[3].value}
+          rules={[
+            {
+              required: true,
+              message: 'ምርጫ ክልል/Please input your Constituency!',
+            },
+          ]}
+          hasFeedback
+        >
+          <Select
+            showSearch
+            style={{ width: '100%' }}
+            placeholder={languageName[3].value}
+            optionFilterProp="children"
+            onChange={handlechangeRegionalConstituency}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onSearch={onSearch}
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+          >
+
+            {rcdata.map((item, index) => (
+
+              <Option key={index} value={item.id}>{item.regionalconstituencyname}</Option>
+            ))}
+          </Select>
+        </Form.Item>
         <Card hoverable style={{ margin: '2%s' }} >
           {languageName.slice(4,).map((item, index) => (
             <Form.Item
@@ -445,7 +376,7 @@ export default function RC_update(props) {
                 }
               ]}
             >
-              <Input type='number' defaultValue={general[item.names]} name={item.names} onChange={onChangeGeneral}  />
+              <Input type='number' defaultValue={general[item.names]} name={item.names} onChange={onChangeGeneral} />
             </Form.Item>
 
           ))}
@@ -458,44 +389,44 @@ export default function RC_update(props) {
         scrollToFirstError
 
       >
-       <Grid container spacing={2} style={{ marginBottom: '2%' }}>
-          <Grid style={{ backgroundColor: '#559fa4', color: 'white' , textAlign: 'center'}} item xs={12}>Candidates</Grid>
+        <Grid container spacing={2} style={{ marginBottom: '2%' }}>
+          <Grid style={{ backgroundColor: '#559fa4', color: 'white', textAlign: 'center' }} item xs={12}>Candidates</Grid>
         </Grid>
-          <>{result.map((item, index) => (
-             
-              <>
-                <Form.Item
-                  name={item.id}
-                  label={item.candidate_name}
+        <>{result.map((item, index) => (
 
-                  rules={[
-                    {
-                      required: true,
-                      message: 'This field is required',
-                    }
-                  ]}
-                >  
-                  <Input type='number' defaultValue={item.maximumvotes} name={item.id}  onChange={onChange} /> 
-                </Form.Item>
-              </>
-            ))}</>
-             <Grid container spacing={2} style={{ marginBottom: '2%' }}>
-          <Grid style={{ backgroundColor: '#559fa4', color: 'white' , textAlign: 'center'}} item xs={12}>Candidate with highest number of votes</Grid>
-        </Grid>
-       <Card hoverable >
+          <>
             <Form.Item
-              name="ክከፍተኛ ድምፅ ያገኘ እጩ"
-              label={"ከፍተኛ ድምፅ ያገኘ እጩ"}
+              name={item.id}
+              label={item.candidate_name}
+
               rules={[
                 {
                   required: true,
-                  message: 'ከፍተኛ ድምፅ ያገኘ እጩ!',
-                },
+                  message: 'This field is required',
+                }
               ]}
-              hasFeedback
             >
-              {max.slice(0, numbers).map((item, index) => (
-                <Select
+              <Input type='number' defaultValue={item.maximumvotes} name={item.id} onChange={onChange} />
+            </Form.Item>
+          </>
+        ))}</>
+        <Grid container spacing={2} style={{ marginBottom: '2%' }}>
+          <Grid style={{ backgroundColor: '#559fa4', color: 'white', textAlign: 'center' }} item xs={12}>Candidate with highest number of votes</Grid>
+        </Grid>
+        <Card hoverable >
+          <Form.Item
+            name="ክከፍተኛ ድምፅ ያገኘ እጩ"
+            label={"ከፍተኛ ድምፅ ያገኘ እጩ"}
+            rules={[
+              {
+                required: true,
+                message: 'ከፍተኛ ድምፅ ያገኘ እጩ!',
+              },
+            ]}
+            hasFeedback
+          >
+            {max.slice(0, numbers).map((item, index) => (
+              <Select
                 disabled
                 defaultValue={item.candidateid ? item.candidateid.fullname : ''}
                 showSearch
@@ -510,22 +441,22 @@ export default function RC_update(props) {
                   option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 }
               >
-              
-              {candidateList.map((item, index) =>(
-                
-                  <Option key={index}  value={item.id} >{item.fullname}</Option>
-              ))}
-              </Select>
-              ))}
-            </Form.Item>
 
-          </Card>
-        <Checkbox checked={approve} style={{ fontSize: 15, color: 'black',  paddingTop: '4%', paddingBottom: '4%' }} onChange={onApprove}>Approve</Checkbox>
+                {candidateList.map((item, index) => (
+
+                  <Option key={index} value={item.id} >{item.fullname}</Option>
+                ))}
+              </Select>
+            ))}
+          </Form.Item>
+
+        </Card>
+        <Checkbox checked={approve} style={{ fontSize: 15, color: 'black', paddingTop: '4%', paddingBottom: '4%' }} onChange={onApprove}>Approve</Checkbox>
         <br />
         <Button style={{ backgroundColor: '#6d55a4', color: 'white' }} onClick={SubmitFinal}>
           Confirm and Save
         </Button>
-      </Form> 
+      </Form>
     </div>
   )
 }

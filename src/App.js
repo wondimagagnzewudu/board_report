@@ -1,41 +1,42 @@
 
 import routes from './routes';
 import AppRoute from './AppRoute';
-import { HashRouter,BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'antd/dist/antd.css';
+import './App.css'
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { AuthProvider } from './Context';
 import Dashboard from './view/Dashboard/Dashboard'
 
 require('dotenv').config();
 function App() {
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+  const { SubMenu } = Menu;
+  const { Header, Content, Sider } = Layout;
   return (
 
-          <AuthProvider>
-    <HashRouter>
+    <AuthProvider id='root'>
+      <Router>
 
-  <Switch>
-    {routes.map((route) => (
-      <AppRoute
-      key={route.path}
-      exact={route.exact}
-      name={route.name}
-        path={route.path}
-        component={route.component}
-      
-
-      />
-    ))}
-    <Route path='/dashboard'><Dashboard /></Route>
-    
-  </Switch>
+        <Switch>
+          {routes.map((route) => (
+            <AppRoute
+              key={route.path}
+              exact={route.exact}
+              name={route.name}
+              path={route.path}
+              component={route.component}
 
 
-  
-  </HashRouter>
-</AuthProvider>
+            />
+          ))}
+          <Route path='/dashboard'><Dashboard /></Route>
+
+        </Switch>
+
+
+
+      </Router>
+    </AuthProvider>
 
   );
 }

@@ -1,7 +1,10 @@
-import React, { useState, useEffect,Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import jwt_decode from "jwt-decode";
 import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined ,BranchesOutlined} from '@ant-design/icons';
+import { UserOutlined, LaptopOutlined, InsertRowRightOutlined, RightCircleOutlined } from '@ant-design/icons';
+import image from './Context/Login/z_oxTrxq_400x400.jpg';
+import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 export default function NavbarMenu(props) {
   const { SubMenu } = Menu;
@@ -10,125 +13,118 @@ export default function NavbarMenu(props) {
   const [decoder, setdecoder] = useState(false)
   const [admin_password, setadmin_password] = useState(false)
   const [dashboard, setdashboard] = useState(false)
+  const [amount, setAmount] = useState(0)
   const { Header, Content, Sider } = Layout;
-  const logout =() =>{
+  const logout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_type');
     localStorage.removeItem('user_id');
     window.location.reload()
   }
-  const checkUserType = (user_type) =>{
+  const checkUserType = (user_type) => {
 
 
-    if(user_type =="decoder" ){
+    if (user_type == "decoder") {
       setdecoder(true);
       setanalyst(false);
-      
-      }
-      else if(user_type =="analyst"){
-        setanalyst(true);
-        setdecoder(false);
-      }
-      else if(user_type =="admin"){
-        setadmin_password(true)
-        setanalyst(false);
-        setdecoder(false);
-      }
-      else{
-        setdashboard(true);
-        setanalyst(false);
-        setdecoder(false);
-      }
 
-      }
-     useEffect(() =>{
-      checkUserType(user_type)
-      
-      }, [])
-    return(<>
-         {/* <Sider width={200}  height={1000} className="site-layout-background">
-           <Menu 
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
-          style={{ height: '100%', }}
+    }
+    else if (user_type == "analyst") {
+      setanalyst(true);
+      setdecoder(false);
+    }
+    else if (user_type == "admin") {
+      setadmin_password(true)
+      setanalyst(false);
+      setdecoder(false);
+    }
+    else {
+      setdashboard(true);
+      setanalyst(false);
+      setdecoder(false);
+    }
 
-        >
-            <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-            <Menu.Item  key="2"><a href="/#/Transcriber_follow" >Arrival Approval</a></Menu.Item>
-            <Menu.Item  key="3"><a href="/#/Serchreport" >Document Tracking</a></Menu.Item>
-            <Menu.Item  key="4"><a href="/#/Addreport" >Result Entery</a></Menu.Item>
-            <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
-          </SubMenu>
-           </Menu>
-      </Sider> */}
-         
-      {
-												((decoder)) ? (
-                          <Sider width={200}  height={1000} className="site-layout-background">
-                          <Menu 
-                         mode="inline"
-                         defaultSelectedKeys={['1']}
-                         defaultOpenKeys={['sub1']}
-                         style={{ height: '100%', }}
-               
-                       >
-                           <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-                           {/* <Menu.Item  key="2"><a href="/#/Need_update" >Need update</a></Menu.Item> */}
-                           <Menu.Item  key="3"><a href="/#/Addreport" >Create Reporting</a></Menu.Item>
-                           <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
-                         </SubMenu>
-                          </Menu>
-                     </Sider>) : (
-													<div></div>
-												)}
-                              {
-												((analyst)) ? (
-                          <Sider width={200}  height={1000} className="site-layout-background">
-                          <Menu 
-                         mode="inline"
-                         defaultSelectedKeys={['1']}
-                         defaultOpenKeys={['sub1']}
-                         style={{ height: '100%', }}
-               
-                       >
-                           <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-                           <Menu.Item  key="2"><a href="/#/Need_check" >Need check</a></Menu.Item>
-                           <Menu.Item  key="3"><a href="/#/Aproved_list" >List of approved</a></Menu.Item>
-                           <Menu.Item key="4"><a href="/#/File">File Upload</a></Menu.Item>
-                           <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
-                         </SubMenu>
-                          </Menu>
-                     </Sider>) : (
-													<div></div>
-												)}
-                           {
-												((admin_password)) ? (
-                          <Sider width={200}  height={1000} className="site-layout-background">
-                          <Menu 
-                         mode="inline"
-                         defaultSelectedKeys={['1']}
-                         defaultOpenKeys={['sub1']}
-                         style={{ height: '100%', }}
-               
-                       >
-                           <SubMenu key="sub1" icon={<BranchesOutlined />} title="Menu" style={{ marginTop: '20%', fontSize: 20, color: 'black'}}>
-                           <Menu.Item  key="2"><a href="/#/Need_check" >Need check</a></Menu.Item>
-                           <Menu.Item  key="2"><a href="/#/Need_update" >Need update</a></Menu.Item>
-                           <Menu.Item  key="3"><a href="/#/Addreport" >Create Reporting</a></Menu.Item>
-                           <Menu.Item  key="3"><a href="/#/Aproved_list" >List of approved</a></Menu.Item>
-                           <Menu.Item  key="5" onClick={logout} >Log out</Menu.Item>
-                         </SubMenu>
-                          </Menu>
-                     </Sider>) : (
-													<div></div>
-												)}
-                          {
-												((dashboard)) ? (
-                      <></>) : (
-													<div></div>
-												)}
-    </>
+  }
+  const counters = async () => {
+    const token = localStorage.getItem('access_token');
+    var config = {
+      url: `${process.env.REACT_APP_IP}/my_creation/`,
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer " + token
+      },
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(response)
+        setAmount(response.data.count)
+      })
+      .catch(function (error) {
 
-    );
+      });
+  }
+  useEffect(() => {
+    checkUserType(user_type)
+    counters()
+  }, [])
+  return (<>
+
+    {
+      ((decoder)) ? (
+        <Sider width={250} height={1000} style={{ backgroundColor: 'white', position: 'fixed' }}>
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}          >
+            <img src={image} style={{ marginLeft: '10%', width: 100, height: 120 }} />
+            <p style={{ color: 'white', padding: '10%', backgroundColor: "#1890ff" }}>Created {amount} Records</p>
+            <Menu.Item key="3"><Link to="/Addreport" >Create Record</Link></Menu.Item>
+            <Menu.Item key="5" onClick={logout} >Log out</Menu.Item>
+          </Menu>
+        </Sider>) : (
+        <div></div>
+      )}
+    {
+      ((analyst)) ? (
+        <Sider width={250} height={1000} style={{ backgroundColor: 'white', position: 'fixed' }}>
+          <img src={image} style={{ width: 100, height: 120 }} />
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            className="sider-text"
+          >
+            <Menu.Item icon={<RightCircleOutlined />} key="3"><Link style={{ color: 'white' }} to="/Aproved_list" >Approved</Link></Menu.Item>
+            <Menu.Item icon={<InsertRowRightOutlined />} key="2"><Link style={{ color: 'white' }} className="s-text" to="/Need_check" >Not Checked</Link></Menu.Item>
+            <Menu.Item key="5" className="s-text" onClick={logout} >Log out</Menu.Item>
+          </Menu>
+        </Sider>) : (
+        <div></div>
+      )}
+    {
+      ((admin_password)) ? (
+        <Sider width={250} height={1000} className="site-layout-background">
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+
+          >
+            <Menu.Item key="2"><Link to="/#/Need_check" >Need check</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/#/Need_update" >Need update</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/#/Addreport" >Create Reporting</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/#/Aproved_list" >List of approved</Link></Menu.Item>
+            <Menu.Item key="5" onClick={logout} >Log out</Menu.Item>
+          </Menu>
+        </Sider>) : (
+        <div></div>
+      )}
+    {
+      ((dashboard)) ? (
+        <></>) : (
+        <div></div>
+      )}
+  </>
+
+  );
 };

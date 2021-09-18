@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Tabs, Statistic, Card, Row, Col, Modal,Table, Tag, Space, Input, Button, Result, Spin, Alert } from 'antd'
+import { Tabs, Statistic, Card, Row, Col, Modal, Table, Tag, Space, Input, Button, Result, Spin, Alert } from 'antd'
 import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { Grid } from '@material-ui/core'
 import axios from 'axios';
@@ -35,32 +35,28 @@ export default function Need_check() {
   const [values, setValues] = useState({})
   const [loaded, setLoaded] = useState(false)
 
-  const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: [e.target.value] })
-  }
-  const onChange_general_data = (e) => {
-    setgeneral_data({ ...general_data, [e.target.name]: [e.target.value] })
-    console.log(general_data)
-  }
+
   const onChange_edit = (value) => {
-  
     setdata_to_be_edited(value);
     setTimeout(() => {
       setactive_Hopr(true);
     }, 30);
-    
+
   }
   const onChange_edit_rc = (value) => {
-  console.log('value',value)
-    setdata_to_be_edited_rc(value);
+    const datas = region_data.find(function (item) {
+      return item.hoprconstituencyid == value
+    })
+    console.log(datas)
+    setdata_to_be_edited_rc(datas);
     setTimeout(() => {
       setactive_Rc(true);
     }, 30);
-    
+
   }
 
   const getColumnSearchProps = dataIndex => ({
-    filterDropdown: ({ setSelectedKeys,selectedKeys, confirm, clearFilters }) => (
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div style={{ padding: 8 }}>
         <Input
           ref={node => {
@@ -91,8 +87,8 @@ export default function Need_check() {
             onClick={() => {
               confirm({ closeDropdown: false });
               setSearchText(selectedKeys[0]);
-                setSearchedColumn(dataIndex);
-              
+              setSearchedColumn(dataIndex);
+
             }}
           >
             Filter
@@ -110,110 +106,98 @@ export default function Need_check() {
         setTimeout(() => searchInput.select(), 100);
       }
     },
-    
+
     render: text =>
       searchedColumn === dataIndex ? (
-        
+
         <Highlighter
           highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
           searchWords={[searchText]}
           autoEscape
           textToHighlight={text ? text.toString() : ''}
         />
-        
+
       ) : (
         text
       ),
   }
   )
- const handleSearch = (selectedKeys, confirm, dataIndex) => {
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
-    
-      setSearchText(selectedKeys[0]);
-      setSearchedColumn(dataIndex);
-  
+
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
+
   };
 
-const  handleReset = clearFilters => {
+  const handleReset = clearFilters => {
     clearFilters();
     setSearchText('');
   };
   const columns2 = [
     {
       title: 'Region',
-      dataIndex: 'regionname',
-      key: 'regionname',
+      dataIndex: 'region',
+      key: 'region',
       width: '35%',
-      ...getColumnSearchProps('regionname'),
+      ...getColumnSearchProps('region'),
     },
-    {
-      title: 'Approval Status',
-      dataIndex: 'approve',
-      ...getColumnSearchProps('approve'),
-      render: val => (val ? 'Approved' : 'Not approved'),
-
-    },
-    // {
-    //   title: 'HOPR Name',
-    //   key: 'hopr',
-    //   dataIndex: 'hopr',
-    //   ...getColumnSearchProps('hopr'),
-    // },
     {
       title: 'Regional Constituency Name',
-      key: 'rc',
-      dataIndex: 'rc',
-      ...getColumnSearchProps('rc'),
+      key: 'rcconstituencyname',
+      dataIndex: 'rcconstituencyname',
+      ...getColumnSearchProps('rcconstituencyname'),
+    },
+    {
+      title: 'Created By',
+      dataIndex: 'created_by',
+      key: 'created_by',
+      ...getColumnSearchProps('created_by'),
+
     },
     {
       title: "Action",
-      key: "action",
+      key: "hoprconstituencyid",
       render: (text, record) => (
         <Button outline color="primary" onClick={() => { onChange_edit_rc(text) }}   >Edit </Button>
       ),
     }
-    ];
- 
+  ];
+
   const columns = [
     {
       title: 'Region',
-      dataIndex: 'regionname',
-      key: 'regionname',
+      dataIndex: 'region',
+      key: 'region',
       width: '35%',
-      ...getColumnSearchProps('regionname'),
-    },
-    {
-      title: 'Approved status',
-      dataIndex: 'approved',
-      ...getColumnSearchProps('approved'),
-      render: val => (val ? 'Approved' : 'Not approved'),
-
+      ...getColumnSearchProps('region'),
     },
     {
       title: 'HOPR Name',
-      key: 'hopr',
-      dataIndex: 'hopr',
-      ...getColumnSearchProps('hopr'),
+      key: 'hoprconstituency',
+      dataIndex: 'hoprconstituency',
+      ...getColumnSearchProps('hoprconstituency'),
     },
     {
-      title: 'HOPR id',
-      key: 'hoprconstituencyid',
-      dataIndex: 'hoprconstituencyid',
-      ...getColumnSearchProps('hoprconstituencyid'),
+      title: 'Created By',
+      key: 'created_by',
+      dataIndex: 'created_by',
+      ...getColumnSearchProps('created_by'),
+
     },
     {
       title: "Action",
       key: "action",
       render: (text, record) => (
-        <Button outline color="primary" onClick={() => { onChange_edit(text) }}   >Edit </Button>
+        <Button outline color="primary" onClick={() => { onChange_edit(text) }}>Edit </Button>
       ),
     }
-    ];
+  ];
 
   useEffect(() => {
     const token = localStorage.getItem('access_token')
     var config = {
-      url: `${process.env.REACT_APP_IP}/hopr_general_list`,
+      url: `${process.env.REACT_APP_IP}/hopr_list_not_checked`,
       method: 'GET',
       headers: {
         "Authorization": "Bearer  " + token
@@ -231,63 +215,54 @@ const  handleReset = clearFilters => {
       .catch(function (error) {
 
       });
-      var config2 = {
-        url: `${process.env.REACT_APP_IP}/rc_general_view`,
-        method: 'GET',
-        headers: {
-          "Authorization": "Bearer  " + token
-  
-        },
-  
-      };
-    
-      axios(config2)
-        .then(function (response) {
-          setregionrc_data(response.data)
-          setRcLoading(false)
-        })
-        .catch(function (error) {
-  
-        });
+    var config2 = {
+      url: `${process.env.REACT_APP_IP}/rc_list_not_checked`,
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer  " + token
+
+      },
+
+    };
+    axios(config2)
+      .then(function (response) {
+        setregionrc_data(response.data)
+        setRcLoading(false)
+      })
+      .catch(function (error) {
+
+      });
   }, [])
   return (
     <div>
-    <Card hoverable style={{ backgroundColor: '#f4f2ff', height: 'auto' }}>
-    <p style={{textAlign: 'center', paddingTop: '2%', fontSize: 18}}>የምርጫ ክልል የውጤት ቅፅ/CONSTITUENCY RESULTS FORM</p>
-            <Tabs defaultActiveKey="1" centered>
-                
-            <TabPane  tab="የተወካዮች ምክር ቤት ምርጫ/House of People's Representative" key="1">
-              {hoprLoading ? <Spin tip="Loading...">
-                <Alert
-                  message="Might take a minuit"
-                  description="House of People's Representative data is loading"
-                  type="info"
-                />
-              </Spin> :  <Table style={{ marginTop: 10 }} columns={columns} dataSource={region_data} /> }
-               
-                   
-                </TabPane>
-                <TabPane tab="የክልል ምክር ቤት ምርጫ/Regional Council Election" key="2">
-                  {rcLoading ? <Spin tip="Loading...">
-                <Alert
-                  message="Might take a minuit"
-                  description="Regional Council Election data is loading"
-                  type="info"
-                />
-              </Spin> :                 <Table style={{ marginTop: 10 }} columns={columns2} dataSource={regionrc_data} />
-}
-                </TabPane>
-               
-            </Tabs>
-            
-      
-    </Card>
-    
- <Modal visible={active_HoRC} onCancel={() => setactive_Rc(false)} onOk={() => setactive_Rc(false)} footer={null} width={1000}>
-   <RC_Update data_passed={data_to_be_edited_rc}/>
-   </Modal>   
-   <Modal visible={active_Hopr} onCancel={() => setactive_Hopr(false)} onOk={() => setactive_Hopr(false)} footer={null} width={1000}>
-   <HOPR_update data_passed={data_to_be_edited}/>
-   </Modal> 
+      <Card hoverable style={{ marginTop: 120, borderStyle: 'solid', borderColor: '#546768' }}>
+        <Tabs defaultActiveKey="1" centered>
+          <TabPane tab={<p className="tab-header">የየተወካዮች ምክር ቤት ምርጫ/House of People's Representative</p>} key="1">
+            {hoprLoading ? <Spin tip="Loading...">
+              <Alert
+                message="Might take a minuit"
+                description="House of People's Representative data is loading"
+                type="info"
+              />
+            </Spin> : <Table style={{ marginTop: 10 }} columns={columns} dataSource={region_data} />}
+          </TabPane>
+          <TabPane tab={<p className="tab-header">የክልል ምክር ቤት ምርጫ/Regional Council Election</p>} key="2">
+            {rcLoading ? <Spin tip="Loading...">
+              <Alert
+                message="Might take a minuit"
+                description="Regional Council Election data is loading"
+                type="info"
+              />
+            </Spin> : <Table style={{ marginTop: 10 }} columns={columns2} dataSource={regionrc_data} />
+            }
+          </TabPane>
+        </Tabs>
+      </Card>
+      <Modal visible={active_HoRC} onCancel={() => setactive_Rc(false)} onOk={() => setactive_Rc(false)} footer={null} width={1000}>
+        <RC_Update data_passed={data_to_be_edited_rc} />
+      </Modal>
+      <Modal visible={active_Hopr} onCancel={() => setactive_Hopr(false)} onOk={() => setactive_Hopr(false)} footer={null} width={1000}>
+        <HOPR_update data_passed={data_to_be_edited} />
+      </Modal>
     </div>)
 }

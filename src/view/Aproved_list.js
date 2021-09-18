@@ -1,74 +1,126 @@
 import React, { useState, useEffect } from 'react'
-import {Statistic, Card, Row, Col , Table, Tag, Space, Input, Button, Result} from 'antd'
-import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined , CaretDownOutlined } from '@ant-design/icons';
-import { Grid } from '@material-ui/core'
+import { Card, Table, Tabs, Button } from 'antd'
 import axios from 'axios';
 
+const { TabPane } = Tabs;
 
 export default function Aproved_list() {
-    
-  const [constituencies_data, setconstituencies_data] = useState([]);
-  const [region_data, setregion_data] = useState([]);
-  const [candidate_data, setcandidate_data] = useState([]);
-  const [general_data, setgeneral_data] = useState([{}]);
-  const [data, setdata] = useState([{}]);
-  const [constituencies_selected_data, setconstituencies_selected_data] = useState()
-  const [region_selected_data, setregion_selected_data] = useState(false)
-  const [region_selected_id, setregion_selected_id] = useState(false)
-  const [active, setActive] = useState(false)
-  const [values, setValues] = useState({})
-  const [loaded, setLoaded] = useState(false)
 
-  const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: [e.target.value] })
+  const [data, setdata] = useState([]);
+  const [datarc, setDatarc] = useState([])
+
+  const getHOPRGeneral = async () => {
+    try {
+
+      const response = await fetch(`${process.env.REACT_APP_IP}/hopr_approved_general`)
+      const res = await response.json()
+      setdata(res)
+    } catch (err) {
+      console.log(err)
+    }
   }
-  const onChange_general_data = (e) => {
-    setgeneral_data({ ...general_data, [e.target.name]: [e.target.value] })
-    console.log(general_data)
+  const getRCGeneral = async () => {
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_IP}/rc_approved_general`)
+      const res = await response.json()
+      setDatarc(res)
+    } catch (err) {
+      console.log(err)
+    }
   }
   useEffect(() => {
-    const token = localStorage.getItem('access_token')
-    var config = {
-      url: `${process.env.REACT_APP_IP}/region`,
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer  " + token
-
-      },
-
-    };
-    console.log(config);
-    axios(config)
-      .then(function (response) {
-        setregion_data(response.data)
-        console.log(response.data)
-      })
-      .catch(function (error) {
-
-      });
-
+    getHOPRGeneral()
+    getRCGeneral()
   }, [])
+
+
   const columns = [
     {
       title: 'Region',
-      dataIndex: 'Region',
+      dataIndex: 'region',
+      key: 'region',
+      width: '25%',
+
+    },
+    {
+      title: 'Constituency',
+      dataIndex: 'hoprconstituency',
+      key: 'hoprconstituency',
+      width: '25%',
+
+    },
+    {
+      title: 'Winner',
+      dataIndex: 'hoprconstituency',
+      key: 'hoprconstituency',
+      width: '15%',
+
+    },
+    {
+      title: 'Political party',
+      dataIndex: 'hoprconstituency',
+      key: 'hoprconstituency',
+      width: '25%',
+
+    },
+    {
+      title: 'Action',
+      dataIndex: 'hoprconstituency',
+      key: 'hoprconstituency',
+      width: '25%',
+      render: () => <Button type="primary">Print</Button>
+
+    },
+
+  ];
+
+
+  const columns2 = [
+    {
+      title: 'Region',
+      dataIndex: 'region',
       key: 'region',
       width: '35%',
-     
-    },
-      {
-        title: 'Constituency',
-        dataIndex: 'constituencycode',
-        key: 'constituencycode',
-        width: '35%',
-        
-      },
-      
-    ];
 
+    },
+    {
+      title: 'Regional Constituency',
+      dataIndex: 'rcconstituencyname',
+      key: 'rcconstituencyname',
+      width: '25%',
+
+    },
+    {
+      title: 'Winner',
+      dataIndex: 'winners',
+      key: 'winners',
+      width: '25%',
+      render: (Winners) =>
+        Winners.map((item, index) => (
+          <li className="winners">{item.name}  {item.vote} {item.party}</li>
+        ))
+    },
+    {
+      title: 'Action',
+      dataIndex: 'hoprconstituency',
+      key: 'hoprconstituency',
+      width: '25%',
+      render: () => <Button type="primary">Print</Button>
+    },
+  ];
 
   return (
-    <Card hoverable style={{backgroundColor: '#00b6ba', height: 'auto'}}>
-          <Table style={{marginTop: 10}} columns={columns} dataSource={data} />
+    <Card hoverable>
+      <Tabs defaultActiveKey="1" centered>
+        <TabPane tab={<p className="tab-header">የየተወካዮች ምክር ቤት ምርጫ/House of People's Representative</p>} key="1">
+          <Table style={{ marginTop: 10 }} columns={columns} dataSource={data} />
+        </TabPane>
+        <TabPane tab={<p className="tab-header">የክልል ምክር ቤት ምርጫ/Regional Council Election</p>} key="2">
+          <Table style={{ marginTop: 10 }} columns={columns2} dataSource={datarc} />
+        </TabPane>
+
+      </Tabs>
+
     </Card>)
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { notification,Form, Input, Cascader, Select, Modal, Button, AutoComplete, Card } from 'antd';
+import { notification, Form, Input, Cascader, Select, Modal, Button, AutoComplete, Card } from 'antd';
 import { Grid } from '@material-ui/core'
 import axios from 'axios';
 
@@ -14,53 +14,6 @@ const formItemLayout = {
     sm: { span: 8 },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 2,
-    },
-    sm: {
-      span: 16,
-      offset: 2,
-    },
-  },
-};
-
-const residences = [
-  {
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [
-      {
-        value: 'hangzhou',
-        label: 'Hangzhou',
-        children: [
-          {
-            value: 'xihu',
-            label: 'West Lake',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [
-      {
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [
-          {
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          },
-        ],
-      },
-    ],
-  },
-];
 const resultsAmharic = [
   { id: 1, value: 'የፖለቲካ ፓርቲ እና እጩ /የግል ተወዳዳሪ ስም' },
   { id: 2, value: 'ውጤቶች', },
@@ -85,40 +38,31 @@ const maximamEnglish = [
 ]
 
 const language = [
-				
-  { id: 1, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት',type:'number' },
-  { id: 2, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት',type:'number' },
-  { id: 3, value: 'ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር' ,type:'number'},
-  { id: 4, value: 'ምክንያት' ,type:'text'},
-  { id: 5, value: 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር',type:'number'},
-  { id: 6, value: 'የመራጭ ፆታ ሴት',type:'number'},
-  { id: 7, value: 'የመራጭ ፆታ ወንድ',type:'number' },
-  { id: 8, value: ' በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት', type:'number'},
-  { id: 9, value: 'በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት',type:'number' },
-  { id: 10, value: 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 11, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር',type:'number' },
-  { id: 12, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 13, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 14, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' },
-  { id: 15, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት',type:'number' }
+
+  { id: 0, value: 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት', type: 'number', name: "no_of_pollingstation" },
+  { id: 1, value: 'ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር', type: 'number', name: "exclude_no_of_pollingstation" },
+  { id: 2, value: 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር', type: 'number', name: 'q1' },
+  { id: 3, value: ' በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት', type: 'number', name: 'q2' },
+  { id: 4, value: 'በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት', type: 'number', name: 'q3' },
+  { id: 5, value: 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት', type: 'number', name: 'q4' },
+  { id: 6, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር', type: 'number', name: 'q5' },
+  { id: 7, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት', type: 'number', name: 'q6' },
+  { id: 8, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት', type: 'number', name: 'q7' },
+  { id: 9, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት', type: 'number', name: 'q8' },
+  { id: 10, value: 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት', type: 'number', name: 'q9' }
 ]
 const languageEnglish = [
- 
-  { id: 1, value: 'Number of polling stations in the constituency',type:'number'  },
-  { id: 2, value: 'Number of polling stations in the constituency' ,type:'number' },
-  { id: 3, value: 'Number of polling stations exclused from the results',type:'number'  },
-  { id: 4, value: 'Reason',type:'text'  },
-  { id: 5, value: 'Total number of registered voters in the constituency',type:'number'  },
-  { id: 6, value: 'Voter gender FeMale' ,type:'number' },
-  { id: 7, value: 'Voter gender Male' ,type:'number' },
-  { id: 8, value: 'Total number of ballot papers received in the constituency' ,type:'number' },
-  { id: 9, value: 'Total number of signatures on the Electoral Roll in the constituency',type:'number'  },
-  { id: 10, value: 'Total number of unused ballot papers in the constituency',type:'number'  },
-  { id: 11, value: 'Total number of spoiled ballot papers in the constituency',type:'number'  },
-  { id: 12, value: 'Total number of stray ballot papers in the constituency',type:'number'  },
-  { id: 13, value: 'Total number of valid ballot papers in the constituency',type:'number'  },
-  { id: 14, value: 'Total number of invalid ballot papers in the constituency',type:'number'  },
-  { id: 15, value: 'Total number of provisional ballot papers in the constituency',type:'number'  }
+  { id: 0, value: 'Number of polling stations in the constituency', type: 'number', name: "no_of_pollingstation" },
+  { id: 1, value: 'Number of polling stations exclused from the results', type: 'number', name: "exclude_no_of_pollingstation" },
+  { id: 2, value: 'Total number of registered voters in the constituency', type: 'number', name: 'q1' },
+  { id: 3, value: 'Total number of ballot papers received in the constituency', type: 'number', name: 'q2' },
+  { id: 4, value: 'Total number of signatures on the Electoral Roll in the constituency', type: 'number', name: 'q3' },
+  { id: 5, value: 'Total number of unused ballot papers in the constituency', type: 'number', name: 'q4' },
+  { id: 6, value: 'Total number of spoiled ballot papers in the constituency', type: 'number', name: 'q5' },
+  { id: 7, value: 'Total number of stray ballot papers in the constituency', type: 'number', name: 'q6' },
+  { id: 8, value: 'Total number of valid ballot papers in the constituency', type: 'number', name: 'q7' },
+  { id: 9, value: 'Total number of invalid ballot papers in the constituency', type: 'number', name: 'q8' },
+  { id: 10, value: 'Total number of provisional ballot papers in the constituency', type: 'number', name: 'q9' }
 ]
 
 export default function HOPR() {
@@ -126,112 +70,99 @@ export default function HOPR() {
   const [constituencies_data, setconstituencies_data] = useState([]);
   const [region_data, setregion_data] = useState([]);
   const [candidate_data, setcandidate_data] = useState([]);
-  const [general_data, setgeneral_data] = useState([{}]);
-  const [result_data, setresult_data] = useState([{}]);
+  const [general_data, setgeneral_data] = useState([]);
+  const [result_data, setresult_data] = useState([]);
   const [languageName, setLanguageName] = useState(language)
   const [resultlang, setResulLang] = useState(resultsAmharic)
-  const [constituencies_selected_data, setconstituencies_selected_data] = useState()
   const [region_selected_data, setregion_selected_data] = useState(false)
-  const [region_selected_id, setregion_selected_id] = useState(false)
   const [ballot_number, setballot_number] = useState(0);
   const [active, setActive] = useState(false)
   const [values, setValues] = useState({})
   const [loaded, setLoaded] = useState(false)
-  const [hoprrsult, sethoprrsult] = useState([])
-  const [winner_balot, setwinner_balot] = useState()
+  const [regionselected, setRegionSelected] = useState('')
   const [regionid, setregionid] = useState(language)
   const [oprconstituencyid, setoprconstituencyid] = useState(language)
   const [ids, setCandidateId] = useState(null)
-  const [constid, setConstituency] = useState(null)
 
 
-  const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: [e.target.value] })
-
-  }
   const send_hopr_data = (e) => {
+    console.log('tryinf')
     const token = localStorage.getItem('access_token');
-   
-    // for (var i = 1; i < result_data.length; i++) {
-    //   console.log('progress',result_data[i])
-    //   sethoprrsult(hoprrsult => [...hoprrsult,result_data[i]])
-    //  }
-
-    
-    result_data.map((id, ITEM) => (
-    // sethoprrsult(hoprrsult => [...hoprrsult,id[ITEM]])
-      console.log(id)
-    ))
-
     var send_data = {
-      "regionid": JSON.parse(regionid),
-      "hoprconstituencyid": JSON.parse(oprconstituencyid),
-      "no_of_pollingstation": JSON.parse(general_data[0]),
-      "exclude_no_of_pollingstation": JSON.parse(general_data[1]),
-      "q1": JSON.parse(general_data[3]),
-      "q2": JSON.parse(general_data[6]),
-      "q3": JSON.parse(general_data[7]),
-      "q4": JSON.parse(general_data[8]),
-      "q5": JSON.parse(general_data[9]),
-      "q6": JSON.parse(general_data[10]),
-      "q7": JSON.parse(general_data[11]),
-      "q8": JSON.parse(general_data[12]),
-      "q9": JSON.parse(general_data[13]),
-      "hoprResults": result_data.slice(1,),
-      "hoprax": ids
+      "approved": false,
+      'not_approved': false,
+      'region': regionselected,
+      'hoprconstituency': constituencies_data,
+      'no_of_pollingstation': general_data.no_of_pollingstation[0],
+      'exclude_no_of_pollingstation': general_data.exclude_no_of_pollingstation[0],
+      'q1': general_data.q1[0],
+      'q2': general_data.q2[0],
+      'q3': general_data.q3[0],
+      'q4': general_data.q4[0],
+      'q5': general_data.q5[0],
+      'q6': general_data.q6[0],
+      'q7': general_data.q7[0],
+      'q8': general_data.q8[0],
+      'q9': general_data.q9[0],
+      'results': result_data
 
     }
     var config = {
-      url: `${process.env.REACT_APP_IP}/hopr_general/`,
+      url: `${process.env.REACT_APP_IP}/hopr_create/`,
       method: 'POST',
       headers: {
-        "Authorization": "Bearer  " + token
-
+        "Authorization": "Bearer " + token
       },
-data:send_data
+      data: send_data
     };
-    console.log(config);
     axios(config)
       .then(function (response) {
         notification.open({
           message: 'Suceffully saved',
-         
+
         });
         setTimeout(() => {
           window.location.reload(false);
         }, 50);
-       
+
       })
       .catch(function (error) {
         notification.open({
           message: 'got eroor',
-         
+
         });
+        console.log(error)
       });
- 
-
-
+    console.log('passed')
   }
-  const onChange_general_data = (e) => {
+  const onGeneralChange = (e) => {
     setgeneral_data({ ...general_data, [e.target.name]: [e.target.value] })
-    console.log(general_data)
+    console.log(e.target.name, e.target.value)
   }
 
-  const onChange_result_data_ballot = (e) => {
- 
- 
-   setballot_number(e.target.value)
 
+  const onChangeResult = (e) => {
+    var data = result_data.find(i => i.id == e.target.name)
+    console.log('exists', data)
+
+    if (data) {
+      var indexs = result_data.findIndex(e => e.id === data.id)
+      var holder = result_data
+      holder[indexs]['vote'] = e.target.value
+      setresult_data(holder)
+      console.log(holder)
+    }
+    else {
+      var obj = {
+        'id': e.target.name,
+        'vote': e.target.value
+      }
+      setresult_data([...result_data, obj])
+      console.log('doesnt exist', e.target.name, e.target.value)
+      console.log(result_data)
+    }
   }
-  const onChange_result_data = (e) => {
- 
-    var data =candidate_data[e.target.name]
-    data.partyid=data.politicalpartyid
-    data.votes=JSON.parse(e.target.value);
- 
-   setresult_data(result_data => [...result_data,data])
-   console.log(result_data)
-  }
+
   const setEnglish = () => {
     setLanguageName(languageEnglish)
     setResulLang(resultsEnglish)
@@ -265,109 +196,79 @@ data:send_data
   const onFinish_winner = (value) => {
     console.log('candidate id set', value)
     setCandidateId(value)
-    // for (var i = 1; i < candidate_data.length; i++) {
-    //   if(candidate_data[i].fullname ==value)
-    //   candidate_data[i].ballotorder=ballot_number;
-    //   setwinner_balot(candidate_data[i])
-    //  }
-   
+  }
+  const onSelectRegion = (value) => {
+    setRegionSelected(value)
+    var config = {
+      url: `${process.env.REACT_APP_IP}/constituency/${value}`,
+      method: 'GET',
+    };
+    axios(config)
+      .then(function (response) {
+        setconstituencies_data(x => [...response.data,])
+
+        console.log(response.data)
+      })
+      .catch(function (error) {
+
+      });
+    setLoaded(true)
+
+
   }
   const onFinish = (value) => {
-    console.log(value)
     setLoaded(true)
     setregionid(value);
     for (var i = 1; i < region_data.length; i++) {
-     if(region_data[i].regionid ==value)
-     setregion_selected_data(region_data[i])
+      if (region_data[i].regionid == value)
+        setregion_selected_data(region_data[i])
     }
-console.log('tregion_selected_data',region_selected_data);
+    console.log('tregion_selected_data', region_selected_data);
 
-const token = localStorage.getItem('access_token')
-var config = {
-  url: `${process.env.REACT_APP_IP}/constituency_r/${value}`,
-  method: 'GET',
-  headers: {
-    "Authorization": "Bearer  " + token
+    const token = localStorage.getItem('access_token')
+    var config = {
+      url: `${process.env.REACT_APP_IP}/constituency_r/${value}`,
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer  " + token
 
-  },
-  
-};
-console.log(config);
-axios(config)
-  .then(function (response) {
-var x ={}
-    setconstituencies_data(x => [...response.data,])
-    
-    console.log(response.data)
-  })
-  .catch(function (error) {
+      },
 
-  });
+    };
+    console.log(config);
+    axios(config)
+      .then(function (response) {
+        var x = {}
+        setconstituencies_data(x => [...response.data,])
+
+        console.log(response.data)
+      })
+      .catch(function (error) {
+
+      });
 
   };
-  const on_select_constituency = (value) => {
-    setConstituency(value)
-  
-    setLoaded(true)
-    
-    for (var i = 1; i < constituencies_data.length; i++) {
-     if(constituencies_data[i].constituencyid==value)
-     setconstituencies_data(constituencies_data[i])
-    }
+  const onConstituencySelect = (value) => {
+    setconstituencies_data(value)
+    var config = {
+      url: `${process.env.REACT_APP_IP}/candidate/${value}`,
+      method: 'GET',
+    };
+    axios(config)
+      .then(function (response) {
+        var taken_data = response.data;
+        console.log('response of candidate', response);
+        setcandidate_data(response.data);
 
-    setoprconstituencyid(value);
-const token = localStorage.getItem('access_token')
-var config = {
-  url: `${process.env.REACT_APP_IP}/candidate/${value}`,
-  method: 'GET',
-  headers: {
-    "Authorization": "Bearer  " + token
+      })
+      .catch(function (error) {
 
-  },
-  
-};
-console.log(config);
-axios(config)
-  .then(function (response) {
-var taken_data =  response.data;
-console.log('response of candidate',response);
-// for (var i = 1; i < taken_data.length; i++) {
- 
-//   // taken_data[i].push({result_number:''})
-//   // console.log(taken_data[i].ballotorder);
- 
-//  }
- 
-    setcandidate_data(response.data);
-    
-  })
-  .catch(function (error) {
-
-  });
+      });
   };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
-
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
-
-
-  const websiteOptions = autoCompleteResult.map(website => ({
-    label: website,
-    value: website,
-  }));
 
   const children = [];
-  // for (const [ key, value ] of region_data) {
-  //     children.push(<Option >{value.regionname}</Option>);
-  // }
+
   for (var i = 1; i < region_data.length; i++) {
     children.push(<Option value={region_data[i].regionname}>{region_data[i].regionname}</Option>);
   }
@@ -377,64 +278,62 @@ console.log('response of candidate',response);
     listt.push(j)
   }
 
-  function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
   return (
-    <Card hoverable style={{ backgroundColor: '#6d55a4' }}>
-      <Button onClick={() => setEnglish()}>English</Button>
-      <Button onClick={() => setAmharic()}>አማርኛ</Button>
+    <Card hoverable className="hopr-card">
+      <div className="language">
+        <Button onClick={() => setEnglish()}>English</Button>
+        <Button onClick={() => setAmharic()}>አማርኛ</Button>
+      </div>
       <Form
         {...formItemLayout}
         form={form}
         name="register"
-        onFinish={onFinish}
         scrollToFirstError
       >
-        <Form.Item
-          name="ክልል/Region"
-          label={"ክልል/Region"}
-          rules={[
-            {
-              required: true,
-              message: 'ክልል/Please input your Region!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Select onChange={onFinish}  type="text" mode="inline" style={{ width: '100%',}} placeholder={region_selected_data.regionname} >
-          {region_data.map((id, ITEM) => (
-              <Option key={ITEM} value={id.regionid}>{id.regionname}</Option>
-          ))}
-          </Select>
-        </Form.Item>
-        {loaded ? 
-        <Form.Item
-        name="ምርጫ ክልል/Constituency"
-        label={"ምርጫ ክልል/Constituency"}
-        rules={[
-          {
-            required: true,
-            message: 'ምርጫ ክልል/Please input your Constituency!',
-          },
-        ]}
-        hasFeedback
-      >
-        <Select onChange={on_select_constituency} type="text" mode="inline" style={{ width: '100%',  }} placeholder={constituencies_data.constituencyname} >
-        {constituencies_data.length ?<>{
-        constituencies_data.map((id, ITEM) => (
-            <Option key={ITEM} value={id.constituencyid}>{id.constituencyname}</Option>
-        ))}</>:<></>}
-        </Select>
-      </Form.Item>: <></>}
-       {/* {constituencies_data.length ?<>{
-        <Card hoverable >
-
-          {languageName.slice(2,).map((item, index) => (
-
+        <div className="main-1">
+          <Form.Item
+            name="ክልል/Region"
+            label={<p style={{ paddingTop: '8%', color: 'white', fontWeight: 'bold' }}>ክልል/Region</p>}
+            rules={[
+              {
+                required: true,
+                message: 'ክልል/Please input your Region!',
+              },
+            ]}
+            hasFeedback
+          >
+            <Select onChange={onSelectRegion} type="text" mode="inline" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', textAlign: 'left' }} placeholder={region_selected_data.regionname} >
+              {region_data.map((id, ITEM) => (
+                <Option key={ITEM} value={id.regionid}>{id.regionname}</Option>
+              ))}
+            </Select>
+          </Form.Item>
+          {loaded ?
             <Form.Item
-              name={item.id}
-              label={item.value}
+              name="ምርጫ ክልል/Constituency"
+              label={<p className="lables" style={{ color: 'white' }}>ምርጫ ክልል/Constituency"</p>}
+              rules={[
+                {
+                  required: true,
+                  message: 'ምርጫ ክልል/Please input your Constituency!',
+                },
+              ]}
+              hasFeedback
+            >
+              <Select onChange={onConstituencySelect} type="text" mode="inline" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', textAlign: 'left' }} placeholder={constituencies_data.constituencyname} >
+                {constituencies_data.length ? <>{
+                  constituencies_data.map((id, ITEM) => (
+                    <Option key={ITEM} value={id.constituencyid}>{id.constituencyname}</Option>
+                  ))}</> : <></>}
+              </Select>
+            </Form.Item> : <></>}
+
+        </div>
+        <Card className='hopr-card-1' >
+          {languageName.map((item, index) => (
+            <Form.Item
+              name={index}
+              label={<p className="lables">{item.value}</p>}
               hasFeedback
               rules={[
                 {
@@ -443,109 +342,50 @@ console.log('response of candidate',response);
                 }
               ]}
             >
-              <Input type='number' name={index} onChange={onChange_general_data} />
+              <Input type={item.type} name={item.name} onChange={onGeneralChange} />
             </Form.Item>
 
           ))}
-          <Button type="primary" block onClick={() => setActive(true)}>
-            ውጤቶች/RESULTS
-          </Button>
+          <Form.Item>
+            <Button className="buttons" block onClick={() => setActive(true)}>
+              ውጤቶች/RESULTS
+            </Button>
+          </Form.Item>
+
         </Card>
-        }</>:
-        <> </>} */}
-        <Card hoverable >
-             {languageName.slice(1,).map((item, index) => (
-
-<Form.Item
-  name={item.id}
-  label={item.value}
-  hasFeedback
-  rules={[
-    {
-      required: true,
-      message: 'This field is required',
-    }
-  ]}
->
-  <Input type={item.type} name={index} onChange={onChange_general_data} />
-</Form.Item>
-
-))}
-<Button type="primary" block onClick={() => setActive(true)}>
-            ውጤቶች/RESULTS
-          </Button></Card>
-      </Form>
-      <Modal title={<p style={{ fontSize: 0, color: '#6d55a4' }}>{resultlang[1].value}</p>} visible={active} onCancel={() => setActive(false)} onOk={() => setActive(false)} footer={null} width={1000}>
-        <Form
-          {...formItemLayout}
-          name="register"
-          scrollToFirstError
-        >
+        <Modal title={<p style={{ fontSize: 0, color: '#6d55a4' }}>{resultlang[1].value}</p>} visible={active} onCancel={() => setActive(false)} onOk={() => setActive(false)} footer={null} width={1000}>
           <Grid container spacing={2} style={{ marginBottom: '2%' }}>
             <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}>Party and Candidate name</Grid>
             <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}> Result </Grid>
           </Grid>
-          
+
           {candidate_data.length ?
-          <>{
-           											
+            <>{
+              candidate_data.map((item, index) => (
+                <>
+                  <Form.Item
+                    name={item.candidateid}
+                    label={item.fullname}
 
-candidate_data.map((id, ITEM) => (
-         <>
-        
-          <Form.Item
-          name={id.fullname}
-          label={id.fullname}
-         
-          rules={[
-            {
-              required: true,
-              message: 'This field is required',
-            }
-          ]} 
-        >  {id.name}
-          {/* <Input type='number' name={item.value} placeholder={resultlang[2].value} onChange={onChange} /> */}
-           <Input type='number' key={ITEM} name={ITEM} onChange={ onChange_result_data} />
-        </Form.Item>
-        </>
-        ))}</>:<></>}
-        <strong> ከፍተኛ ድምፅ ያገኘ እጩ/Candidate with highest number of votes 	</strong>
-        {candidate_data.length ?<>{
-        <Card hoverable >
- <Form.Item
-          name={'የእጩ ተራ ቁጥር/ Ballot Order Number '}
-          label={'የእጩ ተራ ቁጥር/Ballot Order Number '}
-        >  
-          {/* <Input type='number' name={item.value} placeholder={resultlang[2].value} onChange={onChange} /> */}
-           <Input type='number' value={ballot_number} onChange={ onChange_result_data_ballot} />
-        </Form.Item>
-<Form.Item
-          name="ክከፍተኛ ድምፅ ያገኘ እጩ"
-          label={"ከፍተኛ ድምፅ ያገኘ እጩ"}
-          rules={[
-            {
-              required: true,
-              message: 'ከፍተኛ ድምፅ ያገኘ እጩ!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Select onChange={onFinish_winner}  type="text" mode="inline" style={{ width: '100%',}} placeholder={region_selected_data.regionname} >
-          {candidate_data.map((id, ITEM) => (
-              <Option key={ITEM} value={id.id}>{id.fullname },{'/'},{ id.name}</Option>
-          ))}
-          </Select>
-        </Form.Item>
-   
-        </Card>
-        }</>:
-        <> </>}
-        </Form>
-        <Button style={{ backgroundColor: '#6d55a4', color: 'white' }} onClick={ send_hopr_data}>
-          Confirm and Save
-        </Button>
+                    rules={[
+                      {
+                        required: true,
+                        message: 'This field is required',
+                      }
+                    ]}
+                  >  {item.name}
+                    <Input type='number' key={index} name={item.candidateid} onChange={onChangeResult} />
+                  </Form.Item>
+                </>
+              ))}</> : <></>}
+          <Form.Item>
+            <Button onClick={send_hopr_data} style={{ backgroundColor: '#6d55a4', color: 'white' }} htmlType="submit" >
+              Submit
+            </Button>
+          </Form.Item>
 
-      </Modal>
+        </Modal>
+      </Form>
 
     </Card>
   )

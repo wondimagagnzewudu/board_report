@@ -215,10 +215,10 @@ export default function HOPR_update(props) {
   }
 
   const onChange_result_data = (e) => {
-var value_holder=result_data;
+    var value_holder = result_data;
     var data = candidate_data[e.target.name]
-    data=data.votes=e.target.value;
-value_holder[e.target.name]=data
+    data = data.votes = e.target.value;
+    value_holder[e.target.name] = data
     setresult_data(result_data => [...value_holder])
     console.log(result_data)
   }
@@ -402,7 +402,7 @@ value_holder[e.target.name]=data
         >
           <Select onChange={onFinish_winner} defaultValue={data_passed.hopr_max[0].candidteid.fullname} type="text" mode="inline" style={{ width: '100%', }} placeholder={region_selected_data.regionname} >
             {candidate_data.map((id, ITEM) => (
-              <Option size={'large'} key={ITEM} value={id.id}>{id.candidatename},{'/'},{ id.partyname}</Option>
+              <Option size={'large'} key={ITEM} value={id.id}>{id.candidatename},{'/'},{id.partyname}</Option>
             ))}
           </Select>
         </Form.Item>
@@ -412,7 +412,7 @@ value_holder[e.target.name]=data
       <br />
       <Button style={{ backgroundColor: '#6d55a4', color: 'white' }} onClick={send_hopr_data}>
         Confirm and Save
-        </Button>
+      </Button>
 
 
 
