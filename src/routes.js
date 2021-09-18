@@ -1,6 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable'
-``
+
 
 function Loading() {
   return <div>Loading...</div>;
@@ -31,6 +31,14 @@ const ToAdd = Loadable({
   loader: () => import('./view/ToAdd'),
   loading: Loading
 })
+const HOPR_update = Loadable({
+  loader: () => import('./view/HOPR_update'),
+  loading: Loading
+})
+const RC_Update = Loadable({
+  loader: () => import('./view/RC_Update'),
+  loading: Loading
+})
 
 
 // const InsidenceReport = Loadable({
@@ -46,6 +54,8 @@ const routes = [
   { path: '/Aproved_list', exact: true, name: 'Aproved_list', component: Aproved_list },
   { path: '/home', exact: true, name: 'Dashboard', component: Dashboard },
   { path: '/Addreport', exact: true, name: 'Add Report', component: ToAdd },
+  { path: '/hupdate', exact: true, name: 'Update HOPR', component: HOPR_update },
+  { path: '/rupdate', exact: true, name: 'Update RC', component: RC_Update }
 
 
 

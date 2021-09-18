@@ -125,3 +125,17 @@
 .s-text{
   color: wheat
 }
+.winner-look{
+  color: white;
+  font-size: 20px;
+  background-color:#00b6ba;
+  padding: 2%
+}
+.desclamer {
+  color: rgb(243, 240, 240);
+  font-size: 12px;
+}
+.desclamer:hover{
+  color: #00b6ba;
+  font-size: 18px
+}

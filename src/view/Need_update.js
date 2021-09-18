@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import {Statistic, Card, Row, Col , Table, Tag, Space, Input, Button, Result} from 'antd'
-import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined , CaretDownOutlined } from '@ant-design/icons';
+import { Statistic, Card, Row, Col, Table, Tag, Space, Input, Button, Result } from 'antd'
+import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { Grid } from '@material-ui/core'
 import axios from 'axios';
 
@@ -54,43 +54,43 @@ export default function Need_update() {
       dataIndex: 'Region',
       key: 'region',
       width: '35%',
-     
+
     },
-      {
-        title: 'Constituency',
-        dataIndex: 'constituencycode',
-        key: 'constituencycode',
-        width: '35%',
-        
-      },
-      
-      {
-        title: 'Response',
-        dataIndex: 'response',
-        key: 'response',
-        render: address => (
-          <>
-            {address.map(tag => {
-              let color = tag.length > 5 ? 'geekblue' : 'green';
-              if (tag === 'All Good') {
-                color = 'green';
-              } else if (tag === "Problem"){
-                color = 'volcano'
-              }
-              return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
-              );
-            })}
-          </>
-        ),
-      },
-    ];
+    {
+      title: 'Constituency',
+      dataIndex: 'constituencycode',
+      key: 'constituencycode',
+      width: '35%',
+
+    },
+
+    {
+      title: 'Response',
+      dataIndex: 'response',
+      key: 'response',
+      render: address => (
+        <>
+          {address.map(tag => {
+            let color = tag.length > 5 ? 'geekblue' : 'green';
+            if (tag === 'All Good') {
+              color = 'green';
+            } else if (tag === "Problem") {
+              color = 'volcano'
+            }
+            return (
+              <Tag color={color} key={tag}>
+                {tag.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </>
+      ),
+    },
+  ];
 
 
   return (
-    <Card hoverable style={{backgroundColor: '#00b6ba', height: 'auto'}}>
-          <Table style={{marginTop: 10}} columns={columns} dataSource={data} />
+    <Card hoverable style={{ backgroundColor: '#00b6ba', height: 'auto' }}>
+      <Table style={{ marginTop: 10 }} columns={columns} dataSource={data} />
     </Card>)
 }

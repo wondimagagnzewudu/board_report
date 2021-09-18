@@ -1,57 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import { Tabs, Statistic, Card, Row, Col, Modal, Table, Tag, Space, Input, Button, Result, Spin, Alert } from 'antd'
-import { AudioOutlined, SearchOutlined, ArrowUpOutlined, ArrowDownOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
-import { Grid } from '@material-ui/core'
+import { Tabs, Card, Modal, Table, Space, Input, Button, Spin, Alert } from 'antd'
+import { SearchOutlined, } from '@ant-design/icons';
 import axios from 'axios';
 import Highlighter from 'react-highlight-words';
-import RC_Update from './RC_Update';
-import HOPR_update from './HOPR_update';
+import { useHistory } from "react-router-dom";
+
+
 const { TabPane } = Tabs;
+
+
 export default function Need_check() {
-  const [selectedKeys, setSelectedKeys] = useState()
-  const [activeGra, setActiveGra] = useState(true)
-  const [active_HoRC, setactive_Rc] = useState(false)
-  const [active_Hopr, setactive_Hopr] = useState(false)
   const [searchText, setSearchText] = useState()
   const [searchedColumn, setSearchedColumn] = useState('')
   var [searchInput, setSearchInput] = useState('')
-  const [data, setdata] = useState([])
-  const [noProblem, setNoProblem] = useState([])
-  const [missing, setMissing] = useState([])
-  const [nothing, setNothing] = useState([])
-  const [failedMessage, setFailed] = useState([])
-  const [data_to_be_edited, setdata_to_be_edited] = useState([])
-  const [data_to_be_edited_rc, setdata_to_be_edited_rc] = useState([])
-  const [constituencies_data, setconstituencies_data] = useState([]);
-  const [region_data, setregion_data] = useState([]);
-  const [regionrc_data, setregionrc_data] = useState([]);
-  const [candidate_data, setcandidate_data] = useState([]);
-  const [general_data, setgeneral_data] = useState([{}]);
-
+  const [region_data, setHOPRData] = useState([]);
+  const [regionrc_data, setRCDatas] = useState([]);
+  var location = useHistory();
   const [rcLoading, setRcLoading] = useState(true)
   const [hoprLoading, setHoprLoading] = useState(true)
-  const [region_selected_id, setregion_selected_id] = useState(false)
-  const [active, setActive] = useState(false)
-  const [values, setValues] = useState({})
-  const [loaded, setLoaded] = useState(false)
 
 
   const onChange_edit = (value) => {
-    setdata_to_be_edited(value);
-    setTimeout(() => {
-      setactive_Hopr(true);
-    }, 30);
-
+    console.log(value)
+    location.push({
+      pathname: "/hupdate",
+      value: value,
+    });
   }
+
   const onChange_edit_rc = (value) => {
-    const datas = region_data.find(function (item) {
-      return item.hoprconstituencyid == value
-    })
-    console.log(datas)
-    setdata_to_be_edited_rc(datas);
-    setTimeout(() => {
-      setactive_Rc(true);
-    }, 30);
+    location.push({
+      pathname: "/rupdate",
+      value: value,
+    });
 
   }
 
@@ -189,7 +170,7 @@ export default function Need_check() {
       title: "Action",
       key: "action",
       render: (text, record) => (
-        <Button outline color="primary" onClick={() => { onChange_edit(text) }}>Edit </Button>
+        <Button outline color="primary" onClick={() => onChange_edit(text)}>Edit </Button>
       ),
     }
   ];
@@ -208,9 +189,8 @@ export default function Need_check() {
     console.log(config);
     axios(config)
       .then(function (response) {
-        setregion_data(response.data)
+        setHOPRData(response.data)
         setHoprLoading(false)
-        console.log(response.data)
       })
       .catch(function (error) {
 
@@ -226,7 +206,7 @@ export default function Need_check() {
     };
     axios(config2)
       .then(function (response) {
-        setregionrc_data(response.data)
+        setRCDatas(response.data)
         setRcLoading(false)
       })
       .catch(function (error) {
@@ -258,11 +238,11 @@ export default function Need_check() {
           </TabPane>
         </Tabs>
       </Card>
-      <Modal visible={active_HoRC} onCancel={() => setactive_Rc(false)} onOk={() => setactive_Rc(false)} footer={null} width={1000}>
+      {/* <Modal visible={active_HoRC} onCancel={() => setactive_Rc(false)} onOk={() => setactive_Rc(false)} footer={null} width={1000}>
         <RC_Update data_passed={data_to_be_edited_rc} />
       </Modal>
       <Modal visible={active_Hopr} onCancel={() => setactive_Hopr(false)} onOk={() => setactive_Hopr(false)} footer={null} width={1000}>
         <HOPR_update data_passed={data_to_be_edited} />
-      </Modal>
+      </Modal> */}
     </div>)
 }
