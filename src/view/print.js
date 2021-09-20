@@ -12,6 +12,7 @@ function HOPR_print(props) {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+  var variable_data={'variable_data':props.location.state.variable_data}
   return (
     <div>
       <Button
@@ -25,7 +26,7 @@ function HOPR_print(props) {
       </Button>
       <HOPRprint
        ref={componentRef}
-        data={props.location.state.variable_data}
+        data={variable_data}
       />
     </div>
   );
@@ -33,7 +34,7 @@ function HOPR_print(props) {
 export { HOPR_print };
 function Rc_print(props) {
  const componentRef = useRef();
-
+ var variable_data={'variable_data':props.location.state.variable_data}
 
  const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -51,7 +52,7 @@ function Rc_print(props) {
       </Button>
       <Rcprint
        ref={componentRef}
-        data={props.location.state.variable_data}
+        data={variable_data}
       />
     </div>
   );
