@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const { TabPane } = Tabs;
 
-export default function Aproved_list() {
+export default function Aproved_list(props) {
 
   const [data, setdata] = useState([]);
   const [datarc, setDatarc] = useState([])
@@ -18,6 +18,54 @@ export default function Aproved_list() {
     } catch (err) {
       console.log(err)
     }
+  }
+  const export_data = async (file) => {
+
+    props.history.push({
+
+      pathname: '/ResultPrint',
+
+      state: {
+          'variable_data': file,
+      }
+
+  });
+  }
+  const print_data_Hopr = async (file) => {
+    props.history.push({
+
+      pathname: '/Rc_print',
+
+      state: {
+          'variable_data': file,
+      }
+
+  });
+ 
+  }
+  const export_data_rc = async (file) => {
+
+    props.history.push({
+
+      pathname: '/ResultPrintRC',
+
+      state: {
+          'variable_data': file,
+      }
+
+  });
+  }
+  const print_data_rc = async (file) => {
+    props.history.push({
+
+      pathname: '/HOPR_print',
+
+      state: {
+          'variable_data': file,
+      }
+
+  });
+ 
   }
   const getRCGeneral = async () => {
 
@@ -69,8 +117,22 @@ export default function Aproved_list() {
       dataIndex: 'hoprconstituency',
       key: 'hoprconstituency',
       width: '25%',
-      render: () => <Button type="primary">Print</Button>
+      render: (text, record) => (
+        <Button type="primary"onClick={() => { export_data(record) }}>export </Button>
+      ),
 
+      
+    },
+    {
+      title: '',
+      dataIndex: 'hoprconstituency',
+      key: 'hoprconstituency',
+      width: '25%',
+   
+      render: (text, record) => (
+        <Button type="primary"onClick={() => { print_data_Hopr(record) }}>Print </Button>
+      ),
+      
     },
 
   ];
@@ -106,7 +168,22 @@ export default function Aproved_list() {
       dataIndex: 'hoprconstituency',
       key: 'hoprconstituency',
       width: '25%',
-      render: () => <Button type="primary">Print</Button>
+      render: (text, record) => (
+        <Button type="primary"onClick={() => { export_data_rc(record) }}>export </Button>
+      ),
+
+      
+    },
+    {
+      title: '',
+      dataIndex: 'hoprconstituency',
+      key: 'hoprconstituency',
+      width: '25%',
+   
+      render: (text, record) => (
+        <Button type="primary"onClick={() => { print_data_rc(record) }}>Print </Button>
+      ),
+      
     },
   ];
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable'
-
+import {Rc_print,HOPR_print} from "./view/print";
 
 function Loading() {
   return <div>Loading...</div>;
@@ -39,7 +39,14 @@ const RC_Update = Loadable({
   loader: () => import('./view/RC_Update'),
   loading: Loading
 })
-
+const ResultPrint = Loadable({
+  loader: () => import('./view/ResultPrint'),
+  loading: Loading
+})
+const ResultPrintRC = Loadable({
+  loader: () => import('./view/ResultPrintRC'),
+  loading: Loading
+})
 
 // const InsidenceReport = Loadable({
 //   loader: () => import('./view/Dashboard/InsidenceReport'),
@@ -55,8 +62,11 @@ const routes = [
   { path: '/home', exact: true, name: 'Dashboard', component: Dashboard },
   { path: '/Addreport', exact: true, name: 'Add Report', component: ToAdd },
   { path: '/hupdate', exact: true, name: 'Update HOPR', component: HOPR_update },
-  { path: '/rupdate', exact: true, name: 'Update RC', component: RC_Update }
-
+  { path: '/rupdate', exact: true, name: 'Update RC', component: RC_Update },
+{ path: '/ResultPrintRC', exact: true, name: 'ResultPrintRC', component:ResultPrintRC},
+  { path: '/ResultPrint', exact: true, name: 'ResultPrint', component:ResultPrint},
+  { path: '/Rc_print', exact: true, name: 'Rc_print', component: Rc_print},
+  { path: '/HOPR_print', exact: true, name: 'HOPR_print', component:HOPR_print},
 
 
 
