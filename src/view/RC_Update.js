@@ -74,7 +74,8 @@ export default function RC_update(props) {
   const [data, setData] = useState(location.value);
   const [result, setResult] = useState([])
   const [general, setGeneral] = useState({
-    'approved': location.value.approved,
+    'approve': location.value.approve,
+    'no_of_seat': location.value.no_of_seat,
     'exclude_no_of_pollingstation': (location.value.exclude_no_of_pollingstation),
     'hoprconstituencyid': location.value.hoprconstituencyid,
     'no_of_pollingstation': (location.value.no_of_pollingstation),
@@ -128,9 +129,10 @@ export default function RC_update(props) {
     const token = localStorage.getItem('access_token');
 
     var send_data = {
-      "approved": approve,
+      "approve": approve,
       // "regionid": data_passed.regionid,
       "hoprconstituencyid": general.hoprconstituencyid,
+      'no_of_seat': general.no_of_seat,
       "no_of_pollingstation": general.no_of_pollingstation,
       "exclude_no_of_pollingstation": general.exclude_no_of_pollingstation,
       "q1": general.q1,
@@ -147,7 +149,7 @@ export default function RC_update(props) {
 
     }
     var config = {
-      url: `${process.env.REACT_APP_IP}/hopr_update/${location.value.id}`,
+      url: `${process.env.REACT_APP_IP}/rc_update/${location.value.id}`,
       method: 'PUT',
       headers: {
         "Authorization": "Bearer  " + token
@@ -278,8 +280,13 @@ export default function RC_update(props) {
               ))}</> : <></>}
           <br />
         </Card>
-        <p className="winner-look">The Winner is {data.winners.name} from {data.winners.party} with {data.winners.vote} Votes
-          :&nbsp;&nbsp;&nbsp;
+        <p className="winner-look">Winners
+          <ul>
+            {data.winners.map((item, index) => (
+              <ul>{item.name} with {item.vote} votes</ul>
+            ))}
+          </ul>
+          &nbsp;&nbsp;&nbsp;
           {approve ? <Button type="danger" onClick={send_hopr_data}>
             Confirm and Save
           </Button> : <Button type="dashed">Cancle</Button>}

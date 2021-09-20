@@ -29,6 +29,7 @@ export default function Need_check() {
   }
 
   const onChange_edit_rc = (value) => {
+    console.log(value)
     location.push({
       pathname: "/rupdate",
       value: value,
@@ -138,7 +139,7 @@ export default function Need_check() {
     },
     {
       title: "Action",
-      key: "hoprconstituencyid",
+      key: "action",
       render: (text, record) => (
         <Button outline color="primary" onClick={() => { onChange_edit_rc(text) }}   >Edit </Button>
       ),
