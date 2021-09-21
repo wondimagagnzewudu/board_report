@@ -22,7 +22,7 @@ class HOPRprint extends React.PureComponent {
             </div>
             <Form
               layout="horizontal"
-              style={{ marginLeft: "20%", width: "60%", justifyContent: 'center', marginTop: "2%" }}
+              style={{ width: "100%", justifyContent: 'center', marginTop: "2%" }}
               initialValues={{
                 size: "default",
               }}
@@ -33,23 +33,20 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={5}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
                   <p>ክልል</p>
                 </Col>
                 <Col
                   span={5}
                   order={2}
                   style={{ borderRightStyle: "solid", borderWidth: 1 }}
-
                 >
                   <p>{this.props.data.variable_data.region}</p>
                 </Col>
                 <Col
                   span={5}
                   order={3}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle">
                   <p>ምርጫ ክልል</p>
                 </Col>
                 <Col span={5} order={4} offset={1}>
@@ -61,8 +58,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.no_of_pollingstation}</p></Col>
@@ -71,8 +68,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.exclude_no_of_pollingstation}</p></Col>
@@ -82,8 +79,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   1. በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር
                 </Col>
 
@@ -96,8 +93,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   2.  በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q2}</p></Col>
@@ -106,8 +103,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   3.በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q3}</p></Col>
@@ -116,8 +113,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   4.በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q4}</p></Col>
@@ -126,8 +123,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   5. በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q5}</p></Col>
@@ -136,8 +133,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   6. በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q6}</p></Col>
@@ -146,8 +143,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   7. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q7}</p></Col>
@@ -156,8 +153,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   8. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q8}</p></Col>
@@ -166,8 +163,8 @@ class HOPRprint extends React.PureComponent {
                 <Col
                   span={15}
                   order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
+                  className="colon-syle"                >
+
                   9. በምርጫ ጣቢያ ውስጥ የተመዘገቡ መራጮች ብዛት
                 </Col>
                 <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.q9}</p></Col>
@@ -175,44 +172,27 @@ class HOPRprint extends React.PureComponent {
               <br />
               <p style={{ textAlign: "center", margin: 0 }}>ውጤቶች</p>
               <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+
                 <Col
-                  span={1}
-                  order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
-                  #
-                </Col>
-                <Col
-                  span={15}
+                  span={21}
                   order={2}
                   style={{ borderRightStyle: "solid", borderWidth: 1 }}
                 >
                   <p style={{ textAlign: "center" }}>የፖለቲካ ፓርቲ እና እጩ</p>
                 </Col>
-                <Col span={5} order={3} offset={1}>የተሰጠ ድምፅ</Col>
+                <Col span={1} order={3} offset={1}>የተሰጠ ድምፅ</Col>
               </Row>
               {
                 this.props.data.variable_data.result.map((item, index) => (
                   <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
                     <Col
-                      span={1}
-                      order={1}
-                      style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                    >
-                      {index + 1}
-                    </Col>
-                    <Col
-                      span={15}
+                      span={21}
                       order={2}
-                      style={{
-                        borderRightStyle: "solid",
-                        borderWidth: 1,
-                        paddingLeft: "2%",
-                      }}
-                    >
+                      className="colon-syle"                >
+
                       {item.candidate.fullname}({item.candidate.name})
                     </Col>
-                    <Col span={5} order={3} offset={1}> {item.vote}</Col>
+                    <Col span={1} order={3} offset={1}> {item.vote}</Col>
 
                   </Row>
                 ))
@@ -221,15 +201,9 @@ class HOPRprint extends React.PureComponent {
               <br />
               <p style={{ textAlign: "left", margin: 0 }}>ከፍተኛ ድምጽ ያላቸው እጩዎች</p>
               <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+
                 <Col
-                  span={1}
-                  order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
-                  #
-                </Col>
-                <Col
-                  span={15}
+                  span={21}
                   order={2}
                   style={{
                     borderRightStyle: "solid",
@@ -241,33 +215,18 @@ class HOPRprint extends React.PureComponent {
                 </Col>
                 <Col span={5} order={3} offset={1}>የፖለቲካ ፓርቲ/የግል ተወዳዳሪ ስም</Col>
               </Row>
-              {/* {
-                this.props.data.variable_data.winners.map((item, index) => ( */}
               <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
-                <Col
-                  span={1}
-                  order={1}
-                  style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                >
-                  1
-                </Col>
+
                 <Col
                   span={15}
                   order={2}
-                  style={{
-                    borderRightStyle: "solid",
-                    borderWidth: 1,
-                    paddingLeft: "2%",
-                  }}
-                >
+                  className="colon-syle"                >
+
                   {this.props.data.variable_data.winners.name}
                 </Col>
                 <Col span={5} order={3} offset={1}> {this.props.data.variable_data.winners.party}</Col>
 
               </Row>
-              {/* ))
-              } */}
-
               <div
                 style={{
                   display: "flex",
@@ -291,21 +250,28 @@ class HOPRprint extends React.PureComponent {
               <br />
               <br />
               <div className="signiture-container">
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <p>የዴታ ኢንኮደር ስም ፡: ______________________________________የሱፐርቫይዘር ስም: _______________________________</p>
-                  <p>ፊርማ: _________________________________________________ፊርማ: ______________________________________</p>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: 'space-around' }}>
+                  <div >
+                    <p>የዴታ ኢንኮደር ስም ፡: ______________________________________</p>
+                    <p>ፊርማ: _________________________________________________</p>
+                  </div>
+                  <div>
+                    <p>የሱፐርቫይዘር ስም: _______________________________</p>
+                    <p>ፊርማ: _________________________________________________</p>
+                  </div>
                 </div>
+                <br />
                 <div>
                   <p>የኢትዮጵያ ብሔራዊ ምርጫ ቦርድ በአዋጅ ቁጥር 1133/2011 አንቀጽ 7 ንዑስ አንቀጽ 18 የምርጫ ውጤቶችን ለማረጋግጥ እና ይፋ ለማድረግ በተሰጠው ስልጣን መሰረት ይዚህንውጤት ትክክለኛነት አረጋግጦ ይፋ አድርጓል። </p>
+                  <br />
                   <p>___________________________________</p>
                   <p>ብርቱካን ሚደቅሳ</p>
-                  <p>የኢትዮጵያ ብሔራዊ ምርጫ ቦርድ ሰብሳቢ</p>
                 </div>
               </div>
             </Form>
           </div>
-        </Card>
-      </div>
+        </Card >
+      </div >
     );
   }
 }

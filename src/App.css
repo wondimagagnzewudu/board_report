@@ -196,3 +196,11 @@
 .vote-header-1{
   color:#00b6ba
 }
+.colon-syle{
+  display: flex;
+  padding-left: 1%;
+  border-right-style: solid;
+  width: 100%;
+  border-width: 1px;
+  justify-content: flex-start
+}
