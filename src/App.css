@@ -202,5 +202,17 @@
   border-right-style: solid;
   width: 100%;
   border-width: 1px;
-  justify-content: flex-start
+  justify-content: flex-start;
+  font-size: 14px;
+  line-height: 12px;
+  align-items: center;
+}
+.text-cell{
+  font-size:12px;
+}
+.row-st{
+  border: 1px solid;
+  width: 100%;  
+  line-height: 14px;
+
 }

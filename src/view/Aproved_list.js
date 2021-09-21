@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Table, Tabs, Button } from 'antd'
+import { Card, Table, Tabs, Button, Tooltip } from 'antd'
 import axios from 'axios';
 
 const { TabPane } = Tabs;
@@ -100,27 +100,12 @@ export default function Aproved_list(props) {
     },
     {
       title: 'Winner',
-      dataIndex: 'hoprconstituency',
-      key: 'hoprconstituency',
+      dataIndex: 'winners',
+      key: 'winners',
       width: '15%',
-
-    },
-    {
-      title: 'Political party',
-      dataIndex: 'hoprconstituency',
-      key: 'hoprconstituency',
-      width: '25%',
-
-    },
-    {
-      title: 'Action',
-      dataIndex: 'hoprconstituency',
-      key: 'hoprconstituency',
-      width: '25%',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => { export_data(record) }}>export </Button>
-      ),
-
+      render: (data) => (
+        <Tooltip placement="topLeft" title={<p>{data.party}</p>} arrowPointAtCenter>{data.name}</Tooltip>
+      )
 
     },
     {
@@ -159,21 +144,15 @@ export default function Aproved_list(props) {
       key: 'winners',
       width: '25%',
       render: (Winners) =>
-        Winners.map((item, index) => (
-          <li className="winners">{item.name}  {item.vote} {item.party}</li>
+        Winners.map((data, index) => (
+          <>
+            <Tooltip placement="topLeft" title={<p>{data.party}</p>} arrowPointAtCenter>{data.name}</Tooltip>
+            <br />
+          </>
+          // <li className="winners">{item.name}  {item.vote} {item.party}</li>
         ))
     },
-    {
-      title: 'Action',
-      dataIndex: 'hoprconstituency',
-      key: 'hoprconstituency',
-      width: '25%',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => { export_data_rc(record) }}>export </Button>
-      ),
 
-
-    },
     {
       title: '',
       dataIndex: 'hoprconstituency',
