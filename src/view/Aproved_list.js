@@ -26,22 +26,22 @@ export default function Aproved_list(props) {
       pathname: '/ResultPrint',
 
       state: {
-          'variable_data': file,
+        'variable_data': file,
       }
 
-  });
+    });
   }
   const print_data_Hopr = async (file) => {
     props.history.push({
 
-      pathname: '/Rc_print',
+      pathname: '/HOPR_print',
 
       state: {
-          'variable_data': file,
+        'variable_data': file,
       }
 
-  });
- 
+    });
+
   }
   const export_data_rc = async (file) => {
 
@@ -50,22 +50,22 @@ export default function Aproved_list(props) {
       pathname: '/ResultPrintRC',
 
       state: {
-          'variable_data': file,
+        'variable_data': file,
       }
 
-  });
+    });
   }
   const print_data_rc = async (file) => {
     props.history.push({
 
-      pathname: '/HOPR_print',
+      pathname: '/Rc_print',
 
       state: {
-          'variable_data': file,
+        'variable_data': file,
       }
 
-  });
- 
+    });
+
   }
   const getRCGeneral = async () => {
 
@@ -118,21 +118,21 @@ export default function Aproved_list(props) {
       key: 'hoprconstituency',
       width: '25%',
       render: (text, record) => (
-        <Button type="primary"onClick={() => { export_data(record) }}>export </Button>
+        <Button type="primary" onClick={() => { export_data(record) }}>export </Button>
       ),
 
-      
+
     },
     {
       title: '',
       dataIndex: 'hoprconstituency',
       key: 'hoprconstituency',
       width: '25%',
-   
+
       render: (text, record) => (
-        <Button type="primary"onClick={() => { print_data_Hopr(record) }}>Print </Button>
+        <Button type="primary" onClick={() => { print_data_Hopr(record) }}>Print </Button>
       ),
-      
+
     },
 
   ];
@@ -169,26 +169,26 @@ export default function Aproved_list(props) {
       key: 'hoprconstituency',
       width: '25%',
       render: (text, record) => (
-        <Button type="primary"onClick={() => { export_data_rc(record) }}>export </Button>
+        <Button type="primary" onClick={() => { export_data_rc(record) }}>export </Button>
       ),
 
-      
+
     },
     {
       title: '',
       dataIndex: 'hoprconstituency',
       key: 'hoprconstituency',
       width: '25%',
-   
+
       render: (text, record) => (
-        <Button type="primary"onClick={() => { print_data_rc(record) }}>Print </Button>
+        <Button type="primary" onClick={() => { print_data_rc(record) }}>Print </Button>
       ),
-      
+
     },
   ];
 
   return (
-    <Card hoverable>
+    <Card hoverable style={{ marginTop: '8%' }}>
       <Tabs defaultActiveKey="1" centered>
         <TabPane tab={<p className="tab-header">የየተወካዮች ምክር ቤት ምርጫ/House of People's Representative</p>} key="1">
           <Table style={{ marginTop: 10 }} columns={columns} dataSource={data} />

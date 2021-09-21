@@ -3,6 +3,7 @@ import { notification, Form, Input, Cascader, Select, Modal, Button, AutoComplet
 import { Grid } from '@material-ui/core'
 import axios from 'axios';
 
+
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -68,7 +69,7 @@ const languageEnglish = [
 export default function HOPR() {
   const [form] = Form.useForm();
   const [constituencies_data, setconstituencies_data] = useState([]);
-  const [selecteconsti, setselecteconsti] = useState({})
+  const [selecteconsti, setselecteconsti] = useState({ 'empity': true })
   const [region_data, setregion_data] = useState([]);
   const [candidate_data, setcandidate_data] = useState([]);
   const [general_data, setgeneral_data] = useState([]);
@@ -76,14 +77,10 @@ export default function HOPR() {
   const [languageName, setLanguageName] = useState(language)
   const [resultlang, setResulLang] = useState(resultsAmharic)
   const [region_selected_data, setregion_selected_data] = useState(false)
-  const [ballot_number, setballot_number] = useState(0);
-  const [active, setActive] = useState(false)
-  const [values, setValues] = useState({})
   const [loaded, setLoaded] = useState(false)
   const [regionselected, setRegionSelected] = useState('')
+  const [change, setChange] = useState(false)
   const [regionid, setregionid] = useState(language)
-  const [oprconstituencyid, setoprconstituencyid] = useState(language)
-  const [ids, setCandidateId] = useState(null)
 
 
   const send_hopr_data = (e) => {
@@ -138,7 +135,6 @@ export default function HOPR() {
   }
   const onGeneralChange = (e) => {
     setgeneral_data({ ...general_data, [e.target.name]: [e.target.value] })
-    console.log(e.target.name, e.target.value)
   }
 
 
@@ -214,40 +210,18 @@ export default function HOPR() {
 
 
   }
-  const onFinish = (value) => {
-    setLoaded(true)
-    setregionid(value);
-    for (var i = 1; i < region_data.length; i++) {
-      if (region_data[i].regionid == value)
-        setregion_selected_data(region_data[i])
-    }
-    console.log('tregion_selected_data', region_selected_data);
 
-    const token = localStorage.getItem('access_token')
-    var config = {
-      url: `${process.env.REACT_APP_IP}/constituency_r/${value}`,
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer  " + token
-
-      },
-
-    };
-    console.log(config);
-    axios(config)
-      .then(function (response) {
-        var x = {}
-        setconstituencies_data(x => [...response.data,])
-
-        console.log(response.data)
-      })
-      .catch(function (error) {
-
-      });
-
-  };
   const onConstituencySelect = (value) => {
-    setgeneral_data([])
+    console.log(selecteconsti)
+    setChange(true)
+
+    if (change) {
+      console.log('am in')
+      form.resetFields()
+      setChange(false)
+
+
+    }
     setselecteconsti(value)
     var config = {
       url: `${process.env.REACT_APP_IP}/candidate/${value}`,
@@ -287,6 +261,7 @@ export default function HOPR() {
         {...formItemLayout}
         form={form}
         name="register"
+        size="small"
         scrollToFirstError
       >
         <div className="main-1">

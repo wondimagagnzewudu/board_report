@@ -68,6 +68,7 @@ const languageEnglish = [
 
 export default function HOPR() {
   const [form] = Form.useForm();
+
   const [constituencies_data, setconstituencies_data] = useState([]);
   const [region_data, setregion_data] = useState([]);
   const [selecteconsti, setselecteconsti] = useState({})
@@ -85,6 +86,7 @@ export default function HOPR() {
   const [regionselected, setRegionSelected] = useState('')
   const [regionid, setregionid] = useState(language)
   const [constnameSelected, setConstSelected] = useState({})
+  const [change, setChange] = useState(false)
   const [ids, setCandidateId] = useState(null)
 
 
@@ -198,41 +200,21 @@ export default function HOPR() {
 
 
   }
-  const onFinish = (value) => {
-    setLoaded(true)
-    setregionid(value);
-    for (var i = 1; i < region_data.length; i++) {
-      if (region_data[i].regionid == value)
-        setregion_selected_data(region_data[i])
-    }
-    console.log('tregion_selected_data', region_selected_data);
 
-    const token = localStorage.getItem('access_token')
-    var config = {
-      url: `${process.env.REACT_APP_IP}/constituency_r/${value}`,
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer  " + token
-
-      },
-
-    };
-    console.log(config);
-    axios(config)
-      .then(function (response) {
-        var x = {}
-        setconstituencies_data(x => [...response.data,])
-
-        console.log(response.data)
-      })
-      .catch(function (error) {
-
-      });
-
-  };
   const onConstituencySelect = (value) => {
+    setChange(true)
+
+    if (change) {
+      console.log('am in')
+      form.resetFields()
+      setChange(false)
+
+
+    }
     // setconstituencies_data(value)
     setConstSelected(value)
+
+
     var config = {
       url: `${process.env.REACT_APP_IP}/candidate/${value}`,
       method: 'GET',
@@ -292,6 +274,7 @@ export default function HOPR() {
       <Form
         {...formItemLayout}
         form={form}
+        size='small'
         name="register"
         scrollToFirstError
         onFinish={send_hopr_data}
@@ -368,7 +351,7 @@ export default function HOPR() {
                     rules={[
                       {
                         required: true,
-                        message: 'This field is required',
+                        message: 'This field is {}',
                       }
                     ]}
                   >  {item.name}

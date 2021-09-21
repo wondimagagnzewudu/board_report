@@ -8,7 +8,7 @@ const { TabPane } = Tabs;
 
 export default function ToAdd() {
     return (
-        <Card hoverable >
+        <Card hoverable style={{ marginTop: '8%' }} >
             <Tabs defaultActiveKey="1" centered>
                 <TabPane tab={<p className="tab-header">የየተወካዮች ምክር ቤት ምርጫ/House of People's Representative</p>} key="1">
                     <HOPR />
