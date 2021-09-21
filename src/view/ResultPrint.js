@@ -406,32 +406,32 @@ export default function ResultPrint(props) {
               </Col>
               <Col span={5} order={3} offset={1}>የፖለቲካ ፓርቲ/የግል ተወዳዳሪ ስም</Col>
             </Row>
-            {
-              variable_data.winners.map((item, index) => (
-                <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
-                  <Col
-                    span={1}
-                    order={1}
-                    style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                  >
-                    {index + 1}
-                  </Col>
-                  <Col
-                    span={15}
-                    order={2}
-                    style={{
-                      borderRightStyle: "solid",
-                      borderWidth: 1,
-                      paddingLeft: "2%",
-                    }}
-                  >
-                    {item.name}
-                  </Col>
-                  <Col span={5} order={3} offset={1}> {item.party}</Col>
+            {/* {
+              variable_data.winners.map((item, index) => ( */}
+            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+              <Col
+                span={1}
+                order={1}
+                style={{ borderRightStyle: "solid", borderWidth: 1 }}
+              >
+                1
+              </Col>
+              <Col
+                span={15}
+                order={2}
+                style={{
+                  borderRightStyle: "solid",
+                  borderWidth: 1,
+                  paddingLeft: "2%",
+                }}
+              >
+                {variable_data.winners.name}
+              </Col>
+              <Col span={5} order={3} offset={1}> {variable_data.winners.party}</Col>
 
-                </Row>
-              ))
-            }
+            </Row>
+            {/* ))
+            } */}
 
             <div
               style={{

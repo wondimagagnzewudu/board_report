@@ -185,3 +185,14 @@
   font-size: 25px;
   font-weight:bold;
 }
+.vote-header-container-2{
+  display: flex;
+  justify-content: center;
+  text-align: center
+}
+.vote-header{
+  color:#00b6ba
+}
+.vote-header-1{
+  color:#00b6ba
+}

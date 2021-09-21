@@ -208,10 +208,7 @@ export default function HOPR() {
       console.log('am in')
       form.resetFields()
       setChange(false)
-
-
     }
-    // setconstituencies_data(value)
     setConstSelected(value)
 
 
