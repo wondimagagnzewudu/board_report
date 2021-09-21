@@ -34,7 +34,7 @@ export default function Aproved_list(props) {
   const print_data_Hopr = async (file) => {
     props.history.push({
 
-      pathname: '/Rc_print',
+      pathname: '/HOPR_print',
 
       state: {
           'variable_data': file,
@@ -58,7 +58,7 @@ export default function Aproved_list(props) {
   const print_data_rc = async (file) => {
     props.history.push({
 
-      pathname: '/HOPR_print',
+      pathname: '/RC_print',
 
       state: {
           'variable_data': file,
