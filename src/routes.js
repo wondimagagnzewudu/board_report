@@ -1,6 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable'
-import {Rc_print,HOPR_print} from "./view/print";
+import {Rc_print,HOPR_print,Resulrow_Print} from "./view/print";
 
 function Loading() {
   return <div>Loading...</div>;
@@ -29,6 +29,10 @@ const Dashboard = Loadable({
 });
 const ToAdd = Loadable({
   loader: () => import('./view/ToAdd'),
+  loading: Loading
+})
+const Resulrow = Loadable({
+  loader: () => import('./view/Resulrow'),
   loading: Loading
 })
 const HOPR_update = Loadable({
@@ -66,6 +70,8 @@ const routes = [
 { path: '/ResultPrintRC', exact: true, name: 'ResultPrintRC', component:ResultPrintRC},
   { path: '/ResultPrint', exact: true, name: 'ResultPrint', component:ResultPrint},
   { path: '/Rc_print', exact: true, name: 'Rc_print', component: Rc_print},
+  { path: '/Resulrow', exact: true, name: 'Resulrow', component: Resulrow},
+  { path: '/Resulrow_Print', exact: true, name: 'Resulrow_Print', component: Resulrow_Print},
   { path: '/HOPR_print', exact: true, name: 'HOPR_print', component:HOPR_print},
 
 
