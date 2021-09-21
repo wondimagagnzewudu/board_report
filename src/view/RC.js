@@ -6,7 +6,7 @@ import axios from 'axios';
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
-    xs: { span: 32 },
+    xs: { span: 20 },
     sm: { span: 12 },
   },
   wrapperCol: {
@@ -70,6 +70,8 @@ export default function HOPR() {
   const [form] = Form.useForm();
   const [constituencies_data, setconstituencies_data] = useState([]);
   const [region_data, setregion_data] = useState([]);
+  const [selecteconsti, setselecteconsti] = useState({})
+
   const [candidate_data, setcandidate_data] = useState([]);
   const [general_data, setgeneral_data] = useState([]);
   const [result_data, setresult_data] = useState([]);
@@ -93,7 +95,7 @@ export default function HOPR() {
       "approve": false,
       'not_approved': false,
       'region': regionselected,
-      'hoprconstituency': constnameSelected.regionalconstituencyid,
+      'hoprconstituency': constnameSelected,
       'no_of_seat': parseInt(general_data.no_of_seat[0]),
       'no_of_pollingstation': parseInt(general_data.no_of_pollingstation[0]),
       'exclude_no_of_pollingstation': parseInt(general_data.exclude_no_of_pollingstation[0]),
@@ -229,13 +231,8 @@ export default function HOPR() {
 
   };
   const onConstituencySelect = (value) => {
-    console.log(value)
-    const names = constituencies_data.find((function (data) {
-      return data.regionalconstituencyid == value
-    }))
-    console.log(names)
-    setconstituencies_data(value)
-    setConstSelected(names)
+    // setconstituencies_data(value)
+    setConstSelected(value)
     var config = {
       url: `${process.env.REACT_APP_IP}/candidate/${value}`,
       method: 'GET',
@@ -297,6 +294,7 @@ export default function HOPR() {
         form={form}
         name="register"
         scrollToFirstError
+        onFinish={send_hopr_data}
       >
         <div className="main-1">
           <Form.Item
@@ -354,17 +352,9 @@ export default function HOPR() {
             </Form.Item>
 
           ))}
-          <Form.Item>
-            <Button className="buttons" block onClick={() => setActive(true)}>
-              ውጤቶች/RESULTS
-            </Button>
-          </Form.Item>
 
-        </Card>
-        <Modal title={<p style={{ fontSize: 0, color: '#6d55a4' }}>{resultlang[1].value}</p>} visible={active} onCancel={() => setActive(false)} onOk={() => setActive(false)} footer={null} width={1000}>
           <Grid container spacing={2} style={{ marginBottom: '2%' }}>
-            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}>Party and Candidate name</Grid>
-            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}> Result </Grid>
+            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={12}>Result </Grid>
           </Grid>
 
           {candidate_data.length ?
@@ -387,12 +377,12 @@ export default function HOPR() {
                 </>
               ))}</> : <></>}
           <Form.Item>
-            <Button onClick={send_hopr_data} style={{ backgroundColor: '#6d55a4', color: 'white' }} htmlType="submit" >
+            <Button style={{ backgroundColor: '#6d55a4', color: 'white' }} htmlType="submit" >
               Submit
             </Button>
           </Form.Item>
+        </Card>
 
-        </Modal>
       </Form>
 
     </Card>

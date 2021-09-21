@@ -68,6 +68,7 @@ const languageEnglish = [
 export default function HOPR() {
   const [form] = Form.useForm();
   const [constituencies_data, setconstituencies_data] = useState([]);
+  const [selecteconsti, setselecteconsti] = useState({})
   const [region_data, setregion_data] = useState([]);
   const [candidate_data, setcandidate_data] = useState([]);
   const [general_data, setgeneral_data] = useState([]);
@@ -92,7 +93,7 @@ export default function HOPR() {
       "approved": false,
       'not_approved': false,
       'region': regionselected,
-      'hoprconstituency': constituencies_data,
+      'hoprconstituency': selecteconsti,
       'no_of_pollingstation': general_data.no_of_pollingstation[0],
       'exclude_no_of_pollingstation': general_data.exclude_no_of_pollingstation[0],
       'q1': general_data.q1[0],
@@ -193,10 +194,7 @@ export default function HOPR() {
       });
 
   }, [])
-  const onFinish_winner = (value) => {
-    console.log('candidate id set', value)
-    setCandidateId(value)
-  }
+
   const onSelectRegion = (value) => {
     setRegionSelected(value)
     var config = {
@@ -249,7 +247,8 @@ export default function HOPR() {
 
   };
   const onConstituencySelect = (value) => {
-    setconstituencies_data(value)
+    setgeneral_data([])
+    setselecteconsti(value)
     var config = {
       url: `${process.env.REACT_APP_IP}/candidate/${value}`,
       method: 'GET',
@@ -293,7 +292,7 @@ export default function HOPR() {
         <div className="main-1">
           <Form.Item
             name="ክልል/Region"
-            label={<p style={{ paddingTop: '8%', color: 'white', fontWeight: 'bold' }}>ክልል/Region</p>}
+            label={<p style={{ paddingTop: '8%', color: 'white' }}>ክልል/Region</p>}
             rules={[
               {
                 required: true,
@@ -302,7 +301,7 @@ export default function HOPR() {
             ]}
             hasFeedback
           >
-            <Select onChange={onSelectRegion} type="text" mode="inline" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', textAlign: 'left' }} placeholder={region_selected_data.regionname} >
+            <Select onChange={onSelectRegion} type="text" mode="inline" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', textAlign: 'left', fontSize: 12 }} placeholder={region_selected_data.regionname} >
               {region_data.map((id, ITEM) => (
                 <Option key={ITEM} value={id.regionid}>{id.regionname}</Option>
               ))}
@@ -346,19 +345,10 @@ export default function HOPR() {
             </Form.Item>
 
           ))}
-          <Form.Item>
-            <Button className="buttons" block onClick={() => setActive(true)}>
-              ውጤቶች/RESULTS
-            </Button>
-          </Form.Item>
-
-        </Card>
-        <Modal title={<p style={{ fontSize: 0, color: '#6d55a4' }}>{resultlang[1].value}</p>} visible={active} onCancel={() => setActive(false)} onOk={() => setActive(false)} footer={null} width={1000}>
-          <Grid container spacing={2} style={{ marginBottom: '2%' }}>
-            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}>Party and Candidate name</Grid>
-            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={6}> Result </Grid>
+          <Grid container spacing={2} style={{ marginBottom: '2%', backgroundColor: '#6d55a4' }}>
+            <Grid style={{ backgroundColor: '#6d55a4', color: 'white' }} item xs={12}>Results</Grid>
           </Grid>
-
+          <br />
           {candidate_data.length ?
             <>{
               candidate_data.map((item, index) => (
@@ -384,7 +374,8 @@ export default function HOPR() {
             </Button>
           </Form.Item>
 
-        </Modal>
+        </Card>
+
       </Form>
 
     </Card>

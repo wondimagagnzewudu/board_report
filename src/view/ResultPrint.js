@@ -57,27 +57,29 @@ export default function ResultPrint(props) {
   //       "party": "የአፋር ነፃ አውጪ ግንባር ፓርቲ"
   //   }]
   //   }
-    
-    const get_the_csv1 = async (item) => {
-  if (variable_data.result.length > 0) {
-    var generale_results = variable_data.result;
-    var generale_data = variable_data.winners;
-    let properties = []
-    let properties_win = []
-    for (let i = 0; i < generale_results.length; i++) {
-      properties= { " ": "", "   ": `${generale_results[i].candidate.fullname}/${generale_results[i].candidate.name}`, "    ": " ", "           ": '', "    ": generale_results[i].vote, "         ": '' };
-      
-      setproperty_data(property_data => [...property_data,properties] );
-    }
-    for (let j = 0; j < generale_data.length; j++) {
-      properties_win= { " ": "", "   ": generale_data[j].name, "    ": " ", "           ": '', "    ": generale_data[j].party, "         ":''}
-      setproperty_data_winer(property_data_winer => [...property_data_winer,properties_win] )
-    }
 
-    // setproperty_data_winer(property_data_winer => [...property_data_winer,properties_win] );
-    // setproperty_data_winer(properties_win)
-  }}
-  
+  const get_the_csv1 = async (item) => {
+    if (variable_data.result.length > 0) {
+      var generale_results = variable_data.result;
+      var generale_data = variable_data.winners;
+      let properties = []
+      let properties_win = []
+      for (let i = 0; i < generale_results.length; i++) {
+        properties = { " ": "", "   ": `${generale_results[i].candidate.fullname}/${generale_results[i].candidate.name}`, "    ": " ", "           ": '', "    ": generale_results[i].vote, "         ": '' };
+
+        setproperty_data(property_data => [...property_data, properties]);
+      }
+      // for (let j = 0; j < generale_data.length; j++) {
+      //   properties_win = { " ": "", "   ": generale_data[j].name, "    ": " ", "           ": '', "    ": generale_data[j].party, "         ": '' }
+      //   setproperty_data_winer(property_data_winer => [...property_data_winer, properties_win])
+      // }
+
+      // setproperty_data_winer(property_data_winer => [...property_data_winer,properties_win] );
+      // setproperty_data_winer(properties_win)
+      setproperty_data_winer(generale_data)
+    }
+  }
+
   const getGeneral = () => {
     try {
     } catch (e) { }
@@ -92,9 +94,9 @@ export default function ResultPrint(props) {
     } catch (e) { }
   };
   const get_the_csv = async (item) => {
-    
+
     console.log('properties_win', property_data)
-   const  language = [
+    const language = [
       { " ": "", "   ": 'በምርጫ የኢትዮጵያ ብሔራዊ ምርጫ ቦርድ ', "    ": " ", "           ": '' },
       { " ": "", "   ": ' National Election Board Of Ethiopia ', "           ": '' },
       { " ": "", "   ": 'የምርጫ ክልል የውጤት ቅፅ', "           ": '' },
@@ -105,33 +107,33 @@ export default function ResultPrint(props) {
       { " ": 2, "   ": 'በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት', "    ": variable_data.no_of_pollingstation, "           ": '' },
       { "         ": "", " ": 3, "   ": 'ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር', "    ": variable_data.exclude_no_of_pollingstation, "           ": '' },
       // {"         ": "", " ": 4, "   ": 'ምክንያት', "           ":'' , "    ":" ",},
-      { " ": 5, "   ": 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር', "           ":'', "    ":  variable_data.q1, },
+      { " ": 5, "   ": 'በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር', "           ": '', "    ": variable_data.q1, },
       // {"         ": "", " ": 6, "   ": 'የመራጭ ፆታ ሴት', "           ":'' , "    ":" ",},
       // {"         ": "", " ": 7, "   ": 'የመራጭ ፆታ ወንድ', "           ":'', "    ":" ", },
       { " ": 8, "   ": ' በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ": variable_data.q2, },
       { " ": 9, "   ": 'በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት', "           ": '', "    ": variable_data.q3, },
-      { " ": 10, "   ": 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ":variable_data.q4, },
-      { " ": 11, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር', "           ": '', "    ":variable_data.q5, },
-      { " ": 12, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ":variable_data.q6, },
-      { " ": 13, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት', "           ":'', "    ":variable_data.q7, },
-      { " ": 14, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት', "           ":'', "    ":variable_data.q8, },
-      { " ": 15, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት', "           ":'', "    ":variable_data.q9, },
+      { " ": 10, "   ": 'በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ": variable_data.q4, },
+      { " ": 11, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር', "           ": '', "    ": variable_data.q5, },
+      { " ": 12, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ": variable_data.q6, },
+      { " ": 13, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ": variable_data.q7, },
+      { " ": 14, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ": variable_data.q8, },
+      { " ": 15, "   ": 'በምርጫ ክልሉ ውስጥ አጠቃላይ ጊዜያዊ የድምፅ መስጫ ወረቀቶች ብዛት', "           ": '', "    ": variable_data.q9, },
       { " ": "", "   ": '', "           ": '', "    ": "ውጤቶች", },
       { " ": "", "   ": 'የፖለቲካ ፓርቲ እና እጩ /የግል ተወዳዳሪ ስም', "    ": "የተሰጠ ድምፅ ", "           ": '', "    ": "", "         ": " " },
     ]
     for (let i = 0; i < property_data.length; i++) {
       language.push(property_data[i])
     }
-     
-      language.push ({ " ": "", "   ": 'ከፍተኛ ድምፅ ያገኘ እጩ', "    ": " ", "           ": '', "    ": "", "         ": "" },
-      { " ": "በድምፅ መስጫ ወረቀት ላይ ያለ የእጩ ተራ ቁጥር", "   ": 'የእጩ ስም', "    ": " ", "           ": '', "    ": "", "         ": "" },)
-      for (let j = 0; j < property_data_winer.length; j++) {
-        language.push(property_data_winer[j])
-      }
-     
 
-      
-    
+    language.push({ " ": "", "   ": 'ከፍተኛ ድምፅ ያገኘ እጩ', "    ": " ", "           ": '', "    ": "", "         ": "" },
+      { " ": "በድምፅ መስጫ ወረቀት ላይ ያለ የእጩ ተራ ቁጥር", "   ": 'የእጩ ስም', "    ": " ", "           ": '', "    ": "", "         ": "" })
+    for (let j = 0; j < property_data_winer.length; j++) {
+      language.push(property_data_winer[j])
+    }
+
+
+
+
 
     const fileName = "try";
     const fileType =
@@ -164,7 +166,7 @@ export default function ResultPrint(props) {
     <div className="vote-container" style={{ marginBottom: 10 }}>
       <Card hoverable style={{ justifyContent: 'center', backgroundColor: 'white', height: 'auto', marginTop: '2%' }}>
         <div>
-        
+
           <div className="vote-header-container-2">
             <img src={image} style={{ width: 100, height: 100 }} />
             <div className="vote-header-container">
@@ -195,9 +197,9 @@ export default function ResultPrint(props) {
                 span={5}
                 order={2}
                 style={{ borderRightStyle: "solid", borderWidth: 1 }}
-                
+
               >
-                 <p>{variable_data.region}</p>
+                <p>{variable_data.region}</p>
               </Col>
               <Col
                 span={5}
@@ -207,7 +209,7 @@ export default function ResultPrint(props) {
                 <p>ምርጫ ክልል</p>
               </Col>
               <Col span={5} order={4} offset={1}>
-              <p>{variable_data.hoprconstituency}</p>
+                <p>{variable_data.hoprconstituency}</p>
               </Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
@@ -228,7 +230,7 @@ export default function ResultPrint(props) {
               >
                 በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.no_of_pollingstation}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.no_of_pollingstation}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -238,7 +240,7 @@ export default function ResultPrint(props) {
               >
                 ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.exclude_no_of_pollingstation}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.exclude_no_of_pollingstation}</p></Col>
             </Row>
             <br />
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
@@ -249,12 +251,12 @@ export default function ResultPrint(props) {
               >
                 1. በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር
               </Col>
-              
-                <Col span={5} order={2} offset={1}>{variable_data.q1} </Col>
-                
-                
+
+              <Col span={5} order={2} offset={1}>{variable_data.q1} </Col>
+
+
             </Row>
-            
+
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
                 span={15}
@@ -263,7 +265,7 @@ export default function ResultPrint(props) {
               >
                 2.  በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q2}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q2}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -273,7 +275,7 @@ export default function ResultPrint(props) {
               >
                 3.በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q3}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q3}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -283,7 +285,7 @@ export default function ResultPrint(props) {
               >
                 4.በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q4}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q4}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -293,7 +295,7 @@ export default function ResultPrint(props) {
               >
                 5. በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q5}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q5}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -303,7 +305,7 @@ export default function ResultPrint(props) {
               >
                 6. በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q6}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q6}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -313,7 +315,7 @@ export default function ResultPrint(props) {
               >
                 7. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q7}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q7}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -323,7 +325,7 @@ export default function ResultPrint(props) {
               >
                 8. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q8}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q8}</p></Col>
             </Row>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
               <Col
@@ -333,7 +335,7 @@ export default function ResultPrint(props) {
               >
                 9. በምርጫ ጣቢያ ውስጥ የተመዘገቡ መራጮች ብዛት
               </Col>
-                <Col span={5} order={2} offset={1}> <p>{variable_data.q9}</p></Col>
+              <Col span={5} order={2} offset={1}> <p>{variable_data.q9}</p></Col>
             </Row>
             <br />
             <p style={{ textAlign: "center", margin: 0 }}>ውጤቶች</p>
@@ -357,34 +359,34 @@ export default function ResultPrint(props) {
             {
               variable_data.result.map((item, index) => (
                 <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
-              <Col
-                span={1}
-                order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1 }}
-              >
-               {index+1}
-              </Col>
-              <Col
-                span={15}
-                order={2}
-                style={{
-                  borderRightStyle: "solid",
-                  borderWidth: 1,
-                  paddingLeft: "2%",
-                }}
-              >
-                {item.candidate.fullname}({item.candidate.name})
-              </Col>
-              <Col span={5} order={3} offset={1}> {item.vote}</Col>
-             
-            </Row>
+                  <Col
+                    span={1}
+                    order={1}
+                    style={{ borderRightStyle: "solid", borderWidth: 1 }}
+                  >
+                    {index + 1}
+                  </Col>
+                  <Col
+                    span={15}
+                    order={2}
+                    style={{
+                      borderRightStyle: "solid",
+                      borderWidth: 1,
+                      paddingLeft: "2%",
+                    }}
+                  >
+                    {item.candidate.fullname}({item.candidate.name})
+                  </Col>
+                  <Col span={5} order={3} offset={1}> {item.vote}</Col>
+
+                </Row>
               ))
             }
-            
+
             <br />
             <p style={{ textAlign: "left", margin: 0 }}>ከፍተኛ ድምጽ ያላቸው እጩዎች</p>
             <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
-            <Col
+              <Col
                 span={1}
                 order={1}
                 style={{ borderRightStyle: "solid", borderWidth: 1 }}
@@ -400,37 +402,37 @@ export default function ResultPrint(props) {
                   paddingLeft: "2%",
                 }}
               >
-               የእጩ ስም
+                የእጩ ስም
               </Col>
               <Col span={5} order={3} offset={1}>የፖለቲካ ፓርቲ/የግል ተወዳዳሪ ስም</Col>
             </Row>
             {
               variable_data.winners.map((item, index) => (
                 <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
-              <Col
-                span={1}
-                order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1 }}
-              >
-               {index+1}
-              </Col>
-              <Col
-                span={15}
-                order={2}
-                style={{
-                  borderRightStyle: "solid",
-                  borderWidth: 1,
-                  paddingLeft: "2%",
-                }}
-              >
-                {item.name}
-              </Col>
-              <Col span={5} order={3} offset={1}> {item.party}</Col>
-             
-            </Row>
+                  <Col
+                    span={1}
+                    order={1}
+                    style={{ borderRightStyle: "solid", borderWidth: 1 }}
+                  >
+                    {index + 1}
+                  </Col>
+                  <Col
+                    span={15}
+                    order={2}
+                    style={{
+                      borderRightStyle: "solid",
+                      borderWidth: 1,
+                      paddingLeft: "2%",
+                    }}
+                  >
+                    {item.name}
+                  </Col>
+                  <Col span={5} order={3} offset={1}> {item.party}</Col>
+
+                </Row>
               ))
             }
-           
+
             <div
               style={{
                 display: "flex",
@@ -446,8 +448,8 @@ export default function ResultPrint(props) {
                   width: "100%",
                   height: 100,
                 }}
-              > የእጩዎች ድምጽ ድምር ≤ የክልሉ መቀመጫ ሁለት ({variable_data.no_of_seat}) x ዋጋ ያላቸው ድምጽ መስጫ ወረቀቶች 
-            
+              > የእጩዎች ድምጽ ድምር ≤ የክልሉ መቀመጫ ሁለት ({variable_data.no_of_seat}) x ዋጋ ያላቸው ድምጽ መስጫ ወረቀቶች
+
                 ከአሸናፊ እጩዎች ዝቅተኛውን ድምጽ ያገኘው እጩ ያገኘው ድምጽ 23757 ሲሆን ቀጣዩን ትልቁን ድምጽ ያገኘው እጩ 2585 ነው፡፡ በሁለቱ እጩዎች መሀል የ 21172 ድምጽ ልዩነት አለ፡፡
                 ለምርጫ ክልሉ የደረሰው አጠቃላይ የድምጽ መስጫ ወረቀት ብዛት  በድምጽ መስጫ ቀን በድምጽ መስጫ ሳጥን ውስጥ እና ውጪ ከተገኘው በ 273 ይበልጣል ፡፡</p>
             </div>
