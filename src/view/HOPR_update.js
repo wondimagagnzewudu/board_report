@@ -210,7 +210,7 @@ export default function HOPR_update(props) {
   }
 
   return (
-    <Card hoverable className="hopr-card">
+    <Card hoverable className="hopr-card" style={{ marginTop: '7%' }}>
       <div className="aprove">
         <Checkbox checked={approve} style={{ fontSize: 18, color: 'black', color: 'white', padding: 4, }} onChange={aprovalChange}>Approve</Checkbox>
 

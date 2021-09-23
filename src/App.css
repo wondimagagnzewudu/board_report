@@ -74,7 +74,7 @@
   font-size: 20px;
 }
 .hopr-card{
-  background-color: #6d55a4;
+  background-color: #546b8d;
 }
 
 .hopr-card-1{
@@ -127,9 +127,10 @@
 }
 .sider-text{
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   background-color:#546768;
-  height: 100vh
+  height: 100vh;
+  
 }
 .s-text{
   color: wheat
@@ -156,6 +157,8 @@
   border-radius: 20px;
   padding: 0.5%
 }
+
+
 
 
 .dashboard-container{
@@ -198,7 +201,7 @@
 }
 .colon-syle{
   display: flex;
-  padding-left: 1%;
+  padding: 0.2%;
   border-right-style: solid;
   width: 100%;
   border-width: 1px;

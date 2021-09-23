@@ -60,17 +60,17 @@ export default function Resulrow(props) {
 
     const language = [
       { "ተ.ቁ": "", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "", "የተመዘገቡ መራጮች ቁጥር": "", "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": "", "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": "", "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": "", "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "" },
-      { "ተ.ቁ": "1", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "አዲስ አበባ", "የተመዘገቡ መራጮች ቁጥር": data21.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data22.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data21.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata21.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "2", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "አፋር", "የተመዘገቡ መራጮች ቁጥር": data22.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data22.total_balots/(data22.total_balots+data22.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data22.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata22.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "3", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "አማራ", "የተመዘገቡ መራጮች ቁጥር": data23.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data23.total_balots/(data23.total_balots+data23.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data23.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata23.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "4", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ቤኒሻንጉል", "የተመዘገቡ መራጮች ቁጥር": data24.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data24.total_balots/(data24.total_balots+data24.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data24.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata24.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },     
-{ "ተ.ቁ": "5", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ድሬዳዋ", "የተመዘገቡ መራጮች ቁጥር": data25.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data25.total_balots/(data25.total_balots+data25.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data25.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata25.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "6", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ጋምቤላ", "የተመዘገቡ መራጮች ቁጥር": data26.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data26.total_balots/(data26.total_balots+data26.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data26.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata26.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "7", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ሀረር", "የተመዘገቡ መራጮች ቁጥር": data27.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data27.total_balots/(data27.total_balots+data27.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data27.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata27.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "8", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ኦሮሚያ", "የተመዘገቡ መራጮች ቁጥር": data28.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data28.total_balots/(data28.total_balots+data28.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data28.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata28.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "9", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ሲዳማ", "የተመዘገቡ መራጮች ቁጥር": data29.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data29.total_balots/(data29.total_balots+data29.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data29.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata29.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "10", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ደ/ብ/ብ/ህ/ ክልል", "የተመዘገቡ መራጮች ቁጥር": data30.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data30.total_balots/(data30.total_balots+data30.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data30.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata30.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
-{ "ተ.ቁ": "11", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ሱማሊ", "የተመዘገቡ መራጮች ቁጥር": data31.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data31.total_balots/(data31.total_balots+data31.unused_balots))*100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data31.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata31.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "1", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "አዲስ አበባ", "የተመዘገቡ መራጮች ቁጥር": data21.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data22.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data21.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata21.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "2", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "አፋር", "የተመዘገቡ መራጮች ቁጥር": data22.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data22.total_balots / (data22.total_balots + data22.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data22.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata22.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "3", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "አማራ", "የተመዘገቡ መራጮች ቁጥር": data23.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data23.total_balots / (data23.total_balots + data23.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data23.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata23.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "4", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ቤኒሻንጉል", "የተመዘገቡ መራጮች ቁጥር": data24.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data24.total_balots / (data24.total_balots + data24.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data24.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata24.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "5", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ድሬዳዋ", "የተመዘገቡ መራጮች ቁጥር": data25.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data25.total_balots / (data25.total_balots + data25.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data25.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata25.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "6", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ጋምቤላ", "የተመዘገቡ መራጮች ቁጥር": data26.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data26.total_balots / (data26.total_balots + data26.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data26.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata26.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "7", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ሀረር", "የተመዘገቡ መራጮች ቁጥር": data27.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data27.total_balots / (data27.total_balots + data27.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data27.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata27.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "8", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ኦሮሚያ", "የተመዘገቡ መራጮች ቁጥር": data28.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data28.total_balots / (data28.total_balots + data28.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data28.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata28.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "9", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ሲዳማ", "የተመዘገቡ መራጮች ቁጥር": data29.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data29.total_balots / (data29.total_balots + data29.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data29.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata29.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "10", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ደ/ብ/ብ/ህ/ ክልል", "የተመዘገቡ መራጮች ቁጥር": data30.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data30.total_balots / (data30.total_balots + data30.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data30.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata30.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
+      { "ተ.ቁ": "11", "ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር": "ሱማሊ", "የተመዘገቡ መራጮች ቁጥር": data31.total_balots, "ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ": ((data31.total_balots / (data31.total_balots + data31.unused_balots)) * 100).toFixed(1), "ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት": data31.number_of_const, "ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት": rcdata31.number_of_const, "መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት": "0", "ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት": "", "ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር": "0", "ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት": "0", "በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት": "0" },
     ]
 
 
@@ -98,13 +98,13 @@ export default function Resulrow(props) {
     content: () => componentRef.current,
   });
   const Getprint = () => {
-  var  variable_data= {rcdata21,rcdata22,rcdata23,rcdata24,rcdata25,rcdata26,rcdata26,rcdata27,rcdata27,rcdata28,rcdata29,rcdata30,rcdata31,data21,data22,data23,data24,data25,data26,data27,data28,data29,data30,data31};   props.history.push({
+    var variable_data = { rcdata21, rcdata22, rcdata23, rcdata24, rcdata25, rcdata26, rcdata26, rcdata27, rcdata27, rcdata28, rcdata29, rcdata30, rcdata31, data21, data22, data23, data24, data25, data26, data27, data28, data29, data30, data31 }; props.history.push({
 
       pathname: '/Resulrow_Print',
 
       state: {
-      'variable_data':JSON.stringify(variable_data),
-    }
+        'variable_data': JSON.stringify(variable_data),
+      }
 
 
     });
@@ -306,7 +306,7 @@ export default function Resulrow(props) {
     } catch (e) {
       console.log(e)
     }
-   
+
 
   }
   useEffect(() => {
@@ -315,279 +315,279 @@ export default function Resulrow(props) {
   }, [])
   return (
 
-    <Card >
+    <Card hoverable style={{ marginTop: '10%' }} >
       <button onClick={get_the_csv}>export to excel</button>
       <button onClick={Getprint} >print</button>
-      <Table style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-        <thead style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}} className="table-border">
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}} className="table-border"> ተ.ቁ </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}className="text-center padded-table table-border">ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}className="text-center padded-table table-border">የተመዘገቡ መራጮች ቁጥር </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት</th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት  </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር  </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት  </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት  </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት  </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር  </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት  </th>
-            <th style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}  className="text-center padded-table table-border">በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት  </th>
+      <Table style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+        <thead style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="table-border">
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="table-border"> ተ.ቁ </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ምርጫው የተካሄደበት ክልል/ከተማ መስተዳድር </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">የተመዘገቡ መራጮች ቁጥር </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ከተመዘገቡ መራጮች መካከል ድምፅ የሰጡ በመቶኛ </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ክልሉ ያለው የተወካዮች ምክር ቤት መቀመጫ ብዛት </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ክልሉ ያለው የክልል ምክር ቤት መቀመጫ ብዛት</th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">መስከረም 20 ቀን ምርጫ የተከናወነበት የተወካዮች ምክር ቤት ምርጫ ክልል ብዛት  </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ለተወካዮች ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር  </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት  </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት  </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">መስከረም 20 ቀን ምርጫ የተከናወነበት የክልል ምክር ቤት ምርጫ ክልል ብዛት  </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ለክልል ምክር ቤት መቀመጫ ያገኙ ፓርቲዎች እና የመቀመጫ ቁጥር  </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ድጋሚ ቆጠራ የሚከናወንበት ምርጫ ክልል ብዛት </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">ድጋሚ ምርጫ የሚከናወንበት ምርጫ ክልል ብዛት  </th>
+            <th style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }} className="text-center padded-table table-border">በሁለቱም ምርጫ አይነቶች ምርመራ ላይ ያሉ ምርጫ ክልሎች ብዛት  </th>
 
 
           </tr >
         </thead >
-        
-        < tbody style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
+
+        < tbody style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
 
 
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>1</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>አዲስ አበባ</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data21.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data21.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data21.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata21.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-
-
-           
-
-        </tr>
-  <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>2</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>አፋር</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data22.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data22.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data22.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata22.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>3</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>አማራ </td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data23.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data23.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data23.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata23.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>4</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>ቤኒሻንጉል </td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data24.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data24.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data24.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata24.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>5</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>ድሬዳዋ </td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data25.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data25.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data25.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata25.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>6</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>ጋምቤላ </td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data26.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data26.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data26.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata26.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>7</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}> ሀረር</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data27.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data27.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data27.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata27.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>8</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>ኦሮሚያ</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data28.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data28.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data28.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata28.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>9</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>ሲዳማ </td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data29.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data29.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data29.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata29.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>10</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>ደ/ብ/ብ/ህ/ ክልል </td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data30.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data30.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data30.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata30.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            
-
-           
-
-        </tr>
-         <tr  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
-          <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>11</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>ሱማሊ</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data31.total_balots}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{((data31.total_balots/(data21.total_balots+data21.unused_balots))*100).toFixed(1)}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{data31.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>{rcdata31.number_of_const}</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-             <td  style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>0</td>
-            
-            </tr>
-
-           
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>1</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>አዲስ አበባ</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data21.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data21.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data21.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata21.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
 
 
 
-</tbody >
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>2</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>አፋር</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data22.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data22.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data22.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata22.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>3</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>አማራ </td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data23.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data23.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data23.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata23.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>4</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>ቤኒሻንጉል </td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data24.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data24.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data24.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata24.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>5</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>ድሬዳዋ </td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data25.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data25.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data25.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata25.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>6</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>ጋምቤላ </td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data26.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data26.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data26.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata26.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>7</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}> ሀረር</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data27.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data27.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data27.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata27.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>8</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>ኦሮሚያ</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data28.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data28.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data28.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata28.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>9</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>ሲዳማ </td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data29.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data29.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data29.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata29.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>10</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>ደ/ብ/ብ/ህ/ ክልል </td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data30.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data30.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data30.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata30.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+
+
+
+
+          </tr>
+          <tr style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>11</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>ሱማሊ</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data31.total_balots}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{((data31.total_balots / (data21.total_balots + data21.unused_balots)) * 100).toFixed(1)}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{data31.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>{rcdata31.number_of_const}</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+            <td style={{ "borderWidth": "1px", 'borderColor': "#aaaaaa", 'borderStyle': 'solid' }}>0</td>
+
+          </tr>
+
+
+
+
+
+        </tbody >
         <tbody >
         </tbody >
       </Table>

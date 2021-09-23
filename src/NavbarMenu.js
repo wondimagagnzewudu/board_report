@@ -71,12 +71,11 @@ export default function NavbarMenu(props) {
 
     {
       ((decoder)) ? (
-        <Sider width={250} height={1000} style={{ backgroundColor: 'white', position: 'fixed' }}>
+        <Sider width={250} height={1000} style={{ backgroundColor: 'white', position: 'fixed', paddingTop: '5.2%' }}>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}          >
-            <img src={image} style={{ marginLeft: '10%', width: 100, height: 120 }} />
+          >
+            {/* <img src={image} style={{ marginLeft: '10%', width: 100, height: 120 }} /> */}
             <p style={{ color: 'white', padding: '10%', backgroundColor: "#1890ff" }}>Created {amount} Records</p>
             <Menu.Item key="3"><Link to="/Addreport" >Create Record</Link></Menu.Item>
             <Menu.Item key="5" onClick={logout} >Log out</Menu.Item>
@@ -86,30 +85,25 @@ export default function NavbarMenu(props) {
       )}
     {
       ((analyst)) ? (
-        <Sider width={250} height={1000} style={{ backgroundColor: 'white', position: 'fixed' }}>
-          <img src={image} style={{ width: 100, height: 120 }} />
+        <Sider width={250} height={1000} style={{ backgroundColor: 'white', position: 'fixed', paddingTop: '5.2%' }}>
+          {/* <img src={image} style={{ width: 100, height: 120 }} /> */}
           <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+
             className="sider-text"
           >
             <Menu.Item icon={<RightCircleOutlined />} key="3"><Link style={{ color: 'white' }} to="/Aproved_list" >Approved</Link></Menu.Item>
             <Menu.Item icon={<InsertRowRightOutlined />} key="2"><Link style={{ color: 'white' }} className="s-text" to="/Need_check" >Not Checked</Link></Menu.Item>
-            <Menu.Item icon={<InsertRowRightOutlined />} key="2"><Link style={{ color: 'white' }} className="s-text" to="/Resulrow" >Result announcement</Link></Menu.Item>
-              <Menu.Item key="5" className="s-text" onClick={logout} >Log out</Menu.Item>
+            <Menu.Item icon={<InsertRowRightOutlined />} key="4"><Link style={{ color: 'white' }} className="s-text" to="/Resulrow" >Result announcement</Link></Menu.Item>
+            <Menu.Item key="5" className="s-text" onClick={logout} >Log out</Menu.Item>
           </Menu>
         </Sider>) : (
         <div></div>
       )}
     {
       ((admin_password)) ? (
-        <Sider width={250} height={1000} className="site-layout-background">
+        <Sider width={250} height={1000} style={{ backgroundColor: 'white', position: 'fixed', paddingTop: '5.2%' }}>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-
           >
             <Menu.Item key="2"><Link to="/#/Need_check" >Need check</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/#/Need_update" >Need update</Link></Menu.Item>

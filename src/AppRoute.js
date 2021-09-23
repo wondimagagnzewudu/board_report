@@ -70,6 +70,7 @@ const AppRoutes = ({ component: Component, path, exact, name, ...rest }) => {
           <div className="animated fadeIn">
             <div className="App">
               <Content style={{ padding: '0 0px', }}>
+                <div style={{ width: '100%', height: 70, backgroundColor: '#00b6ba', position: 'fixed', zIndex: 1 }}></div>
                 <Layout style={{ padding: '0px 0', flex: 1, height: '100vh', backgroundColor: 'white' }}>
                   <NavbarMenu />
                   <Content style={{ padding: '0 24px', minHeight: 280, marginLeft: '15%' }}>

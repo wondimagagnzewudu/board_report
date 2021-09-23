@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Table, Tabs, Button, Tooltip } from 'antd'
-import axios from 'axios';
 
 const { TabPane } = Tabs;
 
 export default function Aproved_list(props) {
-
   const [data, setdata] = useState([]);
   const [datarc, setDatarc] = useState([])
 
   const getHOPRGeneral = async () => {
     try {
-
       const response = await fetch(`${process.env.REACT_APP_IP}/hopr_approved_general`)
       const res = await response.json()
       setdata(res)
@@ -19,56 +16,26 @@ export default function Aproved_list(props) {
       console.log(err)
     }
   }
-  const export_data = async (file) => {
 
-    props.history.push({
-
-      pathname: '/ResultPrint',
-
-      state: {
-        'variable_data': file,
-      }
-
-    });
-  }
   const print_data_Hopr = async (file) => {
     props.history.push({
-
       pathname: '/HOPR_print',
-
       state: {
         'variable_data': file,
       }
-
-    });
-
-  }
-  const export_data_rc = async (file) => {
-
-    props.history.push({
-
-      pathname: '/ResultPrintRC',
-
-      state: {
-        'variable_data': file,
-      }
-
     });
   }
+
   const print_data_rc = async (file) => {
     props.history.push({
-
       pathname: '/RC_print',
-
       state: {
         'variable_data': file,
       }
-
     });
 
   }
   const getRCGeneral = async () => {
-
     try {
       const response = await fetch(`${process.env.REACT_APP_IP}/rc_approved_general`)
       const res = await response.json()
@@ -88,21 +55,21 @@ export default function Aproved_list(props) {
       title: 'Region',
       dataIndex: 'region',
       key: 'region',
-      width: '25%',
+      width: '35%',
 
     },
     {
       title: 'Constituency',
       dataIndex: 'hoprconstituency',
       key: 'hoprconstituency',
-      width: '25%',
+      width: '35%',
 
     },
     {
       title: 'Winner',
       dataIndex: 'winners',
       key: 'winners',
-      width: '15%',
+      width: '35%',
       render: (data) => (
         <Tooltip placement="topLeft" title={<p>{data.party}</p>} arrowPointAtCenter>{data.name}</Tooltip>
       )
@@ -113,7 +80,6 @@ export default function Aproved_list(props) {
       dataIndex: 'hoprconstituency',
       key: 'hoprconstituency',
       width: '25%',
-
       render: (text, record) => (
         <Button type="primary" onClick={() => { print_data_Hopr(record) }}>Print </Button>
       ),
@@ -135,21 +101,20 @@ export default function Aproved_list(props) {
       title: 'Regional Constituency',
       dataIndex: 'rcconstituencyname',
       key: 'rcconstituencyname',
-      width: '25%',
+      width: '35%',
 
     },
     {
       title: 'Winner',
       dataIndex: 'winners',
       key: 'winners',
-      width: '25%',
+      width: '35%',
       render: (Winners) =>
         Winners.map((data, index) => (
           <>
             <Tooltip placement="topLeft" title={<p>{data.party}</p>} arrowPointAtCenter>{data.name}</Tooltip>
             <br />
           </>
-          // <li className="winners">{item.name}  {item.vote} {item.party}</li>
         ))
     },
 
@@ -158,11 +123,9 @@ export default function Aproved_list(props) {
       dataIndex: 'hoprconstituency',
       key: 'hoprconstituency',
       width: '25%',
-
       render: (text, record) => (
         <Button type="primary" onClick={() => { print_data_rc(record) }}>Print </Button>
       ),
-
     },
   ];
 
@@ -175,8 +138,6 @@ export default function Aproved_list(props) {
         <TabPane tab={<p className="tab-header">የክልል ምክር ቤት ምርጫ/Regional Council Election</p>} key="2">
           <Table style={{ marginTop: 10 }} columns={columns2} dataSource={datarc} />
         </TabPane>
-
       </Tabs>
-
     </Card>)
 }

@@ -20,260 +20,242 @@ class Rcprint extends React.PureComponent {
           </div>
           <Form
             layout="horizontal"
-            style={{ display: 'flex', flexDirection: 'column', width: "100%", justifyContent: 'center', marginTop: "2%" }}
+            style={{ width: "80%", justifyContent: 'center', marginTop: "2%", marginLeft: '10%' }}
             initialValues={{
               size: "default",
             }}
 
-            size={"default"}
+            size="small"
           >
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={5}
+                span={8}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
-                <p>ክልል</p>
+                ክልል
               </Col>
               <Col
                 span={5}
                 order={2}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
-
+                className="colon-syle"
               >
-                <p>{this.props.data.variable_data.region}</p>
+                {this.props.data.variable_data.region}
               </Col>
               <Col
-                span={5}
+                span={8}
                 order={3}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
-                <p>ምርጫ ክልል</p>
+                ምርጫ ክልል
               </Col>
               <Col span={5} order={4} offset={1} style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}>
-                <p>{this.props.data.variable_data.hoprconstituency}</p>
+                {this.props.data.variable_data.hoprconstituency}
               </Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={15}
+                span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 በምርጫ ክልሉ ውስጥ የክልል ምክር ቤት መቀመጫዎች ብዛት
               </Col>
-              <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.no_of_seat}</p></Col>
+              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.no_of_seat}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={15}
+                span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 በምርጫ ክልሉ ውስጥ የሚገኙ የምርጫ ጣቢያዎች ብዛት
               </Col>
-              <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.no_of_pollingstation}</p></Col>
+              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.no_of_pollingstation}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" >
               <Col
-                span={15}
+                span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 ውጤት ላይ ያልተካተቱ የምርጫ ጣቢያዎች ቁጥር
               </Col>
-              <Col span={5} order={2} offset={1}> <p>{this.props.data.variable_data.exclude_no_of_pollingstation}</p></Col>
+              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.exclude_no_of_pollingstation}</Col>
             </Row>
             <br />
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 1. በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር
               </Col>
-
-              <Col span={1} order={2} offset={1}>{this.props.data.variable_data.q1} </Col>
-
-
+              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q1}</Col>
             </Row>
 
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 2.  በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q2}</p></Col>
+              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q2}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 3. በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q3}</p></Col>
+              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q3}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
-              >
+                className="colon-syle"              >
                 4. በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q4}</p></Col>
+              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q4}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
-              >
+                className="colon-syle"              >
                 5. በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q5}</p></Col>
+              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q5}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 6. በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q6}</p></Col>
+              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q6}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 7. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q7}</p></Col>
+              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q7}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 8. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q8}</p></Col>
+              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q8}</Col>
             </Row>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <Row className="row-st" >
               <Col
                 span={21}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                className="colon-syle"
               >
                 9. በምርጫ ጣቢያ ውስጥ የተመዘገቡ መራጮች ብዛት
               </Col>
-              <Col span={1} order={2} offset={1}> <p>{this.props.data.variable_data.q9}</p></Col>
+              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q9}</Col>
             </Row>
             <br />
-            <p style={{ textAlign: "center", margin: 0 }}>ውጤቶች</p>
-            <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <p style={{ textAlign: "center", margin: 0, fontWeight: 'bold' }}>ውጤቶች</p>
+            <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
                 span={1}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1 }}
+                className="colon-syle"
               >
-                #
+                ቁ
               </Col>
               <Col
                 span={20}
                 order={2}
-                style={{ borderRightStyle: "solid", borderWidth: 1 }}
+                className="colon-syle"
               >
-                <p style={{ textAlign: "center" }}>የፖለቲካ ፓርቲ እና እጩ</p>
+                <p style={{ width: '100%' }}>የፖለቲካ ፓርቲ እና እጩ</p>
               </Col>
-              <Col span={51} order={3} offset={1}>የተሰጠ ድምፅ</Col>
+              <Col span={1} order={3} offset={2}>የተሰጠ ድምፅ</Col>
             </Row>
-            {
-              this.props.data.variable_data.result.map((item, index) => (
-                <Row style={{ borderStyle: "solid", width: "100%", borderWidth: 1 }}>
+            <div style={{ borderBottomStyle: 'solid', borderWidth: 1 }}>
+              {this.props.data.variable_data.result.map((item, index) => (
+                <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
                   <Col
                     span={1}
                     order={1}
-                    style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                    className="colon-syle"
                   >
                     {index + 1}
                   </Col>
                   <Col
                     span={20}
                     order={2}
-                    style={{
-                      borderRightStyle: "solid",
-                      borderWidth: 1,
-                      paddingLeft: "2%", display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%'
-                    }}
+                    className="colon-syle"
                   >
                     {item.candidate.fullname}({item.candidate.name})
                   </Col>
-                  <Col span={1} order={3} offset={1}> {item.vote}</Col>
+                  <Col span={1} order={3} offset={2} style={{ display: 'flex', justifyContent: 'flex-end', paddingRight: 5 }}> {item.vote}</Col>
 
                 </Row>
-              ))
-            }
+              ))}
+            </div>
 
             <br />
-            <p style={{ textAlign: "left", margin: 0 }}>ከፍተኛ ድምጽ ያላቸው እጩዎች</p>
-            <Row style={{ borderStyle: "solid", width: "80%", borderWidth: 1 }}>
+            <p style={{ textAlign: "center", margin: 0, fontWeight: 'bold' }}>ከፍተኛ ድምጽ ያላቸው እጩዎች</p>
+            <Row className="row-st" style={{ width: '100%', borderBottomStyle: 'none' }}>
               <Col
                 span={1}
                 order={1}
-                style={{ borderRightStyle: "solid", borderWidth: 1 }}
+                className="colon-syle"
               >
-                #
+                ቁ
               </Col>
               <Col
                 span={15}
-                order={2}
-                style={{
-                  borderRightStyle: "solid",
-                  borderWidth: 1,
-                  paddingLeft: "2%",
-                }}
+                order={1}
+                className="colon-syle"
               >
                 የእጩ ስም
               </Col>
-              <Col span={5} order={3} offset={1}>የፖለቲካ ፓርቲ/የግል ተወዳዳሪ ስም</Col>
+              <Col span={5} order={3} offset={1} style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}>የፖለቲካ ፓርቲ/የግል ተወዳዳሪ ስም</Col>
             </Row>
-            {
-              this.props.data.variable_data.winners.map((item, index) => (
-                <Row style={{ borderStyle: "solid", width: "80%", borderWidth: 1 }}>
+            <div style={{ borderBottomStyle: 'solid', borderWidth: 1 }}>
+              {this.props.data.variable_data.winners.map((item, index) => (
+                <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
                   <Col
                     span={1}
                     order={1}
-                    style={{ borderRightStyle: "solid", borderWidth: 1, display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}
+                    className="colon-syle"
                   >
                     {index + 1}
                   </Col>
                   <Col
                     span={15}
                     order={2}
-                    style={{
-                      borderRightStyle: "solid",
-                      borderWidth: 1,
-                      display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%'
-                    }}
+                    className="colon-syle"
                   >
                     {item.name}
                   </Col>
-                  <Col span={5} order={3} offset={1} style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}> {item.party}</Col>
+                  <Col span={7} order={3} offset={1} style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}> {item.party}</Col>
 
                 </Row>
-              ))
-            }
+              ))}
+            </div>
 
             <div
               style={{
