@@ -88,7 +88,9 @@ export default function Dashboard(){
   
     return(
         <Card style={{width: '100%', height: 'auto'}}>
-          <Dashboard_chart/>
+           <>
+        <Dashboard_chart/>
+        </>
             <Grid container spacing={2}>
                 {region.map((item, index) =>(
                     <Grid item xs={4}>
