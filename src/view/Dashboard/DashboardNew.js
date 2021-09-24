@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Grid} from '@material-ui/core'
 import { Carousel, notification, Statistic, Card, Row, Col, Table, Tag, Space, Input, Result, Typography, Progress } from 'antd'
 import axios from 'axios'
-
+import Dashboard_chart from './Dashboard_chart'
 const {Title} = Typography
 
 export default function Dashboard(){
@@ -88,6 +88,7 @@ export default function Dashboard(){
   
     return(
         <Card style={{width: '100%', height: 'auto'}}>
+          <Dashboard_chart/>
             <Grid container spacing={2}>
                 {region.map((item, index) =>(
                     <Grid item xs={4}>
