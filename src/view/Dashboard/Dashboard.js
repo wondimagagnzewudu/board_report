@@ -7,7 +7,7 @@ import 'react-multi-carousel/lib/styles.css';
 import log from './NEBE Logo.jpg'
 import NumberFormat from 'react-number-format';
 import { Document, Page, PDFDownloadLink, View, StyleSheet } from '@react-pdf/renderer';
-
+import Dashboard_chart from './Dashboard_chart'
 
 
 const { TabPane } = Tabs;
@@ -214,6 +214,9 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
+     <>
+        <Dashboard_chart/>
+        </>
       <PageHeader
         className="site-page-header-responsive"
         style={{ backgroundColor: '#00b6ba' }}
