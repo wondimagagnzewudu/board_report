@@ -67,7 +67,7 @@ const routes = [
   { path: '/Addreport', exact: true, name: 'Add Report', component: ToAdd },
   { path: '/hupdate', exact: true, name: 'Update HOPR', component: HOPR_update },
   { path: '/rupdate', exact: true, name: 'Update RC', component: RC_Update },
-{ path: '/ResultPrintRC', exact: true, name: 'ResultPrintRC', component:ResultPrintRC},
+  { path: '/ResultPrintRC', exact: true, name: 'ResultPrintRC', component:ResultPrintRC},
   { path: '/ResultPrint', exact: true, name: 'ResultPrint', component:ResultPrint},
   { path: '/Rc_print', exact: true, name: 'Rc_print', component: Rc_print},
   { path: '/Resulrow', exact: true, name: 'Resulrow', component: Resulrow},
