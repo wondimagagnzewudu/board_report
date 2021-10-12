@@ -13,9 +13,10 @@ import {
 import { GridList, GridTile } from 'material-ui/GridList'
 import { Checkbox, Dropdown } from 'semantic-ui-react'
 import './Chart.css'
-var data2= {
+
+var data2 = {
   label: 'Diredewa',
-  values: [{x: 'Spoiled ballot ', y: 10}, {x: 'voted', y: 3}, ]
+  values: [{ x: 'Spoiled ballot ', y: 10 }, { x: 'voted', y: 3 },]
 };
 class Plots extends React.Component {
   static propTypes = {
@@ -79,13 +80,13 @@ class Plots extends React.Component {
       this.setState({
         width: elem.offsetWidth,
       })
-    } catch (err) {}
+    } catch (err) { }
   }
   /**
    * Handle selection of a chart type.
    */
   handleSelectChart = (event, { value }) => {
-    this.setState({ chartType:'Pie Chart' })
+    this.setState({ chartType: 'Pie Chart' })
   }
   /**
    * Handle change of the grouped checkbox.
@@ -160,7 +161,7 @@ class Plots extends React.Component {
         index['y'] = series.data[j]
         values.push(index)
       }
-      let sort_values = values.sort(function(a, b) {
+      let sort_values = values.sort(function (a, b) {
         return a.x - b.x
       })
       data_i['values'] = sort_values
@@ -258,14 +259,14 @@ class Plots extends React.Component {
       // Pie Chart
       return (data, width, colorScale) => (
         <PieChart
-                data={data2}
-                colorScale={this.colorScale}
-                width={width}
-                height={150}
-                margin={{top: 10, bottom: 10, left: 50, right: 100}}
-                
-                />
-                
+          data={data2}
+          colorScale={this.colorScale}
+          width={width}
+          height={150}
+          margin={{ top: 10, bottom: 10, left: 50, right: 100 }}
+
+        />
+
 
       )
     }
@@ -327,9 +328,9 @@ class Plots extends React.Component {
         </div> */}
         <div id="plot" className="plot-view">
           {/* <ul className="plot-legend">{legend}</ul> */}
-          <div style={{width:"300px"}} >{chart}</div>
-      <h4>    1841 Voter</h4>
-        
+          <div style={{ width: "300px" }} >{chart}</div>
+          <h4>    1841 Voter</h4>
+
           <h4>  Dire Dawa Administration </h4>
         </div>
       </div>
@@ -345,7 +346,7 @@ Plots.defaultProps = {
   gridList_height: 450,
   gridLis_overflowY: 'auto',
   colorText: 'black',
-  charts: ['Area Chart', 'Bar Chart', 'Line Chart', 'Scatter Plot','Pie Chart'],
+  charts: ['Area Chart', 'Bar Chart', 'Line Chart', 'Scatter Plot', 'Pie Chart'],
 }
 /*<p>Got data for {this.props.rows.length} row(s) and {this.props.schema.series.length} data series</p>*/
 

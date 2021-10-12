@@ -94,7 +94,9 @@ export default function NavbarMenu(props) {
             <Menu.Item icon={<RightCircleOutlined />} key="3"><Link style={{ color: 'white' }} to="/Aproved_list" >Approved</Link></Menu.Item>
             <Menu.Item icon={<InsertRowRightOutlined />} key="2"><Link style={{ color: 'white' }} className="s-text" to="/Need_check" >Not Checked</Link></Menu.Item>
             <Menu.Item icon={<InsertRowRightOutlined />} key="4"><Link style={{ color: 'white' }} className="s-text" to="/Resulrow" >Result announcement</Link></Menu.Item>
+            <Menu.Item key="6" className="s-text"  ><Link style={{ color: 'white' }} className="s-text" to="/Resultstatus" >Status</Link></Menu.Item>
             <Menu.Item key="5" className="s-text" onClick={logout} >Log out</Menu.Item>
+
           </Menu>
         </Sider>) : (
         <div></div>
@@ -105,10 +107,10 @@ export default function NavbarMenu(props) {
           <Menu
             mode="inline"
           >
-            <Menu.Item key="2"><Link to="/#/Need_check" >Need check</Link></Menu.Item>
-            <Menu.Item key="2"><Link to="/#/Need_update" >Need update</Link></Menu.Item>
-            <Menu.Item key="3"><Link to="/#/Addreport" >Create Reporting</Link></Menu.Item>
-            <Menu.Item key="3"><Link to="/#/Aproved_list" >List of approved</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/Need_check" >Need check</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/Need_update" >Need update</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/Addreport" >Create Reporting</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/Aproved_list" >List of approved</Link></Menu.Item>
             <Menu.Item key="5" onClick={logout} >Log out</Menu.Item>
           </Menu>
         </Sider>) : (

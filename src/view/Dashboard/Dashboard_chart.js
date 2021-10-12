@@ -17,7 +17,7 @@ import { Table } from 'reactstrap';
 
 
 export default function Dashboard_chart() {
-  
+
 
 
   useEffect(() => {
@@ -25,32 +25,32 @@ export default function Dashboard_chart() {
 
 
   return (
-    <div style={{ backgroundColor: '#00b6ba', paddingLeft: '2%', paddingRight: '2%', paddingTop: '2%'}}>
-      
-       <Grid container>
-           
-            <Grid item xs={8}>
-           <Table>
-           < tbody>
-             <tr>
-               <td>
-       < ChartDemo2/>
-      </td>
-      <td>
-        
-       < ChartDemo/>
-  </td>
-  <td>
-        
-        < ChartDemo3/>
-   </td>
-    </tr>
-       </tbody>
-  </Table>
-            </Grid>
-          </Grid>
-    
- 
+    <div style={{ backgroundColor: '#00b6ba', paddingLeft: '2%', paddingRight: '2%', paddingTop: '2%' }}>
+
+      <Grid container>
+
+        <Grid item xs={8}>
+          <Table>
+            < tbody>
+              <tr>
+                <td>
+                  < ChartDemo2 />
+                </td>
+                <td>
+
+                  < ChartDemo />
+                </td>
+                <td>
+
+                  < ChartDemo3 />
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+        </Grid>
+      </Grid>
+
+
     </div>
 
   );

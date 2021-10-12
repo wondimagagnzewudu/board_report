@@ -25,9 +25,8 @@ export default function Dashboard() {
   const renderContent = (column = 2) => (
     <Descriptions size="small" column={column}>
       <Descriptions.Item label={<p className="dashboard-normal-text" >Total registered voters</p>}>
-        <a>421421</a>
       </Descriptions.Item>
-      <Descriptions.Item label={<p className="dashboard-normal-text" >Voters Turn Out</p>}>Lili Qu</Descriptions.Item>
+      <Descriptions.Item label={<p className="dashboard-normal-text" >Voters Turn Out</p>}></Descriptions.Item>
       <Descriptions.Item label={<p className="dashboard-normal-text">Total number of signitures on the Electoral Roll</p>}><p className="small-number">{data.electorial_role}</p></Descriptions.Item>
       <Descriptions.Item label={<p className="dashboard-normal-text" >Total number of Ballot papers</p>}><p className="small-number">{data.total_balots}</p></Descriptions.Item>
       <Descriptions.Item label={<p className="dashboard-normal-text" >Total number of Unused Ballots</p>}><p className="small-number">{data.unused_balots}</p></Descriptions.Item>
@@ -205,57 +204,69 @@ export default function Dashboard() {
       console.log(e)
     }
   }
+  const getApiRC = async () => {
+    try {
+      const response = await fetch(process.env.REACT_APP_IP + '/rc_detail')
+      const res = await response.json()
+      setData(res)
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
+
   useEffect(() => {
-    getApi()
+    getApiRC()
     getHOPRGeneral()
     getRCGeneral()
     getHOPRCandidate()
   }, [])
 
   return (
-    <div className="dashboard-container">
-     <>
-        <Dashboard_chart/>
-        </>
-      <PageHeader
-        className="site-page-header-responsive"
-        style={{ backgroundColor: '#00b6ba' }}
-        title={<p className="dashboard-title">Number Of Constituencies</p>}
-        subTitle={<p className="numbers">{data.number_of_const}</p>}
-        extra={[
-          <Button key="3">Regional Constituencies</Button>,
-          <Button key="2">House Of Peoples Representative</Button>,
+    <div style={{ marginTop: '7%' }}>
+      <Dashboard_chart />
 
-        ]}
-        footer={
-          <Tabs defaultActiveKey="1">
-            <TabPane tab={<p className="dashboard-title">Constituencies</p>} key="1">
-              <Select
-                showSearch
-                style={{ width: '94.5%', textAlign: 'left' }}
-                placeholder="Search to Select"
-                optionFilterProp="children"
-                onChange={onChangeSearch}
-                filterOption={(input, option) =>
-                  option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                }
-                filterSort={(optionA, optionB) =>
-                  optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                }
-              >
-                {candidate.map(item => (
-                  <Option value={item.fullname}>{item.fullname}</Option>
-                ))}
-              </Select>
-              <Button onClick={() => getSearchbyUser(keys)}>Search</Button>
-              <Table style={{ marginTop: 10 }} columns={columns} dataSource={hoprdata} />
+      <div className="dashboard-container">
+        <PageHeader
+          className="site-page-header-responsive"
+          style={{ backgroundColor: '#00b6ba' }}
+          title={<p className="dashboard-title">Number Of Constituencies</p>}
+          subTitle={<p className="numbers">{data.number_of_const}</p>}
+          extra={[
+            <Button key="3" onClick={() => getApiRC()}>Regional Constituencies</Button>,
+            <Button key="2" onClick={() => getApi()}>House Of Peoples Representative</Button>,
 
-            </TabPane>
-          </Tabs>
-        }
-      >
-        <Content extra={extraContent}>{renderContent()}</Content>
-      </PageHeader>
+          ]}
+          footer={
+            <Tabs defaultActiveKey="1">
+              <TabPane tab={<p className="dashboard-title">Constituencies</p>} key="1">
+                <Select
+                  showSearch
+                  style={{ width: '94.5%', textAlign: 'left' }}
+                  placeholder="Search to Select"
+                  optionFilterProp="children"
+                  onChange={onChangeSearch}
+                  filterOption={(input, option) =>
+                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                  }
+                  filterSort={(optionA, optionB) =>
+                    optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+                  }
+                >
+                  {candidate.map(item => (
+                    <Option value={item.fullname}>{item.fullname}</Option>
+                  ))}
+                </Select>
+                <Button onClick={() => getSearchbyUser(keys)}>Search</Button>
+                <Table style={{ marginTop: 10 }} columns={columns} dataSource={hoprdata} />
+
+              </TabPane>
+            </Tabs>
+          }
+        >
+          <Content extra={extraContent}>{renderContent()}</Content>
+        </PageHeader>
+      </div>
     </div>
   );
 }
