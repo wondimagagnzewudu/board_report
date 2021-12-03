@@ -46,7 +46,7 @@ class HOPRprint extends React.PureComponent {
                   className="colon-syle">
                   ምርጫ ክልል
                 </Col>
-                <Col span={3} order={4} offset={1}>
+                <Col span={3} order={4} offset={1} className="colon-syle" style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%', borderLeftStyle: 'none', borderRightStyle: 'none' }}>
                   {this.props.data.variable_data.hoprconstituency}
                 </Col>
               </Row>

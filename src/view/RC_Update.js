@@ -228,7 +228,7 @@ export default function RC_update(props) {
       >
         <div className="language-1">
           <strong  >ክልል/Region :&nbsp;&nbsp;&nbsp;{data.region}</strong>
-          <strong >የምርጫ ክልል/Constituency Name :&nbsp;&nbsp;&nbsp;{data.hoprconstituency}</strong>
+          <strong >የምርጫ ክልል/Constituency Name :&nbsp;&nbsp;&nbsp;{data.rcconstituencyname}</strong>
         </div>
         <Card hoverable >
           {languageName.map((item, index) => (

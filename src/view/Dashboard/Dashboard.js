@@ -224,7 +224,8 @@ export default function Dashboard() {
 
   return (
     <div style={{ marginTop: '7%' }}>
-      <Dashboard_chart />
+      <p style={{fontSize: 20, color: 'black', fontWaight: 'bolder'}}>Welcome to Nebe Result Registration System</p>
+      {/* <Dashboard_chart />
 
       <div className="dashboard-container">
         <PageHeader
@@ -265,8 +266,8 @@ export default function Dashboard() {
           }
         >
           <Content extra={extraContent}>{renderContent()}</Content>
-        </PageHeader>
-      </div>
+        </PageHeader> */}
+      {/* </div> */}
     </div>
   );
 }

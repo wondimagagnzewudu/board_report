@@ -55,6 +55,10 @@ const Resultstatus = Loadable({
   loader: () => import('./view/ResultStatus'),
   loading: Loading
 })
+const NotFinished = Loadable({
+  loader: () => import('./view/Notfinished'), 
+  loading: Loading
+})
 
 // const InsidenceReport = Loadable({
 //   loader: () => import('./view/Dashboard/InsidenceReport'),
@@ -78,6 +82,8 @@ const routes = [
   { path: '/Resultstatus', exact: true, name: 'ResultStatus', component: Resultstatus },
   { path: '/Resulrow_Print', exact: true, name: 'Resulrow_Print', component: Resulrow_Print },
   { path: '/HOPR_print', exact: true, name: 'HOPR_print', component: HOPR_print },
+  { path: '/NotRegistered', exact: true, name: 'NotFinished', component: NotFinished },
+
 
 
 

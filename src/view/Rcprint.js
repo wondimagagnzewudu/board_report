@@ -6,6 +6,7 @@ import { Form, Card, Input, Row, Col, Button } from "antd";
 class Rcprint extends React.PureComponent {
 
   render() {
+    console.log(this.props)
     return (
       <Card hoverable style={{ justifyContent: 'center', backgroundColor: 'white', height: 'auto', marginTop: '2%' }}>
         <div>
@@ -43,14 +44,14 @@ class Rcprint extends React.PureComponent {
                 {this.props.data.variable_data.region}
               </Col>
               <Col
-                span={8}
+                span={4}
                 order={3}
                 className="colon-syle"
               >
                 ምርጫ ክልል
               </Col>
-              <Col span={5} order={4} offset={1} style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%' }}>
-                {this.props.data.variable_data.hoprconstituency}
+              <Col span={5} order={4} offset={1} className="colon-syle" style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '1%', borderLeftStyle: 'none', borderRightStyle: 'none' }}>
+                {this.props.data.variable_data.rcconstituencyname}
               </Col>
             </Row>
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
@@ -86,92 +87,92 @@ class Rcprint extends React.PureComponent {
             <br />
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"
               >
                 1. በምርጫ ክልሉ የተመዘገቡ አጠቃላይ የመራጮች ቁጥር
               </Col>
-              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q1}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}>{this.props.data.variable_data.q1}</Col>
             </Row>
 
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"
               >
                 2.  በምርጫ ክልሉ ውስጥ የተቀበሉት ጠቅላላ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q2}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }} >{this.props.data.variable_data.q2}</Col>
             </Row>
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"
               >
                 3. በምርጫ ክልሉ ውስጥ በመራጮች መዝገብ ላይ የተገኘ አጠቃላይ የመራጮች ፊርማ ብዛት
               </Col>
-              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q3}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}>{this.props.data.variable_data.q3}</Col>
             </Row>
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"              >
                 4. በምርጫ ክልሉ ውስጥ ጥቅም ላይ ያልዋሉ አጠቃላይ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={2}>{this.props.data.variable_data.q4}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}>{this.props.data.variable_data.q4}</Col>
             </Row>
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"              >
                 5. በምርጫ ክልሉ ውስጥ አጠቃላይ የተበላሹ የድምፅ መስጫ ወረቀቶች ቁጥር
               </Col>
-              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q5}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}> {this.props.data.variable_data.q5}</Col>
             </Row>
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"
               >
                 6. በምርጫ ክልሉ ውስጥ አጠቃላይ ከድምፅ መስጫ ሳጥን ውጭ የተገኙ የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q6}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}> {this.props.data.variable_data.q6}</Col>
             </Row>
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"
               >
                 7. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ ያላቸው የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q7}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}> {this.props.data.variable_data.q7}</Col>
             </Row>
             <Row className="row-st" style={{ borderBottomStyle: 'none' }}>
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"
               >
                 8. በምርጫ ክልሉ ውስጥ አጠቃላይ ዋጋ የሌላቸው የድምፅ መስጫ ወረቀቶች ብዛት
               </Col>
-              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q8}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}> {this.props.data.variable_data.q8}</Col>
             </Row>
             <Row className="row-st" >
               <Col
-                span={21}
+                span={20}
                 order={1}
                 className="colon-syle"
               >
                 9. በምርጫ ጣቢያ ውስጥ የተመዘገቡ መራጮች ብዛት
               </Col>
-              <Col span={1} order={2} offset={2}> {this.props.data.variable_data.q9}</Col>
+              <Col span={2} order={2} offset={2} style={{display: 'flex', textAlign: 'right',paddingRight: '3%' }}> {this.props.data.variable_data.q9}</Col>
             </Row>
             <br />
             <p style={{ textAlign: "center", margin: 0, fontWeight: 'bold' }}>ውጤቶች</p>

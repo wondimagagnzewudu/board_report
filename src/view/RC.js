@@ -213,7 +213,7 @@ export default function HOPR() {
 
 
     var config = {
-      url: `${process.env.REACT_APP_IP}/candidate/${value}`,
+      url: `${process.env.REACT_APP_IP}/rcandidate/${value}`,
       method: 'GET',
     };
     axios(config)
@@ -345,12 +345,6 @@ export default function HOPR() {
                     name={item.candidateid}
                     label={item.fullname}
 
-                    rules={[
-                      {
-                        required: true,
-                        message: 'This field is {}',
-                      }
-                    ]}
                   >  {item.name}
                     <Input type='number' key={index} name={item.candidateid} onChange={onChangeResult} />
                   </Form.Item>

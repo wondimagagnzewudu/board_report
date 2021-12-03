@@ -93,6 +93,7 @@ export default function NavbarMenu(props) {
           >
             <Menu.Item icon={<RightCircleOutlined />} key="3"><Link style={{ color: 'white' }} to="/Aproved_list" >Approved</Link></Menu.Item>
             <Menu.Item icon={<InsertRowRightOutlined />} key="2"><Link style={{ color: 'white' }} className="s-text" to="/Need_check" >Not Checked</Link></Menu.Item>
+            <Menu.Item key='33'><Link to="/NotRegistered"  style={{ color: 'white' }} className="s-text" icon={<InsertRowRightOutlined />}>Result Not Registered</Link></Menu.Item>
             <Menu.Item icon={<InsertRowRightOutlined />} key="4"><Link style={{ color: 'white' }} className="s-text" to="/Resulrow" >Result announcement</Link></Menu.Item>
             <Menu.Item key="6" className="s-text"  ><Link style={{ color: 'white' }} className="s-text" to="/Resultstatus" >Status</Link></Menu.Item>
             <Menu.Item key="5" className="s-text" onClick={logout} >Log out</Menu.Item>

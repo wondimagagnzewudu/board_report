@@ -7,53 +7,26 @@ import Highlighter from 'react-highlight-words';
 
 const { TabPane } = Tabs;
 
-export default function Aproved_list(props) {
+export default function NotFinished(props) {
   const [searchText, setSearchText] = useState()
   const [searchedColumn, setSearchedColumn] = useState('')
   var [searchInput, setSearchInput] = useState('')
   const [data, setdata] = useState([]);
   const [datarc, setDatarc] = useState([])
 
-  const getHOPRGeneral = async () => {
+  const General = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_IP}/hopr_approved_general`)
+      const response = await fetch(`${process.env.REACT_APP_IP}/not`)
       const res = await response.json()
-      setdata(res)
+      setdata(res.hopr)
+      setDatarc(res.rc)
     } catch (err) {
       console.log(err)
     }
   }
 
-  const print_data_Hopr = async (file) => {
-    props.history.push({
-      pathname: '/HOPR_print',
-      state: {
-        'variable_data': file,
-      }
-    });
-  }
-
-  const print_data_rc = async (file) => {
-    props.history.push({
-      pathname: '/RC_print',
-      state: {
-        'variable_data': file,
-      }
-    });
-
-  }
-  const getRCGeneral = async () => {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_IP}/rc_approved_general`)
-      const res = await response.json()
-      setDatarc(res)
-    } catch (err) {
-      console.log(err)
-    }
-  }
   useEffect(() => {
-    getHOPRGeneral()
-    getRCGeneral()
+    General()
   }, [])
   const getColumnSearchProps = dataIndex => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
@@ -139,40 +112,18 @@ export default function Aproved_list(props) {
   const columns = [
     {
       title: 'Region',
-      dataIndex: 'region',
-      key: 'region',
+      dataIndex: 'regioname',
+      key: 'regioname',
       width: '35%',
-      ...getColumnSearchProps('region'),
+      ...getColumnSearchProps('regioname'),
 
     },
     {
       title: 'Constituency',
-      dataIndex: 'hoprconstituency',
-      key: 'hoprconstituency',
+      dataIndex: 'constituencyname',
+      key: 'constituencyname',
       width: '35%',
-      ...getColumnSearchProps('hoprconstituency'),
-
-    },
-    {
-      title: 'Winner',
-      dataIndex: 'winners',
-      key: 'winners',
-      width: '35%',
-      ...getColumnSearchProps('winners'),
-      render: (data) => (
-        <Tooltip placement="topLeft" title={<p>{data.party}</p>} arrowPointAtCenter>{data.name}</Tooltip>
-      ),
-      
-
-    },
-    {
-      title: '',
-      dataIndex: 'hoprconstituency',
-      key: 'hoprconstituency',
-      width: '25%',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => { print_data_Hopr(record) }}>Print </Button>
-      ),
+      ...getColumnSearchProps('constituencyname'),
 
     },
 
@@ -182,45 +133,21 @@ export default function Aproved_list(props) {
   const columns2 = [
     {
       title: 'Region',
-      dataIndex: 'region',
-      key: 'region',
+      dataIndex: 'regioname',
+      key: 'regioname',
       width: '35%',
-      ...getColumnSearchProps('region'),
+      ...getColumnSearchProps('regioname'),
 
     },
     {
       title: 'Regional Constituency',
-      dataIndex: 'rcconstituencyname',
-      key: 'rcconstituencyname',
+      dataIndex: 'regionalconstituencyname',
+      key: 'regionalconstituencyname',
       width: '35%',
-      ...getColumnSearchProps('rcconstituencyname'),
+      ...getColumnSearchProps('regionalconstituencyname'),
 
     },
-    {
-      title: 'Winner',
-      dataIndex: 'winners',
-      key: 'winners',
-      width: '35%',
-      ...getColumnSearchProps('winners'),
-      
-      render: (Winners) =>
-        Winners.map((data, index) => (
-          <>
-            <Tooltip placement="topLeft" title={<p>{data.party}</p>} arrowPointAtCenter>{data.name}</Tooltip>
-            <br />
-          </>
-        ))
-    },
 
-    {
-      title: '',
-      dataIndex: 'hoprconstituency',
-      key: 'hoprconstituency',
-      width: '25%',
-      render: (text, record) => (
-        <Button type="primary" onClick={() => { print_data_rc(record) }}>Print </Button>
-      ),
-    },
   ];
 
   return (
